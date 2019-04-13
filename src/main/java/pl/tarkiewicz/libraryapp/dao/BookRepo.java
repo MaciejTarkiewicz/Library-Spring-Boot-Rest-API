@@ -1,3 +1,4 @@
+/*
 package pl.tarkiewicz.libraryapp.dao;
 
 
@@ -9,3 +10,4 @@ import pl.tarkiewicz.libraryapp.dao.entity.Book;
 public interface BookRepo extends CrudRepository<Book,Long> {
 
 }
+*/

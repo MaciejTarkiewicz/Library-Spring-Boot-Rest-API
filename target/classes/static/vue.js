@@ -1,3 +1,4 @@
+import axios from 'axios';
 window.onload = () => {
     new Vue({
         el: "#app",
@@ -14,6 +15,11 @@ window.onload = () => {
                 {text: "Password"},
             ]
 
+        },
+        methods:{
+            someMethod(){
+                axios.get('http://localhost:8080').then(res => {}).catch(err => {});
+            }
         },
     })
 

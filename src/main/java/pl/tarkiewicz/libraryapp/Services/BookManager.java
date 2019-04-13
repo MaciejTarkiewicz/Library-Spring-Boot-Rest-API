@@ -1,3 +1,4 @@
+/*
 package pl.tarkiewicz.libraryapp.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,3 +48,4 @@ public class BookManager {
 
 
 }
+*/
