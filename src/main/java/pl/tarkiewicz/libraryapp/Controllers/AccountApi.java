@@ -1,9 +1,9 @@
-package pl.tarkiewicz.libraryapp.api;
+package pl.tarkiewicz.libraryapp.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.dao.entity.Account;
-import pl.tarkiewicz.libraryapp.manager.AccountManager;
+import pl.tarkiewicz.libraryapp.Services.AccountManager;
 
 import java.util.Optional;
 
