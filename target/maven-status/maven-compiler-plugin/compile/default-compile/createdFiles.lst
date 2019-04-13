@@ -1,0 +1,9 @@
+pl\tarkiewicz\libraryapp\dao\entity\Account.class
+pl\tarkiewicz\libraryapp\dao\entity\Book.class
+pl\tarkiewicz\libraryapp\dao\BookRepo.class
+pl\tarkiewicz\libraryapp\LibraryAppApplication.class
+pl\tarkiewicz\libraryapp\manager\AccountManager.class
+pl\tarkiewicz\libraryapp\manager\BookManager.class
+pl\tarkiewicz\libraryapp\api\AccountApi.class
+pl\tarkiewicz\libraryapp\dao\AccountRepo.class
+pl\tarkiewicz\libraryapp\api\BookApi.class
