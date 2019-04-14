@@ -1,2 +1,5 @@
 # LibrarySpringBoot
-Web Application using Spring-Boot and JPA
+Web Application using:
+Spring-Boot
+CRUD
+Vue js
