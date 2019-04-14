@@ -1,5 +1,5 @@
 # LibrarySpringBoot
 Web Application using:
-Spring-Boot
-CRUD
-Vue js
+Spring-Boot,
+CRUD,
+Vue js.
