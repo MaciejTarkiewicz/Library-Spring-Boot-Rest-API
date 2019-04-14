@@ -4,32 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.dao.AccountRepo;
-import pl.tarkiewicz.libraryapp.dao.entity.Account;
+import pl.tarkiewicz.libraryapp.dao.UserRepo;
+import pl.tarkiewicz.libraryapp.dao.entity.User;
 
 import java.util.Optional;
 
 @Service
-public class AccountManager {
+public class UserService {
 
-    private AccountRepo accountRepo;
+    private UserRepo accountRepo;
 
     @Autowired
-    public AccountManager(AccountRepo accountRepo) {
+    public UserService(UserRepo accountRepo) {
         this.accountRepo = accountRepo;
     }
 
-    public Account save(Account account){
+    public User save(User account){
         return this.accountRepo.save(account);
     }
 
-    public Optional<Account> findById (Long id){
+    public Optional<User> findById (Long id){
         return this.accountRepo.findById(id);
+    }
+
+    public User getAccount(String username){
+        return accountRepo.findByUsername(username);
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
-        save(new Account(1L,"Ronni","Barca"));
+        save(new User("maciek","123","maciek@gmail.pl"));
     }
 
 }

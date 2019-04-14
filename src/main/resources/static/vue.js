@@ -1,14 +1,28 @@
 import axios from 'axios';
+
 window.onload = () => {
     new Vue({
         el: "#app",
-        data: {
-            message_username : '',
-
+        mounted() {
+            Event.$on('logged-in', function () {
+                window.location.replace("/");
+            })
         },
-        methods:{
-            someMethod(){
-                axios.post('http://localhost:8080',{data: { message_username}});
+        data: {
+            username: '',
+            password: '',
+            confirm_password: '',
+            email: ''
+        },
+        methods: {
+            register() {
+                axios({
+                    method: 'post',
+                    url: 'register',
+                    data: {username: this.username, password: this.password, confirm_password: this.confirm_password, email: this.email}
+                }).then(function (response) {
+                    document.location.replace("/");
+                });
             }
         },
     })

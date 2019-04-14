@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="vue.js"></script>
+    <script src="../static/vue.js"></script>
 </head>
 
 
@@ -15,8 +15,8 @@
     <ol>
         <li>
             <label>
-                <input type="text" name="username" placeholder="edit me"
-                       v-model="message_username">
+                <input type="text" name="username" placeholder="edit me" id = "username"
+                       v-model="username">
                 <span>
           Username
         </span>
@@ -25,8 +25,8 @@
         </li>
         <li>
             <label>
-                <input type="text" name="password" placeholder="edit me"
-                       v-model="message_password">
+                <input type="text" name="password" placeholder="edit me" id = "password"
+                       v-model="password">
                 <span>
           Password
         </span>
@@ -35,8 +35,8 @@
         </li>
         <li>
             <label>
-                <input type="text" name="confirm_password" placeholder="edit me"
-                       v-model="message_confirm_password">
+                <input type="text" name="confirm_password" placeholder="edit me" id ="confirm_password"
+                       v-model="confirm_password">
                 <span>
           Confirm Password
         </span>
@@ -45,15 +45,15 @@
         </li>
         <li>
             <label>
-                <input type="text" name="email" placeholder="edit me"
-                       v-model="message_email">
+                <input type="text" name="email" placeholder="edit me" id ="email"
+                       v-model="email">
                 <span>
           Email
         </span>
 
             </label>
         </li>
-        <button type="submit" value="Submit">
+        <button type="submit" value="Submit" v-on:click="register">
             Register
         </button>
     </ol>
