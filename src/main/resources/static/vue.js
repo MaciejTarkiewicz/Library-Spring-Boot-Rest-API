@@ -18,7 +18,7 @@ window.onload = () => {
             register() {
                 axios({
                     method: 'post',
-                    url: 'register',
+                    url: 'http://localhost:8080',
                     data: {username: this.username, password: this.password, confirm_password: this.confirm_password, email: this.email}
                 }).then(function (response) {
                     document.location.replace("/");

@@ -9,7 +9,7 @@ import pl.tarkiewicz.libraryapp.pojos.UserRegistrtion;
 import java.util.Optional;
 
 @RestController
-//@RequestMapping
+@RequestMapping
 public class UserController {
 
     private UserService accountManager;
@@ -26,7 +26,7 @@ public class UserController {
         return accountManager.save(account);
     }*/
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/")
     public String Register (@RequestBody UserRegistrtion accountRegistration){
         if(!accountRegistration.getPassword().equals(accountRegistration.getPasswordConfirmation())){
             return "Error the two passwords do not match";
