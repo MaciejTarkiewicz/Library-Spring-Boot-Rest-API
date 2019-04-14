@@ -19,16 +19,13 @@ public class UserController {
         this.accountManager = accountManager;
     }
 
-    @GetMapping(value = "/register")
-    public Optional<User> getById(@RequestParam Long index){
-        return this.accountManager.findById(index);
-    }
 
 
 /*    @PostMapping(value = "/register")
     public User addAccount(@RequestBody User account){
         return accountManager.save(account);
     }*/
+
     @PostMapping(value = "/register")
     public String Register (@RequestBody UserRegistrtion accountRegistration){
         if(!accountRegistration.getPassword().equals(accountRegistration.getPasswordConfirmation())){
@@ -38,15 +35,16 @@ public class UserController {
         return "User created";
     }
 
+    @GetMapping(value = "/register")
+    public Optional<User> getById(@RequestParam Long index){
+        return this.accountManager.findById(index);
+    }
 
     @GetMapping(value = "/register/{id}")
     public Optional<User> getByUsername(@PathVariable Long id){
         return accountManager.findById(id);
     }
 
-    /*@PostMapping
-    public User addAccount(@RequestBody User account){
-        return accountManager.save(account);
-    }
-*/
+
+
 }
