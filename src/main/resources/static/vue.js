@@ -3,11 +3,11 @@ import axios from 'axios';
 window.onload = () => {
     new Vue({
         el: "#app",
-        mounted() {
-            Event.$on('logged-in', function () {
-                window.location.replace("/");
-            })
-        },
+          // mounted() {
+        //     Event.$on('logged-in', function () {
+        //         window.location.replace("/");
+        //     })
+        // },
         data: {
             username: '',
             password: '',
