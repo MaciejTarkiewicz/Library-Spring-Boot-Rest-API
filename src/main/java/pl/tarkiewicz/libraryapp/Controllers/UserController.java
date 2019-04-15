@@ -12,11 +12,11 @@ import java.util.Optional;
 @RequestMapping
 public class UserController {
 
-    private UserService accountManager;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserService accountManager) {
-        this.accountManager = accountManager;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
 
@@ -27,22 +27,22 @@ public class UserController {
     }*/
 
     @PostMapping(value = "/")
-    public String Register (@RequestBody UserRegistrtion accountRegistration){
-        if(!accountRegistration.getPassword().equals(accountRegistration.getPasswordConfirmation())){
+    public void Register (@RequestBody UserRegistrtion accountRegistration){
+       /* if(!accountRegistration.getPassword().equals(accountRegistration.getPasswordConfirmation())){
             return "Error the two passwords do not match";
-        }
-        accountManager.save(new User(accountRegistration.getUsername(), accountRegistration.getPassword(),accountRegistration.getEmail()));
-        return "User created";
+        }*/
+        userService.save(new User(accountRegistration.getUsername(), accountRegistration.getPassword(),accountRegistration.getEmail()));
+        //return "User created";
     }
 
     @GetMapping(value = "/register")
     public Optional<User> getById(@RequestParam Long index){
-        return this.accountManager.findById(index);
+        return this.userService.findById(index);
     }
 
     @GetMapping(value = "/register/{id}")
     public Optional<User> getByUsername(@PathVariable Long id){
-        return accountManager.findById(id);
+        return userService.findById(id);
     }
 
 

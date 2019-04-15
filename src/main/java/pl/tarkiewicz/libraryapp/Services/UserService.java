@@ -12,23 +12,23 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private UserRepo accountRepo;
+    private UserRepo userRepo;
 
     @Autowired
     public UserService(UserRepo accountRepo) {
-        this.accountRepo = accountRepo;
+        this.userRepo = accountRepo;
     }
 
     public User save(User account){
-        return this.accountRepo.save(account);
+        return this.userRepo.save(account);
     }
 
     public Optional<User> findById (Long id){
-        return this.accountRepo.findById(id);
+        return this.userRepo.findById(id);
     }
 
     public User getAccount(String username){
-        return accountRepo.findByUsername(username);
+        return userRepo.findByUsername(username);
     }
 
     @EventListener(ApplicationReadyEvent.class)
