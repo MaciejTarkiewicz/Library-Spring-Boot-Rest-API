@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.dao.entity.User;
 import pl.tarkiewicz.libraryapp.Services.UserService;
-import pl.tarkiewicz.libraryapp.pojos.UserRegistrtion;
-
-import java.util.Optional;
+import pl.tarkiewicz.libraryapp.pojos.UserLogin;
+import pl.tarkiewicz.libraryapp.pojos.UserRegistration;
 
 @RestController
-@RequestMapping
+//@RequestMapping
 public class UserController {
 
     private UserService userService;
+    private String passwordpom;
 
     @Autowired
     public UserController(UserService userService) {
@@ -20,31 +20,29 @@ public class UserController {
     }
 
 
-
-/*    @PostMapping(value = "/register")
-    public User addAccount(@RequestBody User account){
-        return accountManager.save(account);
-    }*/
-
-    @PostMapping(value = "/")
-    public void Register (@RequestBody UserRegistrtion accountRegistration){
-       /* if(!accountRegistration.getPassword().equals(accountRegistration.getPasswordConfirmation())){
-            return "Error the two passwords do not match";
-        }*/
-        userService.save(new User(accountRegistration.getUsername(), accountRegistration.getPassword(),accountRegistration.getEmail()));
-        //return "User created";
+    @PostMapping(value = "/register")
+    public String register (@RequestBody UserRegistration userRegistrtion){
+       if(!userRegistrtion.getPassword().equals(userRegistrtion.getPasswordConfirmation())){
+            return "rózne hasłą";
+        }
+        userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
+        return "welcome";
     }
 
-    @GetMapping(value = "/register")
-    public Optional<User> getById(@RequestParam Long index){
-        return this.userService.findById(index);
-    }
+    @PostMapping(value = "/login")
+    public String login (@RequestBody UserLogin userlogin){
+        try{
+            passwordpom = this.userService.getUser(userlogin.getUsername()).getPassword();
+            if(userlogin.getPassword().equals(passwordpom)){
+                return "welcome";
+            }else{
+                return "błędne hasło";
+            }
+        }catch(Exception e){
+            return "nie znaleziono loginu w bazie";
+        }
 
-    @GetMapping(value = "/register/{id}")
-    public Optional<User> getByUsername(@PathVariable Long id){
-        return userService.findById(id);
     }
-
 
 
 }

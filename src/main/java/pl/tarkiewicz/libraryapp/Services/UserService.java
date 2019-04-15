@@ -27,7 +27,7 @@ public class UserService {
         return this.userRepo.findById(id);
     }
 
-    public User getAccount(String username){
+    public User getUser(String username){
         return userRepo.findByUsername(username);
     }
 

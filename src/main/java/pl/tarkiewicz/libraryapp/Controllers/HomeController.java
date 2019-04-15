@@ -3,13 +3,32 @@ package pl.tarkiewicz.libraryapp.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
 
     @GetMapping(value="/")
-    public String index(){
+    public String indexGet(){
         return "index";
+    }
+
+/*
+
+    @PostMapping(value = "/")
+    public String indexPost(){
+        return "index";
+    }
+*/
+
+    @GetMapping(value="/register")
+    public String register(){
+        return "register";
+    }
+
+    @GetMapping(value="/login")
+    public String login(){
+        return "login";
     }
 
 }

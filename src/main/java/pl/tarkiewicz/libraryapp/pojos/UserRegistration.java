@@ -1,6 +1,6 @@
 package pl.tarkiewicz.libraryapp.pojos;
 
-public class UserRegistrtion {
+public class UserRegistration {
 
     private String username;
     private String password;
@@ -8,10 +8,10 @@ public class UserRegistrtion {
     private String email;
 
 
-    public UserRegistrtion() {
+    public UserRegistration() {
     }
 
-    public UserRegistrtion(String username, String password, String passwordConfirmation, String email) {
+    public UserRegistration(String username, String password, String passwordConfirmation, String email) {
         this.username = username;
         this.password = password;
         this.passwordConfirmation = passwordConfirmation;
