@@ -50,7 +50,6 @@ public class UserRegistration {
         this.email = email;
     }
 
-
     public boolean checkPassword() {
         return getPassword().equals(getConfirmPassword());
     }

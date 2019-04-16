@@ -12,7 +12,6 @@ import pl.tarkiewicz.libraryapp.pojos.UserRegistration;
 public class UserController {
 
     private UserService userService;
-    private String passwordpom;
 
     @Autowired
     public UserController(UserService userService) {
@@ -23,18 +22,21 @@ public class UserController {
     @PostMapping(value = "/register")
     public String register (@RequestBody UserRegistration userRegistrtion){
        if(!userRegistrtion.checkPassword()){
-           //return userRegistrtion.getUsername() +" "+ userRegistrtion.getPassword() +" "+ userRegistrtion.getConfirmPassword() +" "+ userRegistrtion.getEmail();
-            return "rózne hasłą";
+            return "Podałeś różne hasłą";
         }else{
            userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
-           return "OKEJ!";
+           return "Uzytkownik został zapisany w bazie!";
        }
        }
 
     @PostMapping(value = "/login")
-    public String login (@RequestBody UserLogin userlogin) throws Exception {
-        userlogin.existUser();
-        return "OKEJ!";
+    public String login (@RequestBody UserLogin userlogin){
+       if(this.userService.existUser(userlogin)){
+            return "Uzytkownik istenieje, zalogowałeś się!";
+        }else{
+            return "błędne hasło";
+        }
+
 
     }
 

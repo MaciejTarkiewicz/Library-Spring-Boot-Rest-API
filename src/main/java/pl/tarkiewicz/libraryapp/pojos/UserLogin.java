@@ -1,17 +1,15 @@
 package pl.tarkiewicz.libraryapp.pojos;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.tarkiewicz.libraryapp.Services.UserService;
+import pl.tarkiewicz.libraryapp.dao.entity.User;
+import java.util.List;
 
 public class UserLogin {
 
-    private String passwordpom;
     private UserService userService;
 
-    @Autowired
-    public UserLogin(UserService userService) {
-        this.userService = userService;
-    }
 
     private String username;
     private String password;
@@ -20,7 +18,6 @@ public class UserLogin {
         this.username = username;
         this.password = password;
     }
-
 
     public String getUsername() {
         return username;
@@ -39,15 +36,6 @@ public class UserLogin {
     }
 
 
-    public boolean existUser() throws Exception {
-        try{
-            passwordpom = this.userService.getUser(this.username).getPassword();
-                return passwordpom.equals(password);
-
-        }catch(Exception e){
-            throw new Exception ("Nie znaleziono loginu w bazie");
-        }
-    }
 
 
 }
