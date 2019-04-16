@@ -8,27 +8,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping(value="/")
-    public String indexGet(){
+    @GetMapping(value = "/")
+    public String indexGet() {
+
         return "index";
     }
 
-/*
 
-    @PostMapping(value = "/")
-    public String indexPost(){
-        return "index";
-    }
-*/
-
-    @GetMapping(value="/register")
-    public String register(){
+    @GetMapping(value = "/register")
+    public String register() {
         return "register";
     }
 
-    @GetMapping(value="/login")
-    public String login(){
+    @GetMapping(value = "/login")
+    public String login() {
         return "login";
+    }
+
+    @GetMapping(value = "/welcome")
+    public String welcome() {
+        return "welcome";
     }
 
 }

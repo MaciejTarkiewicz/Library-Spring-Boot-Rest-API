@@ -26,7 +26,7 @@ public class UserController {
             return "rózne hasłą";
         }
         userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
-        return "welcome";
+        return "OKEJ!";
     }
 
     @PostMapping(value = "/login")
@@ -34,7 +34,7 @@ public class UserController {
         try{
             passwordpom = this.userService.getUser(userlogin.getUsername()).getPassword();
             if(userlogin.getPassword().equals(passwordpom)){
-                return "welcome";
+                return "OKEJ!";
             }else{
                 return "błędne hasło";
             }
@@ -42,6 +42,12 @@ public class UserController {
             return "nie znaleziono loginu w bazie";
         }
 
+    }
+
+
+    @PostMapping(value = "/")
+    public String indexPost(){
+        return "OKEJ!";
     }
 
 
