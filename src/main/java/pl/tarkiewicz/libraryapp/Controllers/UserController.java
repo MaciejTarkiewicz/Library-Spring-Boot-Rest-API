@@ -22,33 +22,27 @@ public class UserController {
 
     @PostMapping(value = "/register")
     public String register (@RequestBody UserRegistration userRegistrtion){
-       if(!userRegistrtion.getPassword().equals(userRegistrtion.getPasswordConfirmation())){
+       if(!userRegistrtion.checkPassword()){
+           //return userRegistrtion.getUsername() +" "+ userRegistrtion.getPassword() +" "+ userRegistrtion.getConfirmPassword() +" "+ userRegistrtion.getEmail();
             return "rózne hasłą";
-        }
-        userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
-        return "OKEJ!";
-    }
+        }else{
+           userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
+           return "OKEJ!";
+       }
+       }
 
     @PostMapping(value = "/login")
-    public String login (@RequestBody UserLogin userlogin){
-        try{
-            passwordpom = this.userService.getUser(userlogin.getUsername()).getPassword();
-            if(userlogin.getPassword().equals(passwordpom)){
-                return "OKEJ!";
-            }else{
-                return "błędne hasło";
-            }
-        }catch(Exception e){
-            return "nie znaleziono loginu w bazie";
-        }
+    public String login (@RequestBody UserLogin userlogin) throws Exception {
+        userlogin.existUser();
+        return "OKEJ!";
 
     }
-
 
     @PostMapping(value = "/")
     public String indexPost(){
         return "OKEJ!";
     }
+
 
 
 }

@@ -19,8 +19,10 @@ public class UserService {
         this.userRepo = accountRepo;
     }
 
-    public User save(User account){
-        return this.userRepo.save(account);
+    public User save(User user){
+
+
+        return this.userRepo.save(user);
     }
 
     public Optional<User> findById (Long id){
