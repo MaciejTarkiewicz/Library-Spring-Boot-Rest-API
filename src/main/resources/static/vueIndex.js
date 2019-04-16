@@ -5,24 +5,20 @@ window.onload = () => {
         },
         methods: {
             register() {
-                axios.get(`http://localhost:8080/login`)
-                    .then(response => {
-                        // JSON responses are automatically parsed.
-                        this.posts = response.data
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
+                axios({
+                    method: 'post',
+                    url: '',
+                }).then(function (response) {
+                    document.location.replace("/register");
+                });
             },
             sign_up() {
-                axios.get(`http://localhost:8080/login`)
-                    .then(response => {
-                        // JSON responses are automatically parsed.
-                        this.posts = response.data
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
+              axios({
+                    method: 'post',
+                    url: '',
+                }).then(function (response) {
+                    document.location.replace("/login");
+                });
             }
         },
     })
