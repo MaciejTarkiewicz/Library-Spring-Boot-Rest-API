@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import pl.tarkiewicz.libraryapp.Services.UserService;
 import pl.tarkiewicz.libraryapp.dao.entity.User;
 import java.util.List;
+import java.util.Objects;
 
 public class UserLogin {
 
@@ -35,7 +36,18 @@ public class UserLogin {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserLogin)) return false;
+        UserLogin userLogin = (UserLogin) o;
+        return Objects.equals(userService, userLogin.userService) &&
+                Objects.equals(getUsername(), userLogin.getUsername()) &&
+                Objects.equals(getPassword(), userLogin.getPassword());
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(userService, getUsername(), getPassword());
+    }
 }

@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.pojos;
+package pl.tarkiewicz.libraryapp.pojos;
 
 public class UserRegistration {
 
