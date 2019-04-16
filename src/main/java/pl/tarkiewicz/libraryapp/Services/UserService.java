@@ -32,10 +32,10 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public boolean existUser(UserLogin u) {
+    public boolean checkUser(UserLogin u) {
         boolean status = false;
         for (User user:getUser()){
-            if (user.getPassword().equals(u.getPassword())){
+            if (user.getPassword().equals(u.getPassword()) & user.getLogin().equals(u.getUsername())){
                 status = true;
                 break;
             }
@@ -43,6 +43,9 @@ public class UserService {
         return status;
 
     }
+
+
+
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){

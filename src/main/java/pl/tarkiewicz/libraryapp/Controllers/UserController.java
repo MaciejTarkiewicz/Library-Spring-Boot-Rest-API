@@ -31,7 +31,8 @@ public class UserController {
 
     @PostMapping(value = "/login")
     public String login (@RequestBody UserLogin userlogin){
-       if(this.userService.existUser(userlogin)){
+
+       if(this.userService.checkUser(userlogin)){
             return "Uzytkownik istenieje, zalogowałeś się!";
         }else{
             return "błędne hasło";
