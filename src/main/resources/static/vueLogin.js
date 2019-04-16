@@ -13,7 +13,7 @@ window.onload = () => {
                     url: 'login',
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
-                    document.location.replace("/");
+                    document.location.replace("/welcome");
                 });
             }
         },
