@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script src="vueLogin.js"></script>
+    <script src="vueIndex.js"></script>
 </head>
 
 
@@ -16,7 +17,7 @@
     <ol>
         <li>
             <label>
-                <input type="text" name="username" placeholder="edit me" id = "username"
+                <input type="text" name="username" placeholder="edit me" id="username"
                        v-model="username">
                 <span>
           Username
@@ -26,7 +27,7 @@
         </li>
         <li>
             <label>
-                <input type="text" name="password" placeholder="edit me" id = "password"
+                <input type="text" name="password" placeholder="edit me" id="password"
                        v-model="password">
                 <span>
           Password
@@ -34,16 +35,19 @@
 
             </label>
         </li>
-
-        <button type="submit" value="Submit" @click="sign_up">
-            Sign up
-        </button>
+        <ol>
+            <button type="submit" value="Submit" @click="sign_up">
+                Sign up
+            </button>
+        </ol>
     </ol>
 
-    <section v-if="error">
-        <p>{{error}}</p>
-    </section>
+</div>
 
+<div id="index">
+        <button type="submit" value="Submit" @click="register_index">
+            Register
+        </button>
 </div>
 </body>
 </html>

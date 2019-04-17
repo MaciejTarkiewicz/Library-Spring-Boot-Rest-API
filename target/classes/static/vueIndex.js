@@ -4,10 +4,10 @@ window.onload = () => {
         data: {
         },
         methods: {
-            register() {
+            register_index() {
                 document.location.replace("/register");
             },
-            sign_up() {
+            sign_up_index() {
                 document.location.replace("/login");
             }
         },
