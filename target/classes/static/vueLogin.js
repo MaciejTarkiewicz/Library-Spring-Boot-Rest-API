@@ -4,7 +4,6 @@ window.onload = () => {
         data: {
             username: '',
             password: '',
-
         },
         methods: {
             sign_up() {
@@ -14,6 +13,8 @@ window.onload = () => {
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
                     document.location.replace("/welcome");
+                }).catch(err => {
+                    alert("Invalid username or password!")
                 });
             }
         },

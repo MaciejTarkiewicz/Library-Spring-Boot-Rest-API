@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,7 +16,7 @@
     <ol>
         <li>
             <label>
-                <input type="text" name="username" placeholder="edit me" id = "username"
+                <input type="text" name="username" placeholder="edit me" id="username"
                        v-model="username">
                 <span>
           Username
@@ -26,7 +26,7 @@
         </li>
         <li>
             <label>
-                <input type="text" name="password" placeholder="edit me" id = "password"
+                <input type="text" name="password" placeholder="edit me" id="password"
                        v-model="password">
                 <span>
           Password
@@ -36,7 +36,7 @@
         </li>
         <li>
             <label>
-                <input type="text" name="confirmPassword" placeholder="edit me" id ="confirmPassword"
+                <input type="text" name="confirmPassword" placeholder="edit me" id="confirmPassword"
                        v-model="confirmPassword">
                 <span>
           Confirm Password
@@ -46,7 +46,7 @@
         </li>
         <li>
             <label>
-                <input type="text" name="email" placeholder="edit me" id ="email"
+                <input type="text" name="email" placeholder="edit me" id="email"
                        v-model="email">
                 <span>
           Email
@@ -58,6 +58,9 @@
             Register
         </button>
     </ol>
+    <section v-if="error">
+        <p>{{error}}</p>
+    </section>
 
 </div>
 </body>

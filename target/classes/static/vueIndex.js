@@ -5,22 +5,10 @@ window.onload = () => {
         },
         methods: {
             register() {
-                axios({
-                    method: 'post',
-                    url: '',
-                    data: {}
-                }).then(function (response) {
-                    document.location.replace("/register");
-                });
+                document.location.replace("/register");
             },
             sign_up() {
-              axios({
-                    method: 'post',
-                    url: '',
-                    data: {}
-                }).then(function (response) {
-                    document.location.replace("/login");
-                });
+                document.location.replace("/login");
             }
         },
     })

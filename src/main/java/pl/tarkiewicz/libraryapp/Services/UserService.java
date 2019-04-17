@@ -35,12 +35,7 @@ public class UserService {
     public boolean checkUser(UserLogin u) {
         boolean status = false;
         for (User user:getUser()){
-            /*if (user.getPassword().equals(u.getPassword()) & user.getLogin().equals(u.getUsername())){
-                status = true;
-                break;
-            }*/
-
-            if (u.equals(user)){
+            if (user.getPassword().equals(u.getPassword()) & user.getLogin().equals(u.getUsername())){
                 status = true;
                 break;
             }

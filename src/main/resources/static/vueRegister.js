@@ -5,10 +5,15 @@ window.onload = () => {
             username: '',
             password: '',
             confirmPassword: '',
-            email: ''
+            email: '',
+            error: ''
         },
         methods: {
             register() {
+               if(this.password !== this.confirmPassword){
+                    alert("Passwords do not match");
+                    return;
+                }
                 axios({
                     method: 'post',
                     url: 'register',
@@ -16,7 +21,8 @@ window.onload = () => {
                 }).then(function (response) {
                     document.location.replace("/welcome");
                 }).catch(err => {
-
+                  //this.error = err.toString()
+                    alert("Fill in all fields")
                 });
             }
         },

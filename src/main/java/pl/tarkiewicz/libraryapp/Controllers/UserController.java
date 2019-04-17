@@ -1,6 +1,8 @@
 package pl.tarkiewicz.libraryapp.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.dao.entity.User;
 import pl.tarkiewicz.libraryapp.Services.UserService;
@@ -20,24 +22,25 @@ public class UserController {
 
 
     @PostMapping(value = "/register")
-    public String register (@RequestBody UserRegistration userRegistrtion){
-       if(!userRegistrtion.checkPassword()){
-            return "Podałeś różne hasłą";
+    public ResponseEntity<String> register (@RequestBody UserRegistration userRegistrtion){
+        if (!userRegistrtion.checkWebEdit()){
+            return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
+        }
+       if(!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()){
+           return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
         }else{
            userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
-           return "Uzytkownik został zapisany w bazie!";
+           return new ResponseEntity<>("Correct!", HttpStatus.OK);
        }
        }
 
     @PostMapping(value = "/login")
-    public String login (@RequestBody UserLogin userlogin){
-
+    public ResponseEntity<String> login (@RequestBody UserLogin userlogin){
        if(this.userService.checkUser(userlogin)){
-            return "Uzytkownik istenieje, zalogowałeś się!";
-        }else{
-            return "błędne hasło";
-        }
-
+           return new ResponseEntity<>("Correct!", HttpStatus.OK);
+       }else{
+           return new ResponseEntity<>("Invalid username or password!", HttpStatus.BAD_REQUEST);
+       }
 
     }
 

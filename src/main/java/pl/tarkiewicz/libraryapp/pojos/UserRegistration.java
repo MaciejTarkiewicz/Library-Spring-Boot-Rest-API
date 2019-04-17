@@ -53,6 +53,10 @@ public class UserRegistration {
     public boolean checkPassword() {
         return getPassword().equals(getConfirmPassword());
     }
+
+    public boolean checkWebEdit(){
+        return !getUsername().isEmpty() && !getPassword().isEmpty() && !getConfirmPassword().isEmpty() && !getEmail().isEmpty();
+    }
 }
 
 
