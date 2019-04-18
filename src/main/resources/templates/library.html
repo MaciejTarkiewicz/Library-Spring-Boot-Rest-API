@@ -17,10 +17,20 @@
             <th>Autor</th>
             <th>Year</th>
             <th>Type</th>
-        </tr>
-        <tbody>
-            <td>{{ title }}</td>
+        </tr >
+        <tbody v-for="item in l">
+            <td>{{ item.title }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.productionYear }}</td>
+            <td>{{ item.type }}</td>
         </tbody>
+
+<!--        <li v-for="item in l">-->
+<!--            {{ item.title}}-->
+<!--        </li>-->
+
+
+
     </table>
 </div>
 
