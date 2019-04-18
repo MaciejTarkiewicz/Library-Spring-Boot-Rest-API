@@ -8,15 +8,23 @@ window.onload = () => {
             type: '',
             l: ''
         },
+        methods: {
+            AddBook() {
+                document.location.replace("/library/add");
+            },
+            logout() {
+                document.location.replace("/");
+            },
+            delete(){
+                document.location.replace("/library");
+
+            }
+        },
         async created() {
             const { data } = await axios.get('/api/library');
-           /* this.title = data[0].title;
-            this.author = data[0].author;
-            this.productionYear = data[0].productionYear;
-            this.type = data[0].type;*/
             this.l = data;
             console.log(this.l);
         }
     })
 
-}
+};

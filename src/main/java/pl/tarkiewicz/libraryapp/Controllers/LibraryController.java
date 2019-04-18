@@ -20,19 +20,15 @@ public class LibraryController {
         this.libraryService = libraryService;
     }
 
-//    //@GetMapping(value = "/{username}")
-//    @GetMapping
-//    public Iterable<Library> getAllBook() {
-//        return this.libraryService.getLibrary();
-//
-//    }
 
-    @PostMapping (value =  "/library")
+    @PostMapping (value =  "/library/add")
     public ResponseEntity<String> addBook(@RequestBody Book book) {
-        this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),book.getProductionYear(),book.getType()));
+        if (!book.checkWebEdit()){
+            return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
+        }
+        this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),book.getYear(),book.getType()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
-
 
     @GetMapping (value = "/api/library")
     public Iterable<Library> getAllBook() {

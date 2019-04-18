@@ -6,14 +6,14 @@ public class Book {
 
     private String title;
     private String author;
-    private LocalDate productionYear;
+    private String year;
     private String type;
 
-    public Book(String title, String author, LocalDate productionYear, String type) {
-        this.title = title;
-        this.author = author;
-        this.productionYear = productionYear;
-        this.type = type;
+    public Book(String title, String author, String year, String type) {
+        this.title = title.trim();
+        this.author = author.trim();
+        this.year = year.trim();
+        this.type = type.trim();
     }
 
     public String getTitle() {
@@ -32,12 +32,12 @@ public class Book {
         this.author = author;
     }
 
-    public LocalDate getProductionYear() {
-        return productionYear;
+    public String getYear() {
+        return year;
     }
 
-    public void setProductionYear(LocalDate productionYear) {
-        this.productionYear = productionYear;
+    public void setProductionYear(String year) {
+        this.year = year;
     }
 
     public String getType() {
@@ -46,5 +46,9 @@ public class Book {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean checkWebEdit(){
+        return !getTitle().isEmpty() && !getAuthor().isEmpty() && !getYear().isEmpty() && !getType().isEmpty();
     }
 }

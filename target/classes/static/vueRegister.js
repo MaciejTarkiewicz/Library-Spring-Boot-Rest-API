@@ -25,6 +25,9 @@ window.onload = () => {
                   //this.error = err.toString()
                     alert("Fill in all fields")
                 });
+            },
+            logi(){
+                document.location.replace("/login");
             }
         },
     })

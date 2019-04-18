@@ -16,6 +16,9 @@ window.onload = () => {
                 }).catch(err => {
                     alert("Invalid username or password!")
                 });
+            },
+            reg(){
+                document.location.replace("/register");
             }
         },
     })

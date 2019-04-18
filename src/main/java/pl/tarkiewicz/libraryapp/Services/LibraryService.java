@@ -35,7 +35,7 @@ public class LibraryService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
-        save(new Library("Harry Potter","J.K. Rowling", LocalDate.of(1999,2,1),"Fantasy"));
+        save(new Library("Harry Potter","J.K. Rowling", "1998-05-05","Fantasy"));
     }
 
 }

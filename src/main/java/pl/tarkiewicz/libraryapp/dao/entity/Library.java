@@ -13,11 +13,11 @@ public class Library {
     private Long id;
     private String title;
     private String author;
-    private LocalDate productionYear;
+    private String productionYear;
     private String type;
 
 
-    public Library(String title, String author, LocalDate productionYear, String type) {
+    public Library(String title, String author, String productionYear, String type) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
@@ -27,7 +27,6 @@ public class Library {
     public Library(){
 
     }
-
 
     public Long getId() {
         return id;
@@ -52,11 +51,11 @@ public class Library {
         this.author = author;
     }
 
-    public LocalDate getProductionYear() {
+    public String getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(LocalDate productionYear) {
+    public void setProductionYear(String productionYear) {
         this.productionYear = productionYear;
     }
 
@@ -69,16 +68,16 @@ public class Library {
     }
 
 
-//   private User user;
-//
-//
-//    @ManyToOne
-//    @JoinColumn(name = "library_id")
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

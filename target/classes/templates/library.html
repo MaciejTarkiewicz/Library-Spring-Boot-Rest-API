@@ -17,12 +17,42 @@
             <th>Autor</th>
             <th>Year</th>
             <th>Type</th>
-        </tr>
-        <tbody>
-            <td>{{ title }}</td>
+            <th>Action</th>
+        </tr >
+        <tbody v-for="item in l">
+            <td>{{ item.title }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.productionYear }}</td>
+            <td>{{ item.type }}</td>
+            <td> <button class="button button3">Delete</button></td>
         </tbody>
     </table>
+
+    <button type="submit" value="Submit" @click="AddBook">
+        Add Book
+    </button>
+    <button type="submit" value="Submit" @click="logout">
+        Logout
+    </button>
 </div>
 
 </body>
+
+    <style>
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 5px 8px;
+        text-align: match-parent;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button3 {background-color: #f44336;} /* Red */
+</style>
+
 </html>

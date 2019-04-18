@@ -20,6 +20,14 @@ body {
 }
 
 #login {
+     background: #fff;
+     border-radius: 4px;
+     padding: 20px;
+     transition: all 0.2s;
+ }
+
+
+#addBook {
     background: #fff;
     border-radius: 4px;
     padding: 20px;
@@ -38,3 +46,5 @@ h2 {
 del {
     color: rgba(0, 0, 0, 0.3);
 }
+
+

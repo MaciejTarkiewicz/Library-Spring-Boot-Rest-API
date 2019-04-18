@@ -59,18 +59,16 @@ public class User {
     }
 
 
+    @OneToMany(mappedBy = "user")
+    private Set<Library> libraries;
 
-//    private Set<Library> libraries;
-//
-//
-//    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
-//    public Set<Library> getLibraries() {
-//        return libraries;
-//    }
-//
-//    public void setLibraries(Set<Library> libraries) {
-//        this.libraries = libraries;
-//    }
+    public Set<Library> getLibraries() {
+        return libraries;
+    }
+
+    public void setLibraries(Set<Library> libraries) {
+        this.libraries = libraries;
+    }
 
 
 
