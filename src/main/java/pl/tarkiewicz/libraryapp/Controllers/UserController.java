@@ -45,8 +45,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
-    public String indexPost(){
-        return "OKEJ!";
+    public ResponseEntity<String> indexPost(){
+        return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
 

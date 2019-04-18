@@ -13,7 +13,6 @@ public class HomeController {
         return "index";
     }
 
-
     @GetMapping(value = "/register")
     public String register() {
         return "register";
