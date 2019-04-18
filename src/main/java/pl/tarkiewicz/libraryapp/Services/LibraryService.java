@@ -2,10 +2,13 @@ package pl.tarkiewicz.libraryapp.Services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.dao.LibraryRepo;
 import pl.tarkiewicz.libraryapp.dao.entity.Library;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -30,6 +33,9 @@ public class LibraryService {
         this.libraryRepo.delete(library);
     }
 
-
+    @EventListener(ApplicationReadyEvent.class)
+    public void fillDB(){
+        save(new Library("Harry Potter","J.K. Rowling", LocalDate.of(1999,2,1),"Fantasy"));
+    }
 
 }

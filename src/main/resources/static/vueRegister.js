@@ -6,7 +6,7 @@ window.onload = () => {
             password: '',
             confirmPassword: '',
             email: '',
-            error: ''
+            user: ''
         },
         methods: {
             register() {
@@ -19,6 +19,7 @@ window.onload = () => {
                     url: 'register',
                     data: {username: this.username, password: this.password, confirmPassword: this.confirmPassword, email: this.email}
                 }).then(function (response) {
+                    //this.user = username.toString() + "/library";
                     document.location.replace("/library");
                 }).catch(err => {
                   //this.error = err.toString()
@@ -27,7 +28,5 @@ window.onload = () => {
             }
         },
     })
-
-
 
 }

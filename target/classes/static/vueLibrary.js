@@ -5,21 +5,13 @@ window.onload = () => {
             title: '',
             author: '',
             productionYear: '',
-            type: ''
+            type: '',
+            list : []
         },
-        methods: {
-            show() {
-                axios({
-                    method: 'get',
-                    url: 'library',
-                    data: {title: this.title, author: this.author, productionYear : this.productionYear, type : this.type }
-                }).then(function (response) {
-                    // document.location.replace("/welcome");
-                }).catch(err => {
-                    alert("Trzoda")
-                });
-            }
-        },
+        async created() {
+            const { data } = await axios.get('/api/library');
+            this.title = data[0].title;
+        }
     })
 
 }
