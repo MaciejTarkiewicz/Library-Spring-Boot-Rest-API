@@ -26,7 +26,7 @@ public class UserController {
         if (!userRegistrtion.checkWebEdit()){
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
-       if(!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()){
+        if(!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()){
            return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
         }else{
            userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));

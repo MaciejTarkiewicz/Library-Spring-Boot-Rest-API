@@ -1,8 +1,13 @@
-/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Controllers/HomeController.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/pojos/UserRegistration.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/dao/entity/User.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/LibraryAppApplication.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Controllers/UserController.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Services/UserService.java
-/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/pojos/UserLogin.java
 /home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/dao/UserRepo.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Controllers/HomeController.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/dao/entity/Library.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/pojos/UserLogin.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/pojos/Book.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Services/LibraryService.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/dao/LibraryRepo.java
+/home/mtarkiewicz/Dokumenty/git library/LibrarySpringBoot/src/main/java/pl/tarkiewicz/libraryapp/Controllers/LibraryController.java

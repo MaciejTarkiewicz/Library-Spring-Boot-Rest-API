@@ -12,7 +12,7 @@ window.onload = () => {
                     url: 'login',
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
-                    document.location.replace("/welcome");
+                    document.location.replace("/library");
                 }).catch(err => {
                     alert("Invalid username or password!")
                 });
