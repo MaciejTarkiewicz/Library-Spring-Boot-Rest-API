@@ -1,9 +1,17 @@
 package pl.tarkiewicz.libraryapp.pojos;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import pl.tarkiewicz.libraryapp.Services.UserService;
+import pl.tarkiewicz.libraryapp.dao.entity.User;
+import java.util.List;
+import java.util.Objects;
+
 public class UserLogin {
 
     private String username;
     private String password;
+
 
     public UserLogin(String username, String password) {
         this.username = username;
@@ -25,4 +33,7 @@ public class UserLogin {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+
 }

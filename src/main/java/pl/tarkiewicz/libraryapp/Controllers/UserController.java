@@ -1,6 +1,8 @@
 package pl.tarkiewicz.libraryapp.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.dao.entity.User;
 import pl.tarkiewicz.libraryapp.Services.UserService;
@@ -12,7 +14,6 @@ import pl.tarkiewicz.libraryapp.pojos.UserRegistration;
 public class UserController {
 
     private UserService userService;
-    private String passwordpom;
 
     @Autowired
     public UserController(UserService userService) {
@@ -21,34 +22,33 @@ public class UserController {
 
 
     @PostMapping(value = "/register")
-    public String register (@RequestBody UserRegistration userRegistrtion){
-       if(!userRegistrtion.getPassword().equals(userRegistrtion.getPasswordConfirmation())){
-            return "rózne hasłą";
+    public ResponseEntity<String> register (@RequestBody UserRegistration userRegistrtion){
+        if (!userRegistrtion.checkWebEdit()){
+            return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
-        userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
-        return "OKEJ!";
+        if(!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()){
+           return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
+        }else{
+           userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(),userRegistrtion.getEmail()));
+           return new ResponseEntity<>("Correct!", HttpStatus.OK);
+       }
+       }
+
+    @PostMapping(value = "login")
+    public ResponseEntity<User> login (@RequestBody UserLogin userlogin){
+       if(this.userService.checkUser(userlogin)){
+           return new ResponseEntity<>(userService.findByLogin(userlogin.getUsername()), HttpStatus.OK);
+       }else{
+           return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+       }
+
     }
-
-    @PostMapping(value = "/login")
-    public String login (@RequestBody UserLogin userlogin){
-        try{
-            passwordpom = this.userService.getUser(userlogin.getUsername()).getPassword();
-            if(userlogin.getPassword().equals(passwordpom)){
-                return "OKEJ!";
-            }else{
-                return "błędne hasło";
-            }
-        }catch(Exception e){
-            return "nie znaleziono loginu w bazie";
-        }
-
-    }
-
 
     @PostMapping(value = "/")
-    public String indexPost(){
-        return "OKEJ!";
+    public ResponseEntity<String> indexPost(){
+        return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
+
 
 
 }

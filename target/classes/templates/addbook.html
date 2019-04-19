@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" type="text/css" href="main.css" media="screen"/>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+
+
+<body>
+
+<div id="addBook">
+    <h2>Add Book</h2>
+    <li>
+        <label>
+            <input type="text" name="title" placeholder="Title" id="title"
+                   v-model="title">
+        </label>
+    </li>
+    <li>
+        <label>
+            <input type="text" name="author" placeholder="Author" id="author"
+                   v-model="author">
+        </label>
+    </li>
+    <li>
+        <label>
+            <input type="text" name="year" placeholder="Production year" id="year"
+                   v-model="year">
+        </label>
+    </li>
+    <li>
+        <label>
+            <input type="text" name="type" placeholder="type" id="type"
+                   v-model="type">
+        </label>
+    </li>
+
+    <button type="submit" value="Submit" @click="AddBookPost">
+        Add
+    </button>
+
+</div>
+</body>
+<script>
+    window.onload = () => {
+        new Vue({
+            el: "#addBook",
+            data: {
+                title: '',
+                author: '',
+                year: '',
+                type: ''
+            },
+            methods: {
+                AddBookPost(){
+                    console.log("siema1");
+                    axios({
+                        method: 'post',
+                        url: '/library/add',
+                        data: {title: this.title, author: this.author, year: this.year, type: this.type}
+                    }).then(function (response) {
+                       document.location.replace("/library");
+                    }).catch(err => {
+                        alert("Fill in all fields")
+                    })
+                },
+
+
+            },
+        })
+
+    };
+
+</script>
+
+<style>
+    body {
+        background: #20262E;
+        padding: 20px;
+        font-family: Helvetica;
+    }
+
+    #addBook {
+        background: #fff;
+        border-radius: 4px;
+        padding: 20px;
+        transition: all 0.2s;
+    }
+
+    li {
+        margin: 8px 0;
+    }
+
+    h2 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    del {
+        color: rgba(0, 0, 0, 0.3);
+    }
+</style>
+</html>
