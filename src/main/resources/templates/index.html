@@ -1,61 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-    <script src="vue.js"></script>
+    <script src="vueIndex.js"></script>
 </head>
 
 
 <body>
-<div id="app">
-    <h2>Registration:</h2>mvn spring
+<div id="index">
+    <h2>Welcome:</h2>
     <ol>
-        <li>
-            <label>
-                <input type="text" name="username" placeholder="edit me" id = "username"
-                       v-model="username">
-                <span>
-          Username
-        </span>
 
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="text" name="password" placeholder="edit me" id = "password"
-                       v-model="password">
-                <span>
-          Password
-        </span>
-
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="text" name="confirm_password" placeholder="edit me" id ="confirm_password"
-                       v-model="confirm_password">
-                <span>
-          Confirm Password
-        </span>
-
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="text" name="email" placeholder="edit me" id ="email"
-                       v-model="email">
-                <span>
-          Email
-        </span>
-
-            </label>
-        </li>
-        <button type="submit" value="Submit" @click="register">
+        <button type="submit" value="Submit" @click="register_index">
             Register
+        </button>
+
+        <button type="submit" value="Submit" @click="sign_up_index">
+            Sign up
         </button>
     </ol>
 

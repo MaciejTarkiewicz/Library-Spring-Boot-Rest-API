@@ -6,6 +6,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.dao.UserRepo;
 import pl.tarkiewicz.libraryapp.dao.entity.User;
+import pl.tarkiewicz.libraryapp.pojos.UserLogin;
 
 import java.util.Optional;
 
@@ -19,16 +20,28 @@ public class UserService {
         this.userRepo = accountRepo;
     }
 
-    public User save(User account){
-        return this.userRepo.save(account);
+    public User save(User user){
+        return this.userRepo.save(user);
     }
 
     public Optional<User> findById (Long id){
         return this.userRepo.findById(id);
     }
 
-    public User getAccount(String username){
-        return userRepo.findByUsername(username);
+    public Iterable<User> getUser(){
+        return userRepo.findAll();
+    }
+
+    public boolean checkUser(UserLogin u) {
+        boolean status = false;
+        for (User user:getUser()){
+            if (user.getPassword().equals(u.getPassword()) & user.getLogin().equals(u.getUsername())){
+                status = true;
+                break;
+            }
+        }
+        return status;
+
     }
 
     @EventListener(ApplicationReadyEvent.class)

@@ -1,13 +1,13 @@
 package pl.tarkiewicz.libraryapp.dao.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
+
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -57,4 +57,21 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+    @OneToMany(mappedBy = "user")
+    private Set<Library> libraries;
+
+    public Set<Library> getLibraries() {
+        return libraries;
+    }
+
+    public void setLibraries(Set<Library> libraries) {
+        this.libraries = libraries;
+    }
+
+
+
+
+
 }
