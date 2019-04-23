@@ -44,6 +44,16 @@ public class UserService {
 
     }
 
+    public User findByLogin(String username){
+        for (User u : getUser()){
+            if(u.getLogin().equals(username)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
         save(new User("maciek","123","maciek@gmail.pl"));

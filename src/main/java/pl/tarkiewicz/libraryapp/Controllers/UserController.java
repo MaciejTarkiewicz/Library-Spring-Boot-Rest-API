@@ -3,11 +3,15 @@ package pl.tarkiewicz.libraryapp.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import pl.tarkiewicz.libraryapp.Services.UserService;
+import pl.tarkiewicz.libraryapp.dao.entity.User;
 import pl.tarkiewicz.libraryapp.pojos.UserLogin;
 import pl.tarkiewicz.libraryapp.pojos.UserRegistration;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 //@RequestMapping
@@ -35,11 +39,14 @@ public class UserController {
        }
 
     @PostMapping(value = "/login")
-    public ResponseEntity<String> login (@RequestBody UserLogin userlogin){
+    public ResponseEntity<String> login (@RequestBody UserLogin userlogin, HttpSession session){
        if(this.userService.checkUser(userlogin)){
-           return new ResponseEntity<>("Correct!", HttpStatus.OK);
+//           Cookie cookie = new Cookie("User_name", userlogin.getUsername());
+//           response.addCookie(cookie);
+             session.setAttribute("User_id", userService.findByLogin(userlogin.getUsername()).getId());
+           return new ResponseEntity<>("Correct", HttpStatus.OK);
        }else{
-           return new ResponseEntity<>("Invalid username or password!", HttpStatus.BAD_REQUEST);
+           return new ResponseEntity<>("Lipa", HttpStatus.BAD_REQUEST);
        }
 
     }

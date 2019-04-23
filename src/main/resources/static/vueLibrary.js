@@ -20,11 +20,13 @@ window.onload = () => {
 
             }
         },
-        async created() {
+        async create() {
             const { data } = await axios.get('/api/library');
             this.l = data;
             console.log(this.l);
         }
+
+
     })
 
 };

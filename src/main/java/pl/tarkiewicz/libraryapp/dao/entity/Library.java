@@ -1,12 +1,14 @@
 package pl.tarkiewicz.libraryapp.dao.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Library {
+
+
+    //@JoinColumn(name = "user_id")
+    @ManyToOne
+    private User user;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
@@ -17,11 +19,19 @@ public class Library {
     private String type;
 
 
-    public Library(String title, String author, String productionYear, String type) {
+/*    public Library(String title, String author, String productionYear, String type) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
         this.type = type;
+    }*/
+
+    public Library(String title, String author, String productionYear, String type, User user) {
+        this.title = title;
+        this.author = author;
+        this.productionYear = productionYear;
+        this.type = type;
+        this.user = user;
     }
 
     public Library(){
@@ -67,11 +77,6 @@ public class Library {
         this.type = type;
     }
 
-
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public User getUser() {
         return user;
