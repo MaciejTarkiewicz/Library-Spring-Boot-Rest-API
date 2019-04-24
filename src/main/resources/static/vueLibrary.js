@@ -18,7 +18,7 @@ window.onload = () => {
                 axios.get('/api/logout');
                 document.location.replace("/");
             },
-            DUPA(id){
+            Delete(id){
                 console.log(id);
                 axios.delete("/library/" + id).then(function (response) {
                     document.location.replace("/library");
