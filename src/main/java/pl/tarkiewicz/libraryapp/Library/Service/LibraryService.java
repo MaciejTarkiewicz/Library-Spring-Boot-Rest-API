@@ -29,6 +29,8 @@ public class LibraryService {
         this.libraryRepo.delete(library);
     }
 
+    public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
+
     public Iterable<Library> getLibraryByUserId(Long id){
         return this.libraryRepo.findLibraryByUserId(id);
     }

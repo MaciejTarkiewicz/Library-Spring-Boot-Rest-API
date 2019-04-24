@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <title>W3Schools</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body class="w3-container">
@@ -19,12 +19,13 @@
             <th>Type</th>
             <th>Action</th>
         </tr >
-        <tbody v-for="item in l">
+        <tbody v-for="(item,index) in l">
             <td>{{ item.title }}</td>
             <td>{{ item.author }}</td>
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
-            <td> <button class="button button3">Delete</button></td>
+<!--            <td> <button class="button button3" @click="delete(index)">Delete</button></td>-->
+            <td> <button @click="delete(index)">Delete {{index}}</button></td>
         </tbody>
     </table>
 

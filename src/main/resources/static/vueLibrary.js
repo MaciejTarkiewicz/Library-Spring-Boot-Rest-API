@@ -17,15 +17,14 @@ window.onload = () => {
                 axios.get('/api/logout');
                 document.location.replace("/");
             },
-            delete(){
-                document.location.replace("/library");
+            delete(index){
 
             }
         },
         async created() {
             const { data } = await axios.get('/api/library');
             this.l = data;
-            console.log(this.l);
+
         }
 
 
