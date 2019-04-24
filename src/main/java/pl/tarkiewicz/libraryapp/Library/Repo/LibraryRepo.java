@@ -1,9 +1,8 @@
-package pl.tarkiewicz.libraryapp.dao;
+package pl.tarkiewicz.libraryapp.Library.Repo;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pl.tarkiewicz.libraryapp.dao.entity.Library;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
+import pl.tarkiewicz.libraryapp.Library.Repo.Entity.Library;
 
 @Repository
 public interface LibraryRepo  extends CrudRepository<Library, Long> {

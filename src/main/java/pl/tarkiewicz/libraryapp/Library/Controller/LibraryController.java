@@ -1,13 +1,13 @@
-package pl.tarkiewicz.libraryapp.Controllers;
+package pl.tarkiewicz.libraryapp.Library.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.tarkiewicz.libraryapp.Services.LibraryService;
-import pl.tarkiewicz.libraryapp.dao.entity.Library;
-import pl.tarkiewicz.libraryapp.pojos.Book;
+import pl.tarkiewicz.libraryapp.Library.Book;
+import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
+import pl.tarkiewicz.libraryapp.Library.Repo.Entity.Library;
 
 @RestController
 @RequestMapping

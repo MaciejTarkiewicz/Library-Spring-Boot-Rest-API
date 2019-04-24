@@ -1,9 +1,8 @@
-package pl.tarkiewicz.libraryapp.dao.entity;
+package pl.tarkiewicz.libraryapp.Library.Repo.Entity;
+
+import pl.tarkiewicz.libraryapp.User.Repo.Entity.User;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Library {
