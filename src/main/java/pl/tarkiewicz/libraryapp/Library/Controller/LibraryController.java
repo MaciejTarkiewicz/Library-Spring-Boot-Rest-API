@@ -1,15 +1,15 @@
-package pl.tarkiewicz.libraryapp.Controllers;
+package pl.tarkiewicz.libraryapp.Library.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.tarkiewicz.libraryapp.Services.LibraryService;
-import pl.tarkiewicz.libraryapp.Services.UserService;
-import pl.tarkiewicz.libraryapp.dao.entity.Library;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
-import pl.tarkiewicz.libraryapp.pojos.Book;
+import pl.tarkiewicz.libraryapp.Library.Book;
+import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
+import pl.tarkiewicz.libraryapp.User.Service.UserService;
+import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
@@ -41,14 +41,6 @@ public class LibraryController {
     @GetMapping (value = "/api/library")
     public Iterable<Library> getAllBook(HttpSession session) {
         System.out.println(session.getAttribute("User_id"));
-//        Cookie[] cookies= request.getCookies();
-//        for (Cookie cook : cookies){
-//            if (cook.getName().equals("User_name")){
-//                String name = cook.getValue();
-//                System.out.println(name);
-//            }
-//        }
-
         return this.libraryService.getLibraryByUserId((Long)session.getAttribute("User_id"));
 
     }

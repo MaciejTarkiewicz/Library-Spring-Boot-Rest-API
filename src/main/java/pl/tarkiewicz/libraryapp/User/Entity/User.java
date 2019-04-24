@@ -1,5 +1,7 @@
-package pl.tarkiewicz.libraryapp.dao.entity;
+package pl.tarkiewicz.libraryapp.User.Entity;
 
+
+import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,6 +16,9 @@ public class User {
     private String username;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Library> libraries;
 
     public User() {
     }
@@ -56,9 +61,6 @@ public class User {
         this.email = email;
     }
 
-
-    @OneToMany(mappedBy = "user")
-    private Set<Library> libraries;
 
     public Set<Library> getLibraries() {
         return libraries;

@@ -1,10 +1,7 @@
-package pl.tarkiewicz.libraryapp.pojos;
+package pl.tarkiewicz.libraryapp.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.tarkiewicz.libraryapp.Services.UserService;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
-import java.util.List;
+import pl.tarkiewicz.libraryapp.User.Service.UserService;
+
 import java.util.Objects;
 
 public class UserLogin {

@@ -1,6 +1,4 @@
-package pl.tarkiewicz.libraryapp.pojos;
-
-import java.time.LocalDate;
+package pl.tarkiewicz.libraryapp.Library;
 
 public class Book {
 

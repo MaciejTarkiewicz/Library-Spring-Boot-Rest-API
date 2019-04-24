@@ -1,12 +1,12 @@
-package pl.tarkiewicz.libraryapp.Services;
+package pl.tarkiewicz.libraryapp.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.dao.UserRepo;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
-import pl.tarkiewicz.libraryapp.pojos.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Entity.User;
+import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
+import pl.tarkiewicz.libraryapp.User.UserLogin;
 
 import java.util.Optional;
 

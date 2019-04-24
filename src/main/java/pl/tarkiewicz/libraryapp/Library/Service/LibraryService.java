@@ -1,10 +1,10 @@
-package pl.tarkiewicz.libraryapp.Services;
+package pl.tarkiewicz.libraryapp.Library.Service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.dao.LibraryRepo;
-import pl.tarkiewicz.libraryapp.dao.entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 
 @Service
 public class LibraryService {
@@ -32,9 +32,5 @@ public class LibraryService {
         return this.libraryRepo.findLibraryByUserId(id);
     }
 
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void fillDB(){
-//        save(new Library("Harry Potter","J.K. Rowling", "1998-05-05","Fantasy"));
-//    }
 
 }

@@ -1,10 +1,10 @@
 
-package pl.tarkiewicz.libraryapp.Controllers;
+package pl.tarkiewicz.libraryapp.Home;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.tarkiewicz.libraryapp.Services.LibraryService;
+import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
 
 @Controller
 public class HomeController {

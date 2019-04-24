@@ -1,4 +1,6 @@
-package pl.tarkiewicz.libraryapp.dao.entity;
+package pl.tarkiewicz.libraryapp.Library.Entity;
+
+import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.persistence.*;
 
@@ -18,13 +20,6 @@ public class Library {
     private String productionYear;
     private String type;
 
-
-/*    public Library(String title, String author, String productionYear, String type) {
-        this.title = title;
-        this.author = author;
-        this.productionYear = productionYear;
-        this.type = type;
-    }*/
 
     public Library(String title, String author, String productionYear, String type, User user) {
         this.title = title;
