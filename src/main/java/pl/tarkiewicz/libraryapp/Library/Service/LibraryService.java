@@ -9,12 +9,13 @@ import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 @Service
 public class LibraryService {
 
+    @Autowired
     private LibraryRepo libraryRepo;
 
-    @Autowired
-    public LibraryService(LibraryRepo libraryRepo) {
-        this.libraryRepo = libraryRepo;
-    }
+
+//    public LibraryService(LibraryRepo libraryRepo) {
+//        this.libraryRepo = libraryRepo;
+//    }
 
     public Library save(Library library){
         return this.libraryRepo.save(library);

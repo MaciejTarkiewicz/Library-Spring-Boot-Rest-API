@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.Library.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ public class Library {
 
     //@JoinColumn(name = "user_id")
     @ManyToOne
+    @JsonIgnoreProperties("libraries")
     private User user;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)

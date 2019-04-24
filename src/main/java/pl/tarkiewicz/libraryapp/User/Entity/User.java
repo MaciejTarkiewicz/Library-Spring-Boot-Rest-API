@@ -1,6 +1,7 @@
 package pl.tarkiewicz.libraryapp.User.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
     private Set<Library> libraries;
 
     public User() {

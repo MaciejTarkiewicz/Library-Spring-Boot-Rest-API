@@ -11,7 +11,6 @@ import java.util.Set;
 @Repository
 public interface LibraryRepo  extends CrudRepository<Library, Long> {
 
-
     @Query("SELECT l FROM Library l WHERE l.user.id = :id")
     Set<Library> findLibraryByUserId(@Param("id") Long id);
 }

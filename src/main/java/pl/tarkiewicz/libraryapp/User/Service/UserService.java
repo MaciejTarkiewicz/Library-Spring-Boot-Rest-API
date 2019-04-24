@@ -53,7 +53,6 @@ public class UserService {
         return null;
     }
 
-
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
         save(new User("maciek","123","maciek@gmail.pl"));

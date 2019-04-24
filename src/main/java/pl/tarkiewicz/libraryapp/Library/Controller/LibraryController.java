@@ -33,17 +33,20 @@ public class LibraryController {
         if (!book.checkWebEdit()){
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
+        System.out.println(session.getAttribute("User_id"));
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),book.getYear(),book.getType(),user.get()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
     @GetMapping (value = "/api/library")
-    public Iterable<Library> getAllBook(HttpSession session) {
-        System.out.println(session.getAttribute("User_id"));
-        return this.libraryService.getLibraryByUserId((Long)session.getAttribute("User_id"));
-
+    public Iterable<Library> getAllBook() {
+        //System.out.println(session.getAttribute("User_id"));
+        //return this.libraryService.getLibraryByUserId((Long)session.getAttribute("User_id"));
+        System.out.println(this.libraryService.getLibraryByUserId(1L));
+        return this.libraryService.getLibraryByUserId(1L);
     }
+
 
 
 }
