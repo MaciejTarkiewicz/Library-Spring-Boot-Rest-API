@@ -19,13 +19,13 @@
             <th>Type</th>
             <th>Action</th>
         </tr >
-        <tbody v-for="(item,index) in l">
+        <tbody v-for="item in l">
             <td>{{ item.title }}</td>
             <td>{{ item.author }}</td>
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
 <!--            <td> <button class="button button3" @click="delete(index)">Delete</button></td>-->
-            <td> <button @click="delete(index)">Delete {{index}}</button></td>
+            <td> <button @click="DUPA(item.id)">Delete {{item.id}} </button></td>
         </tbody>
     </table>
 

@@ -48,11 +48,12 @@ public class LibraryController {
         session.removeAttribute("User_id");
     }
 
-//    @DeleteMapping (value = "/library")
-//    public void DeleteById(@RequestParam Long index) {
-//        this.libraryService.deleteById(index);
-//
-//    }
+    @DeleteMapping (value = "/library/{id}")
+    public void DeleteById(@PathVariable Long id) {
+        System.out.println(id);
+        this.libraryService.deleteById(id);
+
+    }
 
 
 
