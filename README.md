@@ -1,6 +1,6 @@
 # Library-Spring-Boot
 <ul>
-Web Application using: <br />
+Web Application using: 
 <li>Spring-Boot</li>
 <li>CRUD</li>
 <li>Vue JS</li>
