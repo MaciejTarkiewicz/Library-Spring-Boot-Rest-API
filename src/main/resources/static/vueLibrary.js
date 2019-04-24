@@ -11,8 +11,10 @@ window.onload = () => {
         methods: {
             AddBook() {
                 document.location.replace("/library/add");
+
             },
             logout() {
+                axios.get('/api/library');
                 document.location.replace("/");
             },
             delete(){

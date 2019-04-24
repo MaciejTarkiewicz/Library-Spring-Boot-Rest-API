@@ -20,7 +20,7 @@ window.onload = () => {
                     data: {username: this.username, password: this.password, confirmPassword: this.confirmPassword, email: this.email}
                 }).then(function (response) {
                     //this.user = username.toString() + "/library";
-                    document.location.replace("/library");
+                    document.location.replace("/login");
                 }).catch(err => {
                   //this.error = err.toString()
                     alert("Fill in all fields")
