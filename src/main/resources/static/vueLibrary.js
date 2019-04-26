@@ -7,6 +7,8 @@ window.onload = () => {
             author: '',
             productionYear: '',
             type: '',
+            username: '',
+            login:'',
             l: ''
         },
         methods: {
@@ -30,6 +32,7 @@ window.onload = () => {
         },
         async created() {
             const { data } = await axios.get('/api/library');
+            this.username = await axios.get('/api/library/user');git
             this.l = data;
 
         }

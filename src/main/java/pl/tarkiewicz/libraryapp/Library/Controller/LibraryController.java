@@ -27,7 +27,6 @@ public class LibraryController {
         this.userService = userService;
     }
 
-
     @PostMapping (value =  "/library/add")
     public ResponseEntity<String> addBook(@RequestBody Book book, HttpSession session) {
         if (!book.checkWebEdit()){
@@ -54,8 +53,6 @@ public class LibraryController {
         this.libraryService.deleteById(id);
 
     }
-
-
 
 
 

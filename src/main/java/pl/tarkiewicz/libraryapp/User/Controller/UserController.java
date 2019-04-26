@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +60,12 @@ public class UserController {
     @PostMapping(value = "/")
     public ResponseEntity<String> indexPost() {
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/api/library/user")
+    public String getUserByid (HttpSession session) {
+        //System.out.println(this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin());
+        return this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin();
     }
 
 

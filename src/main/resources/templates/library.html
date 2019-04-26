@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml">
-<title>Library</title>
+<title>Library </title>
 <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 <body >
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="vueLibrary.js"></script>
 
-<h1>Library</h1>
-
 
 <div id="library">
+    <h1>Library {{ username.data }}</h1>
     <table id="customers">
         <tr>
             <th>Title</th>
