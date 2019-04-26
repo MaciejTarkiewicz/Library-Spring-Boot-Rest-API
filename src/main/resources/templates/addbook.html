@@ -37,6 +37,7 @@
                    v-model="type">
         </label>
     </li>
+    <hr />
 
     <button type="submit" value="Submit" @click="AddBookPost">
         Add
@@ -64,7 +65,12 @@
                     }).then(function (response) {
                        document.location.replace("/library");
                     }).catch(err => {
-                        alert("Fill in all fields")
+                        if (err.response.status === 409) {
+                            alert("Bad data format")
+                        }else{
+                            alert("Fill in all fields")
+                        }
+
                     })
                 },
 

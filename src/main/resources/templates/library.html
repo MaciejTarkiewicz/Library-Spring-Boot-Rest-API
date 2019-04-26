@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html>
-<title>W3Schools</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body class="w3-container">
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<title>Library </title>
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<body >
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="vueLibrary.js"></script>
 
-<h1>Library</h1>
-
 
 <div id="library">
-    <table class="w3-table-all">
+    <h1>Library {{ username.data }}</h1>
+    <table id="customers">
         <tr>
             <th>Title</th>
             <th>Autor</th>
-            <th>Year</th>
+            <th>Production Year</th>
             <th>Type</th>
             <th>Action</th>
         </tr >
@@ -24,10 +23,11 @@
             <td>{{ item.author }}</td>
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
-            <td> <button class="button button3">Delete</button></td>
+<!--            <td> <button class="button button3" @click="delete(index)">Delete</button></td>-->
+            <td> <button class="button" @click="Delete(item.id)">Delete </button></td>
         </tbody>
     </table>
-
+    <hr />
     <button type="submit" value="Submit" @click="AddBook">
         Add Book
     </button>
@@ -40,7 +40,7 @@
 
     <style>
     .button {
-        background-color: #4CAF50; /* Green */
+        background-color: #f44336; /* Green */
         border: none;
         color: white;
         padding: 5px 8px;
@@ -51,8 +51,28 @@
         margin: 4px 2px;
         cursor: pointer;
     }
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-    .button3 {background-color: #f44336;} /* Red */
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #20262E;
+        color: white;
+    }
+
+
 </style>
 
 </html>

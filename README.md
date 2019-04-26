@@ -16,6 +16,3 @@
 <li>ALTER USER libraryUser WITH PASSWORD 'admin';</li>
 <li>mvn clean spring-boot:run</li>
 </ol>
-
-
-
