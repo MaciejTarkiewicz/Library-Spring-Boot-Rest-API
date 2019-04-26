@@ -7,13 +7,12 @@
 <li>CRUD</li>
 <li>Vue JS</li>
 <li>H2 database</li>
-  
 </ul>
-<ul>
+
 Run:
 <ol>
 <li>mvn clean spring-boot:run</li>
- </ol>
-</ul>
+ /ol>
+
 
 
