@@ -10,14 +10,22 @@
         <comment>dodanie hibernate sequence</comment>
         <sql>CREATE SEQUENCE hibernate_sequence START 5 INCREMENT 1;
             ALTER SEQUENCE hibernate_sequence
-            OWNER TO hoteluser;
+            OWNER TO libraryuser;
         </sql>
     </changeSet>
 
-    <changeSet author="mtarkiewicz" id="edycja-tabeli-room">
+    <changeSet author="mtarkiewicz" id="edycja-tabeli-user">
+        <comment>edycja tabeli user</comment>
+        <sql>
+            ALTER TABLE user ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="mtarkiewicz" id="edycja-tabeli-library">
         <comment>edycja tabeli library</comment>
         <sql>
-            ALTER TABLE room ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');
+            ALTER TABLE library ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');
         </sql>
     </changeSet>
 

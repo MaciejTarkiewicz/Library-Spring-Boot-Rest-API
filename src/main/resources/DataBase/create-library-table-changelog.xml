@@ -14,27 +14,28 @@
         <sql><![CDATA[
         CREATE TABLE ROOM (
               id BIGSERIAL NOT NULL PRIMARY KEY,
-              number VARCHAR(255) NOT NULL UNIQUE,
-              capacity BIGINT,
-              type VARCHAR(255)
+              title VARCHAR(255) NOT NULL,
+              title VARCHAR(255) NOT NULL,
+              type VARCHAR(255) NOT NULL
+              user_id BIGSERIAL NOT NULL FOREIGN KEY,
             );
        ]]></sql>
 
     </changeSet>
 
 
-    <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">
+<!--    <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">-->
 
-        <comment>dodanie wpisów do tabeli room</comment>
+<!--        <comment>dodanie wpisów do tabeli room</comment>-->
 
-        <sql><![CDATA[
-              INSERT INTO ROOM (number, capacity, type) VALUES('123',4,'DISABLED_FACILITIES');
-              INSERT INTO ROOM (number, capacity, type) VALUES('222',2,'BUSINESS');
-              INSERT INTO ROOM (number, capacity, type) VALUES('333',2,'BUSINESS');
-              INSERT INTO ROOM (number, capacity, type) VALUES('421',4,'FAMILY');
-        ]]></sql>
+<!--        <sql><![CDATA[-->
+<!--              INSERT INTO ROOM (number, capacity, type) VALUES('123',4,'DISABLED_FACILITIES');-->
+<!--              INSERT INTO ROOM (number, capacity, type) VALUES('222',2,'BUSINESS');-->
+<!--              INSERT INTO ROOM (number, capacity, type) VALUES('333',2,'BUSINESS');-->
+<!--              INSERT INTO ROOM (number, capacity, type) VALUES('421',4,'FAMILY');-->
+<!--        ]]></sql>-->
 
-    </changeSet>
+<!--    </changeSet>-->
 
 
 
