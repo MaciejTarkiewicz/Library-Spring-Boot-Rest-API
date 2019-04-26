@@ -1,10 +1,7 @@
 # Library-Spring-Boot
 
 ## Web Application using:
-
 <ul>
-<br />
-<br />
 <li>Spring-Boot</li>
 <li>CRUD</li>
 <li>Postgres DataBase</li>
