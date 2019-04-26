@@ -22,8 +22,11 @@ window.onload = () => {
                     //this.user = username.toString() + "/library";
                     document.location.replace("/login");
                 }).catch(err => {
-                  //this.error = err.toString()
-                    alert("Fill in all fields")
+                    if (err.response.status === 409) {
+                        alert("Bad email format!")
+                    }else{
+                        alert("Fill in all fields!")
+                    }
                 });
             },
             logi(){

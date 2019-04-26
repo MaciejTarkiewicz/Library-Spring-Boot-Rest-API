@@ -39,7 +39,12 @@ public class UserController {
         }
         if (!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()) {
             return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
-        } else {
+        }
+        if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
+            return new ResponseEntity<>("Bad Email format", HttpStatus.CONFLICT);
+        }
+
+        else {
             userRegistrtion.setPassword(passwordEncoder.encode(userRegistrtion.getPassword()));
             userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(), userRegistrtion.getEmail()));
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
