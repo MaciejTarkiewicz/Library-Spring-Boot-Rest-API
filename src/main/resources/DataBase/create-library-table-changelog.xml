@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="mtarkiewicz" id="stworzenie-tabeli-library">
+
+        <comment>stworzenie tabeli room</comment>
+
+        <sql><![CDATA[
+        CREATE TABLE ROOM (
+              id BIGSERIAL NOT NULL PRIMARY KEY,
+              number VARCHAR(255) NOT NULL UNIQUE,
+              capacity BIGINT,
+              type VARCHAR(255)
+            );
+       ]]></sql>
+
+    </changeSet>
+
+
+    <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">
+
+        <comment>dodanie wpisów do tabeli room</comment>
+
+        <sql><![CDATA[
+              INSERT INTO ROOM (number, capacity, type) VALUES('123',4,'DISABLED_FACILITIES');
+              INSERT INTO ROOM (number, capacity, type) VALUES('222',2,'BUSINESS');
+              INSERT INTO ROOM (number, capacity, type) VALUES('333',2,'BUSINESS');
+              INSERT INTO ROOM (number, capacity, type) VALUES('421',4,'FAMILY');
+        ]]></sql>
+
+    </changeSet>
+
+
+
+</databaseChangeLog>
