@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Library {
@@ -19,11 +20,11 @@ public class Library {
     private Long id;
     private String title;
     private String author;
-    private String productionYear;
+    private LocalDate productionYear;
     private String type;
 
 
-    public Library(String title, String author, String productionYear, String type, User user) {
+    public Library(String title, String author, LocalDate productionYear, String type, User user) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
@@ -58,11 +59,11 @@ public class Library {
         this.author = author;
     }
 
-    public String getProductionYear() {
+    public LocalDate getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(LocalDate productionYear) {
         this.productionYear = productionYear;
     }
 

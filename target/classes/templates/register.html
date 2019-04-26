@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="vueRegister.js"></script>
+    <!--<script src="vueIndex.js"></script>-->
+</head>
+
+
+<body>
+<div id="app">
+    <h2>Registration:</h2>
+    <ol>
+        <li>
+            <label>
+                <input type="text" name="username" placeholder="edit me" id="username"
+                       v-model="username">
+                <span>
+          Username
+        </span>
+
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="password" name="password" placeholder="edit me" id="password"
+                       v-model="password">
+                <span>
+          Password
+        </span>
+
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="password" name="confirmPassword" placeholder="edit me" id="confirmPassword"
+                       v-model="confirmPassword">
+                <span>
+          Confirm Password
+        </span>
+
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="text" name="email" placeholder="edit me" id="email"
+                       v-model="email">
+                <span>
+          Email
+        </span>
+
+            </label>
+        </li>
+        <hr />
+        <ol>
+            <button type="submit" value="Submit" @click="register">
+                Register
+            </button>
+
+            <button type="submit" value="Submit" @click="logi">
+                Sign up
+            </button>
+        </ol>
+
+    </ol>
+</div>
+
+
+</body>
+</html>

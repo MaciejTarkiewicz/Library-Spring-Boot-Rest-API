@@ -12,6 +12,7 @@ import pl.tarkiewicz.libraryapp.User.Service.UserService;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @RestController
@@ -32,9 +33,15 @@ public class LibraryController {
         if (!book.checkWebEdit()){
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
-        Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),book.getYear(),book.getType(),user.get()));
-        return new ResponseEntity<>("Correct!", HttpStatus.OK);
+        try {
+            LocalDate date = LocalDate.parse(book.getYear());
+            Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
+            this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),date,book.getType(),user.get()));
+            return new ResponseEntity<>("Correct!", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
+        }
+
     }
 
     @GetMapping (value = "/api/library")

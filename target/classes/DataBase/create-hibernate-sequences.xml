@@ -1,0 +1,32 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<databaseChangeLog-->
+<!--        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"-->
+<!--        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd-->
+<!--    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">-->
+
+<!--    <changeSet author="mtarkiewicz" id="dodanie-hibernate-sequence">-->
+<!--        <comment>dodanie hibernate sequence</comment>-->
+<!--        <sql>CREATE SEQUENCE hibernate_sequence START 5 INCREMENT 1;-->
+<!--            ALTER SEQUENCE hibernate_sequence-->
+<!--            OWNER TO libraryuser;-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--    <changeSet author="mtarkiewicz" id="edycja-tabeli-user">-->
+<!--        <comment>edycja tabeli user</comment>-->
+<!--        <sql>-->
+<!--            ALTER TABLE user ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+
+<!--    <changeSet author="mtarkiewicz" id="edycja-tabeli-library">-->
+<!--        <comment>edycja tabeli library</comment>-->
+<!--        <sql>-->
+<!--            ALTER TABLE library ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+<!--</databaseChangeLog>-->
