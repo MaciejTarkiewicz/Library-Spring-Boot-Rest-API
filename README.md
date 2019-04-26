@@ -9,5 +9,13 @@
 <li>H2 database</li>
 </ul>
 
+Run:
+
+<br />
+<br />
+<ol>
+<li>mvn clean spring-boot:run</li>
+ </ol>
+</ul>
 
 
