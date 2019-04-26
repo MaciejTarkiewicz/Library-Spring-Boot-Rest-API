@@ -1,8 +1,6 @@
 package pl.tarkiewicz.libraryapp.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
@@ -58,9 +56,9 @@ public class UserService {
         return null;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDB() {
-        save(new User("maciek", passwordEncoder.encode("123"), "maciek@gmail.pl"));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDB() {
+//        save(new User("maciek", passwordEncoder.encode("123"), "maciek@gmail.pl"));
+//    }
 
 }
