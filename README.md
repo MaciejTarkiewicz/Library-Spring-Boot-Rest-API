@@ -1,18 +1,22 @@
-# Library-Spring-Boot
+## Library-Spring-Boot
 <ul>
   Web Application using:
 <br />
 <br />
 <li>Spring-Boot</li>
 <li>CRUD</li>
+<li>Postgres DataBase</li>
 <li>Vue JS</li>
-<li>H2 database</li>
 </ul>
 
-Run:
+# Run:
+
 <ol>
+<li>CREATE USER "libraryUser";</li>
+<li>CREATE DATABASE "libraryBase" OWNER libraryUser;</li>
+<li>ALTER USER libraryUser WITH PASSWORD 'admin';</li>
 <li>mvn clean spring-boot:run</li>
- </ol>
+</ol>
 
 
 
