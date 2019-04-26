@@ -1,6 +1,8 @@
-## Library-Spring-Boot
+# Library-Spring-Boot
+
+## Web Application using:
+
 <ul>
-  Web Application using:
 <br />
 <br />
 <li>Spring-Boot</li>
@@ -9,7 +11,7 @@
 <li>Vue JS</li>
 </ul>
 
-# Run:
+## Run:
 
 <ol>
 <li>CREATE USER "libraryUser";</li>
