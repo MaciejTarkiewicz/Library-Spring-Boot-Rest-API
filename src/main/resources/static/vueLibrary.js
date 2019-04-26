@@ -32,7 +32,7 @@ window.onload = () => {
         },
         async created() {
             const { data } = await axios.get('/api/library');
-            this.username = await axios.get('/api/library/user');git
+            this.username = await axios.get('/api/library/user');
             this.l = data;
 
         }
