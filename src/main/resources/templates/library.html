@@ -25,15 +25,16 @@
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
 <!--            <td> <button class="button button3" @click="delete(index)">Delete</button></td>-->
-            <td> <button class="button" @click="Delete(item.id)">Delete </button>
-                <button class="button" @click="Edit(item.id)">Edit </button></td>
+            <td> <button class="button button2" @click="Edit(item.id)">Edit </button>
+                <button class="button" @click="Delete(item.id)">Delete </button>
+            </td>
         </tbody>
     </table>
     <hr />
-    <button type="submit" value="Submit" @click="AddBook">
+    <button class="button button2" type="submit" value="Submit" @click="AddBook">
         Add Book
     </button>
-    <button type="submit" value="Submit" @click="logout">
+    <button class="button" type="submit" value="Submit" @click="logout">
         Logout
     </button>
 
@@ -44,7 +45,7 @@
             <input type="text" v-model="info.author">
             <input type="text" v-model="info.productionYear">
             <input type="text" v-model="info.type">
-            <button class="button" type="submit" value="Submit" @click="save(info.id)">
+            <button class="button button2" type="submit" value="Submit" @click="save(info.id)">
                 Save
             </button>
             <button class="button" type="submit" value="Submit" @click="cancel">
@@ -61,7 +62,7 @@
 
     <style>
     .button {
-        background-color: #f44336; /* Green */
+        background-color: #f44336; /* Red */
         border: none;
         color: white;
         padding: 5px 8px;
@@ -72,6 +73,8 @@
         margin: 4px 2px;
         cursor: pointer;
     }
+
+    .button2 {background-color: #4CAF50;} /* Green */
     #customers {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
