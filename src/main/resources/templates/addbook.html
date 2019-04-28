@@ -40,7 +40,10 @@
     <hr />
 
     <button type="submit" value="Submit" @click="AddBookPost">
-        Add
+    Add
+    </button>
+    <button type="submit" value="Submit" @click="Cancel">
+        Cancel
     </button>
 
 </div>
@@ -72,6 +75,10 @@
                         }
 
                     })
+                },
+                Cancel() {
+                    document.location.replace("/library");
+
                 },
 
 
