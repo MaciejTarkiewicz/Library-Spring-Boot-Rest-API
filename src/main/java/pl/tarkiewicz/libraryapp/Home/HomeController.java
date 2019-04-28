@@ -34,10 +34,14 @@ public class HomeController {
     public String getAllBook() {
         return "library";
     }
+
     @GetMapping (value = "/library/add")
     public String getAddBook() {
         return "addbook";
-
+    }
+    @GetMapping (value = "/library/edit")
+    public String getEditBook() {
+        return "editbook";
     }
 
 

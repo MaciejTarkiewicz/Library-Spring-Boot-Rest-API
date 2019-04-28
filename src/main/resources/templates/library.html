@@ -3,6 +3,7 @@
 <title>Library </title>
 <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 <body >
+<link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script src="vueLibrary.js"></script>
@@ -24,7 +25,8 @@
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
 <!--            <td> <button class="button button3" @click="delete(index)">Delete</button></td>-->
-            <td> <button class="button" @click="Delete(item.id)">Delete </button></td>
+            <td> <button class="button" @click="Delete(item.id)">Delete </button>
+                <button class="button" @click="Edit(item.id)">Edit </button></td>
         </tbody>
     </table>
     <hr />
@@ -34,6 +36,25 @@
     <button type="submit" value="Submit" @click="logout">
         Logout
     </button>
+
+    <section v-if="edit">
+        <div>
+        <p>
+            <input type="text" v-model="info.title">
+            <input type="text" v-model="info.author">
+            <input type="text" v-model="info.productionYear">
+            <input type="text" v-model="info.type">
+            <button class="button" type="submit" value="Submit" @click="save(info.id)">
+                Save
+            </button>
+            <button class="button" type="submit" value="Submit" @click="cancel">
+                Cancel
+            </button>
+        </p>
+        </div>
+    </section>
+
+
 </div>
 
 </body>

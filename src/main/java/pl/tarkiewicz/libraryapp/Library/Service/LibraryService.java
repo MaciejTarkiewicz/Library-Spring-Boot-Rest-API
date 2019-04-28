@@ -35,5 +35,9 @@ public class LibraryService {
         return this.libraryRepo.findLibraryByUserId(id);
     }
 
+    public Library getLibrabyById(Long id){
+        return libraryRepo.findById(id).get();
+    }
+
 
 }

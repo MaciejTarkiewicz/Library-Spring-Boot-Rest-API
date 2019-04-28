@@ -32,6 +32,15 @@ public class Library {
         this.user = user;
     }
 
+    public Library(Long id ,String title, String author, LocalDate productionYear, String type, User user) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.productionYear = productionYear;
+        this.type = type;
+        this.user = user;
+    }
+
     public Library(){
 
     }

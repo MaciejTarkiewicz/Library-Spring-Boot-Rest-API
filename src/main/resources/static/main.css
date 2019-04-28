@@ -34,6 +34,19 @@ body {
     transition: all 0.2s;
 }
 
+#editBook {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#library {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
 
 li {
     margin: 8px 0;

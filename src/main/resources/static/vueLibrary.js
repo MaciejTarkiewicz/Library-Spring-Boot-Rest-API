@@ -5,11 +5,13 @@ window.onload = () => {
             id: '',
             title: '',
             author: '',
-            productionYear: '',
+            year: '',
             type: '',
             username: '',
             login:'',
-            l: ''
+            l: '',
+            info: null,
+            edit: false
         },
         methods: {
             AddBook() {
@@ -22,11 +24,41 @@ window.onload = () => {
             },
             Delete(id){
                 console.log(id);
-                axios.delete("/library/" + id).then(function (response) {
+                axios.delete("api/library/" + id).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
                     alert("Invalid username or password!")
                 });
+            },
+            Edit(id)  {
+                axios
+                    .get('/api/library/edit?id=' + id)
+                    .then(response => {
+                        this.info = response.data;
+                        console.log(this.info.author);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        // this.errored = true
+                    })
+                    .finally(() => this.edit = true)
+            },
+            save(id) {
+                axios({
+                    method: 'put',
+                    url: 'api/library/edit?id=' + id,
+                    data: {title: this.info.title, author: this.info.author, year: this.info.productionYear, type: this.info.type}
+                }).then(function (response) {
+                    document.location.replace("/library");
+                }).catch(err => {
+                    console.log(this.info.title);
+                    console.log(err);
+                    alert("Invalid!")
+                });
+            },
+            cancel() {
+                document.location.replace("/library");
+
             },
 
         },
