@@ -28,7 +28,7 @@ public class LibraryController {
         this.userService = userService;
     }
 
-    @PostMapping (value =  "/library/add")
+    @PostMapping (value =  "/api/library/add")
     public ResponseEntity<String> addBook(@RequestBody Book book, HttpSession session) {
         if (!book.checkWebEdit()){
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
@@ -54,27 +54,21 @@ public class LibraryController {
         session.removeAttribute("User_id");
     }
 
-    @DeleteMapping (value = "api/library/{id}")
+    @DeleteMapping (value = "/api/library/{id}")
     public void DeleteById(@PathVariable Long id) {
-        System.out.println(id);
         this.libraryService.deleteById(id);
 
     }
-    @GetMapping (value = "api/library/edit")
+    @GetMapping (value = "/api/library/edit")
     public Library EditById(@RequestParam Long id) {
-        System.out.println(id);
-        System.out.println(libraryService.getLibrabyById(id).getAuthor());
         return this.libraryService.getLibrabyById(id);
 
     }
 
-    @PutMapping (value = "api/library/edit")
-    public ResponseEntity<String> PutBook(@RequestBody Book book ,HttpSession session,@RequestParam Long id) {
-        System.out.println(book.getAuthor());
-        System.out.println(book.getTitle());
+    @PutMapping (value = "/api/library/edit")
+    public ResponseEntity<String> PutBook(@RequestBody Book book ,HttpSession session, @RequestParam Long id) {
         LocalDate date = LocalDate.parse(book.getYear());
         Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
-        System.out.println(session.getAttribute("User_id"));
         this.libraryService.save(new Library(id,book.getTitle(), book.getAuthor(), date, book.getType(), user.get()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
 

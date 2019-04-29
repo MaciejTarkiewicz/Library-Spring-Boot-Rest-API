@@ -1,6 +1,6 @@
 window.onload = () => {
     new Vue({
-        el: "#app",
+        el: "#register_vue",
         data: {
             username: '',
             password: '',
@@ -16,10 +16,9 @@ window.onload = () => {
                 }
                 axios({
                     method: 'post',
-                    url: 'register',
+                    url: '/api/register',
                     data: {username: this.username, password: this.password, confirmPassword: this.confirmPassword, email: this.email}
                 }).then(function (response) {
-                    //this.user = username.toString() + "/library";
                     document.location.replace("/login");
                 }).catch(err => {
                     if (err.response.status === 409) {
@@ -29,8 +28,8 @@ window.onload = () => {
                     }
                 });
             },
-            logi(){
-                document.location.replace("/login");
+            home(){
+                document.location.replace("/");
             }
         },
     })

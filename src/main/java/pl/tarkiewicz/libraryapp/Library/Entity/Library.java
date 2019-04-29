@@ -9,8 +9,6 @@ import java.time.LocalDate;
 @Entity
 public class Library {
 
-
-    //@JoinColumn(name = "user_id")
     @ManyToOne
     @JsonIgnoreProperties("libraries")
     private User user;

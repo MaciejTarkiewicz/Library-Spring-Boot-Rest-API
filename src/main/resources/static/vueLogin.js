@@ -1,15 +1,15 @@
 window.onload = () => {
     new Vue({
-        el: "#login",
+        el: "#login_vue",
         data: {
             username: '',
             password: '',
         },
         methods: {
-            sign_up() {
+            signUp() {
                 axios({
                     method: 'post',
-                    url: 'login',
+                    url: '/api/login',
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
                     document.location.replace("/library");
@@ -17,10 +17,10 @@ window.onload = () => {
                     alert("Invalid username or password!")
                 });
             },
-            reg(){
-                document.location.replace("/register");
+            home(){
+                document.location.replace("/");
             }
         },
     })
 
-}
+};

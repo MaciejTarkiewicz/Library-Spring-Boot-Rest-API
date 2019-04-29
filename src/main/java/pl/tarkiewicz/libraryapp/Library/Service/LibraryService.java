@@ -13,10 +13,6 @@ public class LibraryService {
     private LibraryRepo libraryRepo;
 
 
-//    public LibraryService(LibraryRepo libraryRepo) {
-//        this.libraryRepo = libraryRepo;
-//    }
-
     public Library save(Library library){
         return this.libraryRepo.save(library);
     }

@@ -1,6 +1,6 @@
 window.onload = () => {
     new Vue({
-        el: "#library",
+        el: "#library_vue",
         data: {
             id: '',
             title: '',
@@ -14,7 +14,7 @@ window.onload = () => {
             edit: false
         },
         methods: {
-            AddBook() {
+            addBook() {
                 document.location.replace("/library/add");
 
             },
@@ -22,15 +22,15 @@ window.onload = () => {
                 axios.get('/api/logout');
                 document.location.replace("/");
             },
-            Delete(id){
+            deleteBook(id){
                 console.log(id);
-                axios.delete("api/library/" + id).then(function (response) {
+                axios.delete("/api/library/" + id).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
                     alert("Invalid username or password!")
                 });
             },
-            Edit(id)  {
+            editBook(id)  {
                 axios
                     .get('/api/library/edit?id=' + id)
                     .then(response => {
@@ -43,10 +43,10 @@ window.onload = () => {
                     })
                     .finally(() => this.edit = true)
             },
-            save(id) {
+            saveBook(id) {
                 axios({
                     method: 'put',
-                    url: 'api/library/edit?id=' + id,
+                    url: '/api/library/edit?id=' + id,
                     data: {title: this.info.title, author: this.info.author, year: this.info.productionYear, type: this.info.type}
                 }).then(function (response) {
                     document.location.replace("/library");
