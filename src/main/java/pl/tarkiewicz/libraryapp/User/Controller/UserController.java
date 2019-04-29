@@ -37,7 +37,7 @@ public class UserController {
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
         else if (!userRegistrtion.checkPassword()) {
-            return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_GATEWAY);
         }
         else if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
             return new ResponseEntity<>("Bad Email format", HttpStatus.CONFLICT);
@@ -56,7 +56,7 @@ public class UserController {
             session.setAttribute("User_id", userService.findByLogin(userlogin.getUsername()).getId());
             return new ResponseEntity<>("Correct", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Lipa", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Invalid", HttpStatus.BAD_REQUEST);
         }
 
     }
