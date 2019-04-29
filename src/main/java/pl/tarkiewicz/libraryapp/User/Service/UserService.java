@@ -35,6 +35,7 @@ public class UserService {
         return userRepo.findAll();
     }
 
+
     public boolean checkUser(UserLogin u) {
         boolean status = false;
         for (User user : getUser()) {
@@ -56,9 +57,6 @@ public class UserService {
         return null;
     }
 
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void fillDB() {
-//        save(new User("maciek", passwordEncoder.encode("123"), "maciek@gmail.pl"));
-//    }
+
 
 }

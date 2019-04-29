@@ -1,13 +1,8 @@
 package pl.tarkiewicz.libraryapp.User;
 
-import pl.tarkiewicz.libraryapp.User.Service.UserService;
-
 import java.util.Objects;
 
 public class UserLogin {
-
-    private UserService userService;
-
 
     private String username;
     private String password;
@@ -38,13 +33,12 @@ public class UserLogin {
         if (this == o) return true;
         if (!(o instanceof UserLogin)) return false;
         UserLogin userLogin = (UserLogin) o;
-        return Objects.equals(userService, userLogin.userService) &&
-                Objects.equals(getUsername(), userLogin.getUsername()) &&
+        return Objects.equals(getUsername(), userLogin.getUsername()) &&
                 Objects.equals(getPassword(), userLogin.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userService, getUsername(), getPassword());
+        return Objects.hash(getUsername(), getPassword());
     }
 }

@@ -36,10 +36,10 @@ public class UserController {
         if (!userRegistrtion.checkWebEdit()) {
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
-        if (!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()) {
+        else if (!userRegistrtion.checkPassword()) {
             return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
         }
-        if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
+        else if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
             return new ResponseEntity<>("Bad Email format", HttpStatus.CONFLICT);
         }
 
@@ -62,7 +62,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/api/library/user")
-    public String getUserByid (HttpSession session) {
+    public String getUsernameByid (HttpSession session) {
         return this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin();
     }
 
