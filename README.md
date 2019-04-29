@@ -1,4 +1,4 @@
-# Library-Spring-Boot
+# Library-Spring-Boot Rest API
 
 ## Web Application using:
 <ul>
