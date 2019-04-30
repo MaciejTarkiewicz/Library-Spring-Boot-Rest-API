@@ -1,32 +1,28 @@
 
 package pl.tarkiewicz.libraryapp.Home;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
 
-    private LibraryService libraryService;
-
-    @Autowired
-    public HomeController(LibraryService libraryService) {
-        this.libraryService = libraryService;
-    }
 
     @GetMapping(value = "/")
-    public String indexGet() {
+    public String getIndex() {
         return "index";
     }
 
     @GetMapping(value = "/register")
-    public String register() {
+    public String getRegister() {
         return "register";
     }
     @GetMapping(value = "/login")
-    public String login() {
+    public String getLogin() {
         return "login";
     }
 
@@ -34,10 +30,21 @@ public class HomeController {
     public String getAllBook() {
         return "library";
     }
+
     @GetMapping (value = "/library/add")
     public String getAddBook() {
         return "addbook";
+    }
 
+    @GetMapping (value = "/library/edit")
+    public String getEditBook() {
+        return "editbook";
+    }
+
+    @PostMapping(value = "/")
+    @ResponseBody
+    public ResponseEntity<String> indexPost() {
+        return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
 

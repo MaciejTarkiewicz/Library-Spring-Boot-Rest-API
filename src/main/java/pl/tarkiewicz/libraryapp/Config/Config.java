@@ -13,14 +13,5 @@ public class Config {
         return new BCryptPasswordEncoder();
     }
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-//
-//    @Bean
-//    public DaoAuthenticationProvider authProvider() {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userDetailsService);
-//        authProvider.setPasswordEncoder(new BCryptPasswordEncoder());
-//        return authProvider;
-//    }
+
 }

@@ -1,36 +1,40 @@
 window.onload = () => {
     new Vue({
-        el: "#app",
+        el: "#register_vue",
         data: {
             username: '',
             password: '',
             confirmPassword: '',
             email: '',
-            user: ''
+            user: '',
+            info:'',
+            error: false
         },
         methods: {
             register() {
                if(this.password !== this.confirmPassword){
-                    alert("Passwords do not match");
+                    this.error = true;
+                    this.info = 'Passwords do not match';
                     return;
                 }
                 axios({
                     method: 'post',
-                    url: 'register',
+                    url: '/api/register',
                     data: {username: this.username, password: this.password, confirmPassword: this.confirmPassword, email: this.email}
                 }).then(function (response) {
-                    //this.user = username.toString() + "/library";
                     document.location.replace("/login");
                 }).catch(err => {
                     if (err.response.status === 409) {
-                        alert("Bad email format!")
+                        this.error = true;
+                        this.info = 'Error: Bad email format!';
                     }else{
-                        alert("Fill in all fields!")
+                        this.error = true;
+                        this.info = 'Error: Fill in all fields!';
                     }
-                });
+                })
             },
-            logi(){
-                document.location.replace("/login");
+            home(){
+                document.location.replace("/");
             }
         },
     })

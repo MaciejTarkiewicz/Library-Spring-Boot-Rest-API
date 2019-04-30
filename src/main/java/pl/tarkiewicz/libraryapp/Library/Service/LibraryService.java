@@ -13,10 +13,6 @@ public class LibraryService {
     private LibraryRepo libraryRepo;
 
 
-//    public LibraryService(LibraryRepo libraryRepo) {
-//        this.libraryRepo = libraryRepo;
-//    }
-
     public Library save(Library library){
         return this.libraryRepo.save(library);
     }
@@ -33,6 +29,10 @@ public class LibraryService {
 
     public Iterable<Library> getLibraryByUserId(Long id){
         return this.libraryRepo.findLibraryByUserId(id);
+    }
+
+    public Library getLibrabyById(Long id){
+        return libraryRepo.findById(id).get();
     }
 
 

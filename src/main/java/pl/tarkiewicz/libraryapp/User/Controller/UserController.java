@@ -17,7 +17,6 @@ import pl.tarkiewicz.libraryapp.User.UserRegistration;
 import javax.servlet.http.HttpSession;
 
 @RestController
-//@RequestMapping
 public class UserController {
 
     private UserService userService;
@@ -32,15 +31,15 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/api/register")
     public ResponseEntity<String> register(@RequestBody UserRegistration userRegistrtion) {
         if (!userRegistrtion.checkWebEdit()) {
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
         }
-        if (!userRegistrtion.checkPassword() || !userRegistrtion.checkWebEdit()) {
-            return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_REQUEST);
+        else if (!userRegistrtion.checkPassword()) {
+            return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_GATEWAY);
         }
-        if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
+        else if (!userRegistrtion.checkEmail(userRegistrtion.getEmail())) {
             return new ResponseEntity<>("Bad Email format", HttpStatus.CONFLICT);
         }
 
@@ -51,25 +50,19 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/api/login")
     public ResponseEntity<String> login(@RequestBody UserLogin userlogin, HttpSession session) {
         if (this.userService.checkUser(userlogin)) {
             session.setAttribute("User_id", userService.findByLogin(userlogin.getUsername()).getId());
             return new ResponseEntity<>("Correct", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Lipa", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Invalid", HttpStatus.BAD_REQUEST);
         }
 
     }
 
-    @PostMapping(value = "/")
-    public ResponseEntity<String> indexPost() {
-        return new ResponseEntity<>("Correct!", HttpStatus.OK);
-    }
-
     @GetMapping(value = "/api/library/user")
-    public String getUserByid (HttpSession session) {
-        //System.out.println(this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin());
+    public String getUsernameByid (HttpSession session) {
         return this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin();
     }
 

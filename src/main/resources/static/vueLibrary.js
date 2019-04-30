@@ -1,18 +1,20 @@
 window.onload = () => {
     new Vue({
-        el: "#library",
+        el: "#library_vue",
         data: {
             id: '',
             title: '',
             author: '',
-            productionYear: '',
+            year: '',
             type: '',
             username: '',
             login:'',
-            l: ''
+            l: '',
+            info: null,
+            edit: false
         },
         methods: {
-            AddBook() {
+            addBook() {
                 document.location.replace("/library/add");
 
             },
@@ -20,13 +22,39 @@ window.onload = () => {
                 axios.get('/api/logout');
                 document.location.replace("/");
             },
-            Delete(id){
+            deleteBook(id){
                 console.log(id);
-                axios.delete("/library/" + id).then(function (response) {
+                axios.delete("/api/library/" + id).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
-                    alert("Invalid username or password!")
+                    alert("You can't delete this book!")
                 });
+            },
+            editBook(id)  {
+                axios
+                    .get('/api/library/edit?id=' + id)
+                    .then(response => {
+                        this.info = response.data;
+                        console.log(this.info.author);
+                    })
+                    .catch(error => {
+                    })
+                    .finally(() => this.edit = true)
+            },
+            saveBook(id) {
+                axios({
+                    method: 'put',
+                    url: '/api/library/edit?id=' + id,
+                    data: {title: this.info.title, author: this.info.author, year: this.info.productionYear, type: this.info.type}
+                }).then(function (response) {
+                    document.location.replace("/library");
+                }).catch(err => {
+                    alert("Invalid!")
+                });
+            },
+            cancel() {
+                document.location.replace("/library");
+
             },
 
         },

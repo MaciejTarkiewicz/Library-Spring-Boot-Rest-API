@@ -7,27 +7,27 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--<changeSet author="mtarkiewicz" id="dodanie-hibernate-sequence">-->
-        <!--<comment>dodanie hibernate sequence</comment>-->
-        <!--<sql>CREATE SEQUENCE hibernate_sequence START 1 INCREMENT 1;-->
-            <!--ALTER SEQUENCE hibernate_sequence-->
-            <!--OWNER TO libraryuser;-->
-        <!--</sql>-->
+    <!--<comment>dodanie hibernate sequence</comment>-->
+    <!--<sql>CREATE SEQUENCE hibernate_sequence START 1 INCREMENT 1;-->
+    <!--ALTER SEQUENCE hibernate_sequence-->
+    <!--OWNER TO libraryuser;-->
+    <!--</sql>-->
 
     <!--</changeSet>-->
 
     <!--<changeSet author="mtarkiewicz" id="edycja-tabeli-user">-->
-        <!--<comment>edycja tabeli account</comment>-->
-        <!--<sql>-->
-            <!--ALTER TABLE ACCOUNT ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
-        <!--</sql>-->
+    <!--<comment>edycja tabeli account</comment>-->
+    <!--<sql>-->
+    <!--ALTER TABLE ACCOUNT ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
+    <!--</sql>-->
     <!--</changeSet>-->
 
 
     <!--<changeSet author="mtarkiewicz" id="edycja-tabeli-library">-->
-        <!--<comment>edycja tabeli library</comment>-->
-        <!--<sql>-->
-            <!--ALTER TABLE LIBRARY ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
-        <!--</sql>-->
+    <!--<comment>edycja tabeli library</comment>-->
+    <!--<sql>-->
+    <!--ALTER TABLE LIBRARY ALTER COLUMN id SET DEFAULT nextval('hibernate_sequence');-->
+    <!--</sql>-->
     <!--</changeSet>-->
 
 </databaseChangeLog>

@@ -30,7 +30,7 @@
         <comment>dodanie wpisów do tabeli Library</comment>
 
         <sql><![CDATA[
-              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('Harry Potter','J.K. Rowling','2015-09-01','fantasy',1);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter','2015-09-01','fantasy',1);
         ]]></sql>
 
     </changeSet>

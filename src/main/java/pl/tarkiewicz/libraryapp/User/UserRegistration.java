@@ -66,6 +66,8 @@ public class UserRegistration {
         return pattern.matcher(email).matches();
     }
 
+
+
 }
 
 
