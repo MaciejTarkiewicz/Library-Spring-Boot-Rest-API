@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="mtarkiewicz" id="stworzenie-tabeli-user">
+
+        <comment>stworzenie tabeli user</comment>
+
+        <sql><![CDATA[
+        CREATE TABLE ACCOUNT (
+        id BIGSERIAL  NOT NULL PRIMARY KEY,
+        username VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL
+        );
+        ]]></sql>
+
+    </changeSet>
+
+
+        <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-user">
+
+            <comment>dodanie wpisów do tabeli ACCOUNT</comment>
+
+            <sql><![CDATA[
+                  INSERT INTO ACCOUNT (username, password, email) VALUES('maciek','$2a$10$QI8LMeqVHpdPXZHoPi19XuCWzYlyEK2PSCMwUySutkptj3tBl3Gq2','maciek@gmail.pl');
+
+                   ]]></sql>
+
+        </changeSet>
+
+
+</databaseChangeLog>

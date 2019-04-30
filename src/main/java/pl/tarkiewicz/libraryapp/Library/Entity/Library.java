@@ -1,26 +1,42 @@
-package pl.tarkiewicz.libraryapp.Library.Repo.Entity;
+package pl.tarkiewicz.libraryapp.Library.Entity;
 
-import pl.tarkiewicz.libraryapp.User.Repo.Entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Library {
+
+    @ManyToOne
+    @JsonIgnoreProperties("libraries")
+    private User user;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String title;
     private String author;
-    private String productionYear;
+    private LocalDate productionYear;
     private String type;
 
 
-    public Library(String title, String author, String productionYear, String type) {
+    public Library(String title, String author, LocalDate productionYear, String type, User user) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
         this.type = type;
+        this.user = user;
+    }
+
+    public Library(Long id ,String title, String author, LocalDate productionYear, String type, User user) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.productionYear = productionYear;
+        this.type = type;
+        this.user = user;
     }
 
     public Library(){
@@ -50,11 +66,11 @@ public class Library {
         this.author = author;
     }
 
-    public String getProductionYear() {
+    public LocalDate getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(LocalDate productionYear) {
         this.productionYear = productionYear;
     }
 
@@ -66,11 +82,6 @@ public class Library {
         this.type = type;
     }
 
-
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public User getUser() {
         return user;

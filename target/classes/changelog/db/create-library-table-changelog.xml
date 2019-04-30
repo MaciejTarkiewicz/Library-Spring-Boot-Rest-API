@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="mtarkiewicz" id="stworzenie-tabeli-library">
+
+        <comment>stworzenie tabeli library</comment>
+
+        <sql><![CDATA[
+        CREATE TABLE LIBRARY (
+              id BIGSERIAL PRIMARY KEY,
+              author VARCHAR(255) NOT NULL,
+              title VARCHAR(255) NOT NULL,
+              production_year VARCHAR(255) NOT NULL,
+              type VARCHAR(255) NOT NULL,
+              user_id INTEGER REFERENCES ACCOUNT (id)
+            );
+       ]]></sql>
+
+    </changeSet>
+
+
+    <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">
+
+        <comment>dodanie wpisów do tabeli Library</comment>
+
+        <sql><![CDATA[
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter','2015-09-01','fantasy',1);
+        ]]></sql>
+
+    </changeSet>
+
+
+</databaseChangeLog>

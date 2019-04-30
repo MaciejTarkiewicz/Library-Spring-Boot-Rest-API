@@ -1,5 +1,7 @@
 package pl.tarkiewicz.libraryapp.User;
 
+import java.util.regex.Pattern;
+
 public class UserRegistration {
 
     private String username;
@@ -57,6 +59,15 @@ public class UserRegistration {
     public boolean checkWebEdit(){
         return !getUsername().isEmpty() && !getPassword().isEmpty() && !getConfirmPassword().isEmpty() && !getEmail().isEmpty();
     }
+
+    public boolean checkEmail(String email){
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(email).matches();
+    }
+
+
+
 }
 
 
