@@ -3,10 +3,11 @@
 <title>Books </title>
 
 <body >
-<link rel="stylesheet" type="text/css" href="/main.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/css/libraryUser.css" media="screen"/>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-<script src="/vueLibraryUser.js"></script>
+<script src="/js/vueLibraryUser.js"></script>
 
 
 <div id="library_vue">
@@ -31,41 +32,50 @@
         <td>{{ item.author }}</td>
         <td>{{ item.productionYear }}</td>
         <td>{{ item.type }}</td>
-        <td> <button class="button" @click="GiveBook(item.id)" id = "edit_user_book">Give Back </button>
+        <td> <button class="button" @click="GiveBook(item.id,username.data)" id = "edit_user_book">Give Back </button>
         </td>
         </tbody>
     </table>
     <hr />
+    <section v-if="borrow">
+        <div>
+            <p style="color:green;">
+                <b>
+                    You successfully give back the book!"
+                </b>
+            </p>
+        </div>
+    </section>
 
 </div>
 
 </body>
 
-<style>
+<!--<style>-->
 
-    #library_view {
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+    <!--#library_view {-->
+        <!--font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;-->
+        <!--border-collapse: collapse;-->
+        <!--width: 100%;-->
+    <!--}-->
 
-    #library_view td, #library_view th {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
-
-
-    #library_view tr:nth-child(even){background-color: #f2f2f2;}
-
-    #library_view th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #20262E;
-        color: white;
-    }
+    <!--#library_view td, #library_view th {-->
+        <!--border: 1px solid #ddd;-->
+        <!--padding: 8px;-->
+    <!--}-->
 
 
-</style>
+    <!--#library_view tr:nth-child(even){background-color: #f2f2f2;}-->
+
+    <!--#library_view th {-->
+        <!--padding-top: 12px;-->
+        <!--padding-bottom: 12px;-->
+        <!--text-align: left;-->
+        <!--background-color: #20262E;-->
+        <!--color: white;-->
+    <!--}-->
+
+
+<!--</style>-->
 
 </html>

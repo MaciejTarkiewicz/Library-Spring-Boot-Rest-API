@@ -13,6 +13,7 @@ window.onload = () => {
             info: null,
             edit: false,
             borrow: false,
+            status: false,
         },
         methods: {
             addBook() {
@@ -74,11 +75,17 @@ window.onload = () => {
             },
 
             BorrowBook(id) {
-                axios.put("/api/library/borrow/" + id).then(function (response) {
-                    document.location.replace("/library/all");
-                }).catch(err => {
+                try {
+                    axios.put("/api/library/borrow/" + id).then(function (response) {
+                        document.location.replace("/library/all");
+                    }).catch(err => {
 
-                }).finally(() => this.borrow = true)
+                    }).finally(() => this.borrow = true)
+                }catch(error){
+
+                }finally {
+                    this.status = true
+                }
 
             },
 
@@ -87,6 +94,7 @@ window.onload = () => {
             const {data} = await axios.get('/api/library/all');
             this.username = await axios.get('/api/library/user');
             this.l = data;
+            console.log(this.status);
 
         }
 
