@@ -12,7 +12,7 @@ window.onload = () => {
             l: '',
             info: null,
             edit: false,
-            borrow:false,
+            borrow: false,
         },
         methods: {
             addBook() {
@@ -73,12 +73,12 @@ window.onload = () => {
 
             },
 
-            BorrowBook(id){
+            BorrowBook(id) {
                 axios.put("/api/library/borrow/" + id).then(function (response) {
                     document.location.replace("/library/all");
                 }).catch(err => {
 
-                })
+                }).finally(() => this.borrow = true)
 
             },
 

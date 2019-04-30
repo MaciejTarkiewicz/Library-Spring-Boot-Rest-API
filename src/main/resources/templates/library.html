@@ -10,15 +10,18 @@
 
 
 <div id="library_vue">
+
     <div >
-        <a><button class="button button2" type="submit" value="Submit" @click= "myLibrary(username.data)"
-            >My Library </button></a>
+        <button class="button button2" type="submit" value="Submit" @click= "myLibrary(username.data)"
+            >My Books </button>
         <button class="button" type="submit" value="Submit" @click="logout" id = "logout" style = "float: right">
             Logout
         </button>
+        <h3 align="right">{{ username.data }}</h3>
+
     </div>
 <!--    <h1>Library {{ username.data }}</h1>-->
-    <h1>Library</h1>
+    <h1 align="center">Library</h1>
     <table id="library_view">
         <tr>
             <th>Title</th>
