@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--<link rel="stylesheet" type="text/css" href="main.css" media="screen"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="add.css"/>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 </head>
@@ -11,61 +11,90 @@
 
 <body>
 
-<div id="addBook">
+<div id="addBook_vue">
     <h2>Add Book</h2>
     <li>
         <label>
-            <input type="text" name="title" placeholder="Title" id="title"
+            <input type="text" name="title" placeholder="Title" id="add_title"
                    v-model="title">
         </label>
     </li>
     <li>
         <label>
-            <input type="text" name="author" placeholder="Author" id="author"
+            <input type="text" name="author" placeholder="Author" id="add_author"
                    v-model="author">
         </label>
     </li>
     <li>
         <label>
-            <input type="text" name="year" placeholder="Production year" id="year"
+            <input type="text" name="year" placeholder="Production year" id="add_year"
                    v-model="year">
         </label>
     </li>
     <li>
         <label>
-            <input type="text" name="type" placeholder="type" id="type"
+            <input type="text" name="type" placeholder="type" id="add_type"
                    v-model="type">
         </label>
     </li>
+    <hr />
 
-    <button type="submit" value="Submit" @click="AddBookPost">
-        Add
+    <button type="submit" value="Submit" @click="addBook" class = "button button2" id = "add_book_confirm">
+    Add
     </button>
+    <button type="submit" value="Submit" @click="cancel" class = "button" id = "cancel_add_book">
+        Cancel
+    </button>
+
+    <section v-if="error">
+        <div>
+            <p style="color:red;">
+                <b>
+                {{info}}
+                </b>
+            </p>
+        </div>
+    </section>
 
 </div>
 </body>
 <script>
     window.onload = () => {
         new Vue({
-            el: "#addBook",
+            el: "#addBook_vue",
             data: {
                 title: '',
                 author: '',
                 year: '',
-                type: ''
+                type: '',
+                error:false,
+                info: ''
+
             },
             methods: {
-                AddBookPost(){
-                    console.log("siema1");
+                addBook(){
                     axios({
                         method: 'post',
-                        url: '/library/add',
+                        url: '/api/library/add',
                         data: {title: this.title, author: this.author, year: this.year, type: this.type}
                     }).then(function (response) {
                        document.location.replace("/library");
                     }).catch(err => {
-                        alert("Fill in all fields")
+                        if (err.response.status === 409) {
+                             this.error = true;
+                             this.info = 'Error: Bad data format!';
+                             //alert("Bad data format")
+                        }else{
+                            this.error = true;
+                            this.info = 'Error: Fill in all fields!';
+                             //alert("Fill in all fields")
+                         }
+
                     })
+                },
+                cancel() {
+                    document.location.replace("/library");
+
                 },
 
 
@@ -83,7 +112,7 @@
         font-family: Helvetica;
     }
 
-    #addBook {
+    #addBook_vue {
         background: #fff;
         border-radius: 4px;
         padding: 20px;
@@ -102,5 +131,20 @@
     del {
         color: rgba(0, 0, 0, 0.3);
     }
+
+    .button {
+        background-color: #f44336; /* Red */
+        border: none;
+        color: white;
+        padding: 5px 8px;
+        text-align: match-parent;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button2 {background-color: #4CAF50;} /* Green */
 </style>
 </html>

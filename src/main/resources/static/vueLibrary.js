@@ -1,32 +1,70 @@
 window.onload = () => {
     new Vue({
-        el: "#library",
+        el: "#library_vue",
         data: {
+            id: '',
             title: '',
             author: '',
-            productionYear: '',
+            year: '',
             type: '',
+            username: '',
+            login:'',
             l: '',
-            k: ''
+            info: null,
+            edit: false
         },
         methods: {
-            AddBook() {
+            addBook() {
                 document.location.replace("/library/add");
+
             },
             logout() {
+                axios.get('/api/logout');
                 document.location.replace("/");
             },
-            delete() {
+            deleteBook(id){
+                console.log(id);
+                axios.delete("/api/library/" + id).then(function (response) {
+                    document.location.replace("/library");
+                }).catch(err => {
+                    alert("You can't delete this book!")
+                });
+            },
+            editBook(id)  {
+                axios
+                    .get('/api/library/edit?id=' + id)
+                    .then(response => {
+                        this.info = response.data;
+                        console.log(this.info.author);
+                    })
+                    .catch(error => {
+                    })
+                    .finally(() => this.edit = true)
+            },
+            saveBook(id) {
+                axios({
+                    method: 'put',
+                    url: '/api/library/edit?id=' + id,
+                    data: {title: this.info.title, author: this.info.author, year: this.info.productionYear, type: this.info.type}
+                }).then(function (response) {
+                    document.location.replace("/library");
+                }).catch(err => {
+                    alert("Invalid!")
+                });
+            },
+            cancel() {
                 document.location.replace("/library");
 
             },
+
         },
         async created() {
-
-            const { data } = await axios.get('/api/library/${k}');
+            const { data } = await axios.get('/api/library');
+            this.username = await axios.get('/api/library/user');
             this.l = data;
-            console.log(this.l);
+
         }
+
 
     })
 

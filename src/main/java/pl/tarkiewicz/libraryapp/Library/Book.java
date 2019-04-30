@@ -1,33 +1,17 @@
-package pl.tarkiewicz.libraryapp.pojos;
-
-import java.time.LocalDate;
+package pl.tarkiewicz.libraryapp.Library;
 
 public class Book {
 
-    //dodać id i pytac o to w controlerze i zrobic findById
-    private Long id;
     private String title;
     private String author;
     private String year;
     private String type;
-
-    public Book(){
-
-    }
 
     public Book(String title, String author, String year, String type) {
         this.title = title.trim();
         this.author = author.trim();
         this.year = year.trim();
         this.type = type.trim();
-    }
-
-    public Book(String title, String author, String year, String type, Long id) {
-        this.title = title.trim();
-        this.author = author.trim();
-        this.year = year.trim();
-        this.type = type.trim();
-        this.id = id;
     }
 
     public String getTitle() {
@@ -60,14 +44,6 @@ public class Book {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public boolean checkWebEdit(){

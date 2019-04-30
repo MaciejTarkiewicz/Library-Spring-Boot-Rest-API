@@ -1,25 +1,24 @@
-
 body {
     background: #20262E;
     padding: 20px;
     font-family: Helvetica;
 }
 
-#app {
+#register_vue {
     background: #fff;
     border-radius: 4px;
     padding: 20px;
     transition: all 0.2s;
 }
 
-#index {
+#index_vue {
     background: #fff;
     border-radius: 4px;
     padding: 20px;
     transition: all 0.2s;
 }
 
-#login {
+#login_vue {
      background: #fff;
      border-radius: 4px;
      padding: 20px;
@@ -27,7 +26,15 @@ body {
  }
 
 
-#addBook {
+
+#editBook_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#library_vue {
     background: #fff;
     border-radius: 4px;
     padding: 20px;
@@ -47,4 +54,17 @@ del {
     color: rgba(0, 0, 0, 0.3);
 }
 
+button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: match-parent;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
+.button2 {background-color: #4CAF50;} /* Green */

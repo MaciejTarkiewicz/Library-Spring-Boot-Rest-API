@@ -1,31 +1,32 @@
 window.onload = () => {
     new Vue({
-        el: "#login",
+        el: "#login_vue",
         data: {
             username: '',
             password: '',
+            error: false,
+            info :''
         },
         methods: {
-            sign_up() {
+            signUp() {
                 axios({
                     method: 'post',
-                    url: 'login',
+                    url: '/api/login',
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
-
-                    this.x = response.id;
-                    console.log(response);
-                    document.location.replace('/api/library/' + x);
-                    //document.location.replace("api/library/");
+                    document.location.replace("/library");
                 }).catch(err => {
-                    alert("Invalid username or password!")
+                    if (err.response.status === 400) {
+                        this.error = true;
+                        this.info = 'Error: Invalid Username or Password!';
+                    }
                 });
-            },
-            reg(){
-                document.location.replace("/register");
-            }
 
+            },
+            home(){
+                document.location.replace("/");
+            }
         },
     })
 
-}
+};

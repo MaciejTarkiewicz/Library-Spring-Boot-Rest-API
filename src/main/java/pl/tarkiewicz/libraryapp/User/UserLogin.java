@@ -1,17 +1,11 @@
-package pl.tarkiewicz.libraryapp.pojos;
+package pl.tarkiewicz.libraryapp.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.tarkiewicz.libraryapp.Services.UserService;
-import pl.tarkiewicz.libraryapp.dao.entity.User;
-import java.util.List;
 import java.util.Objects;
 
 public class UserLogin {
 
     private String username;
     private String password;
-
 
     public UserLogin(String username, String password) {
         this.username = username;
@@ -34,6 +28,17 @@ public class UserLogin {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserLogin)) return false;
+        UserLogin userLogin = (UserLogin) o;
+        return Objects.equals(getUsername(), userLogin.getUsername()) &&
+                Objects.equals(getPassword(), userLogin.getPassword());
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername(), getPassword());
+    }
 }

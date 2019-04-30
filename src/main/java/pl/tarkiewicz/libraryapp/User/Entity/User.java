@@ -1,13 +1,15 @@
-package pl.tarkiewicz.libraryapp.dao.entity;
+package pl.tarkiewicz.libraryapp.User.Entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "ACCOUNT")
 public class User {
-
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -16,6 +18,10 @@ public class User {
     private String username;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    private Set<Library> libraries;
 
     public User() {
     }
@@ -58,9 +64,6 @@ public class User {
         this.email = email;
     }
 
-
-    @OneToMany(mappedBy = "user")
-    private Set<Library> libraries;
 
     public Set<Library> getLibraries() {
         return libraries;

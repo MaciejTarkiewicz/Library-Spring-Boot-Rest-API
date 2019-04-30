@@ -1,16 +1,16 @@
 window.onload = () => {
     new Vue({
-        el: "#index",
+        el: "#index_vue",
         data: {
         },
         methods: {
-            register_index() {
+            register() {
                 document.location.replace("/register");
             },
-            sign_up_index() {
+            signUp() {
                 document.location.replace("/login");
             }
         },
     })
 
-}
+};

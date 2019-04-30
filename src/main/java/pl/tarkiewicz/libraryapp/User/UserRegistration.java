@@ -1,4 +1,6 @@
-package pl.tarkiewicz.libraryapp.pojos;
+package pl.tarkiewicz.libraryapp.User;
+
+import java.util.regex.Pattern;
 
 public class UserRegistration {
 
@@ -6,7 +8,7 @@ public class UserRegistration {
     private String password;
     private String confirmPassword;
     private String email;
-    private Long id;
+
 
     public UserRegistration() {
     }
@@ -16,14 +18,6 @@ public class UserRegistration {
         this.password = password.trim();
         this.confirmPassword = confirmPassword.trim();
         this.email = email;
-    }
-
-    public UserRegistration(String username, String password, String confirmPassword, String email,Long id) {
-        this.username = username;
-        this.password = password.trim();
-        this.confirmPassword = confirmPassword.trim();
-        this.email = email;
-        this.id = id;
     }
 
     public String getUsername() {
@@ -65,6 +59,15 @@ public class UserRegistration {
     public boolean checkWebEdit(){
         return !getUsername().isEmpty() && !getPassword().isEmpty() && !getConfirmPassword().isEmpty() && !getEmail().isEmpty();
     }
+
+    public boolean checkEmail(String email){
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(email).matches();
+    }
+
+
+
 }
 
 

@@ -7,12 +7,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script src="vueRegister.js"></script>
-    <!--<script src="vueIndex.js"></script>-->
 </head>
 
 
 <body>
-<div id="app">
+<div id="register_vue">
     <h2>Registration:</h2>
     <ol>
         <li>
@@ -55,17 +54,28 @@
 
             </label>
         </li>
+        <hr />
         <ol>
-            <button type="submit" value="Submit" @click="register">
+            <button class = "button button2" type="submit" value="Submit" @click="register" id = "register" >
                 Register
             </button>
 
-            <button type="submit" value="Submit" @click="logi">
-                Sign up
+            <button class = "button button2" type="submit" value="Submit" @click="home" id = "home" >
+                 Home
             </button>
         </ol>
 
     </ol>
+
+    <section v-if="error">
+        <div>
+            <p style="color:red;">
+                <b>
+                    {{info}}
+                </b>
+            </p>
+        </div>
+    </section>
 </div>
 
 
