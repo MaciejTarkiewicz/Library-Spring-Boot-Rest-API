@@ -27,7 +27,7 @@ window.onload = () => {
                 axios.delete("/api/library/" + id).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
-                    alert("Invalid username or password!")
+                    alert("You can't delete this book!")
                 });
             },
             editBook(id)  {
@@ -38,8 +38,6 @@ window.onload = () => {
                         console.log(this.info.author);
                     })
                     .catch(error => {
-                        console.log(error)
-                        // this.errored = true
                     })
                     .finally(() => this.edit = true)
             },
@@ -51,8 +49,6 @@ window.onload = () => {
                 }).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
-                    console.log(this.info.title);
-                    console.log(err);
                     alert("Invalid!")
                 });
             },

@@ -4,6 +4,8 @@ window.onload = () => {
         data: {
             username: '',
             password: '',
+            error: false,
+            info :''
         },
         methods: {
             signUp() {
@@ -14,8 +16,12 @@ window.onload = () => {
                 }).then(function (response) {
                     document.location.replace("/library");
                 }).catch(err => {
-                    alert("Invalid username or password!")
+                    if (err.response.status === 400) {
+                        this.error = true;
+                        this.info = 'Error: Invalid Username or Password!';
+                    }
                 });
+
             },
             home(){
                 document.location.replace("/");

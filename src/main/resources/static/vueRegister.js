@@ -6,12 +6,15 @@ window.onload = () => {
             password: '',
             confirmPassword: '',
             email: '',
-            user: ''
+            user: '',
+            info:'',
+            error: false
         },
         methods: {
             register() {
                if(this.password !== this.confirmPassword){
-                    alert("Passwords do not match");
+                    this.error = true;
+                    this.info = 'Passwords do not match';
                     return;
                 }
                 axios({
@@ -22,11 +25,13 @@ window.onload = () => {
                     document.location.replace("/login");
                 }).catch(err => {
                     if (err.response.status === 409) {
-                        alert("Bad email format!")
+                        this.error = true;
+                        this.info = 'Error: Bad email format!';
                     }else{
-                        alert("Fill in all fields!")
+                        this.error = true;
+                        this.info = 'Error: Fill in all fields!';
                     }
-                });
+                })
             },
             home(){
                 document.location.replace("/");
