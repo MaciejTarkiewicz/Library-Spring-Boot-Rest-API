@@ -4,9 +4,7 @@ package pl.tarkiewicz.libraryapp.Home;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
@@ -26,7 +24,7 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping (value = "/library")
+    @GetMapping (value = "/library/all")
     public String getAllBook() {
         return "library";
     }
@@ -45,6 +43,11 @@ public class HomeController {
     @ResponseBody
     public ResponseEntity<String> indexPost() {
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
+    }
+
+    @GetMapping (value = "/library/user")
+    public String getAllBookUser() {
+        return "libraryUser";
     }
 
 
