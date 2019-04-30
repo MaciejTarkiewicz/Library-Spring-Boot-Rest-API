@@ -4,7 +4,7 @@
 <ul>
 <li>Spring-Boot</li>
 <li>CRUD</li>
-<li>Postgres DataBase</li>
+<li>Postgres DataBase - liquibase</li>
 <li>Vue JS</li>
 </ul>
 
