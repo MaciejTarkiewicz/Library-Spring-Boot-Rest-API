@@ -41,7 +41,6 @@ public class LibraryController {
         } catch (Exception e) {
             return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
         }
-
     }
 
     @GetMapping(value = "/api/library")
