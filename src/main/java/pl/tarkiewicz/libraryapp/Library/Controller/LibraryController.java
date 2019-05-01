@@ -36,16 +36,8 @@ public class LibraryController {
         }
         try {
             LocalDate date = LocalDate.parse(book.getYear());
-//            if(session.getAttribute("User_id") == null){
-//                System.out.println("siema");
-//                this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),date,book.getType(),null));
-//                return new ResponseEntity<>("Correct!", HttpStatus.OK);
-//            }
             this.libraryService.save(new Library(book.getTitle(), book.getAuthor(), date, book.getType(), null));
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
-            //Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-            //this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),date,book.getType(),user.get()));
-            //return new ResponseEntity<>("Correct!", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
         }
@@ -106,7 +98,6 @@ public class LibraryController {
     public ResponseEntity<String> BorrowBook(@PathVariable Long id, HttpSession session) {
         Library library = this.libraryService.getLibrabyById(id);
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        //this.libraryService.save(new Library(book.getTitle(), book.getAuthor(),date,book.getType(),user.get()));
         this.libraryService.save(new Library(id, library.getTitle(), library.getAuthor(), library.getProductionYear(), library.getType(), user.get()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
