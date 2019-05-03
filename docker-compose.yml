@@ -3,7 +3,7 @@ version : '3'
     library:
       buiild: ./LibrarySpringBoot
       ports:
-        - "8080:8000"
+      - "8080:8000"
       depends_on:
         - database
     localhost:
@@ -13,5 +13,5 @@ version : '3'
         POSTGRES_PASSWORD: admin
         POSTGRES_USER: libraryuser
         POSTGRES_DB: libraryBase
-        ports:
-          - "5432:5432"
+      ports:
+      - "5432:5432"
