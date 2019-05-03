@@ -1,0 +1,17 @@
+version : '3'
+services:
+  library:
+    build: ./
+    ports:
+    - "8080:8080"
+#    depends_on:
+#      - localhost
+#  localhost:
+#    container_name: 'postgres'
+#    image: postgres
+#    environment:
+#      POSTGRES_PASSWORD: admin
+#      POSTGRES_USER: libraryuser
+#      POSTGRES_DB: libraryBase
+#    ports:
+#    - "5432:5432"

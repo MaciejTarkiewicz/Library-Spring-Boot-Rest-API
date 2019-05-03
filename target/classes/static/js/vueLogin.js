@@ -14,7 +14,7 @@ window.onload = () => {
                     url: '/api/login',
                     data: {username: this.username, password: this.password}
                 }).then(function (response) {
-                    document.location.replace("/library");
+                    document.location.replace("/library/all");
                 }).catch(err => {
                     if (err.response.status === 400) {
                         this.error = true;
