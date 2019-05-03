@@ -1,7 +1,7 @@
 version : '3'
 services:
   library:
-    build: ./LibrarySpringBoot
+    build: ./
     ports:
     - "8080:8000"
     depends_on:
