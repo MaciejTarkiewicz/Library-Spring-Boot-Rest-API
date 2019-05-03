@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,37 +29,42 @@ public class LibraryAppApplicationTests {
     @Autowired
     UserService userService;
 
-    private boolean status = false;
     private int count = 0;
+    private User user1;
+    private User user2;
+
+    @Before
+    public void BeforeClas(){
+        user1 = new User("a","a","a@a");
+        user2 = new User("b","b","b@b");
+    }
 
     @Test
     public void TestGetUser(){
-        when(userRepo.findAll()).thenReturn(Stream.of(new User("a","a","a@a"),
-               new User("b","b","b@b")).collect(Collectors.toList()));
+        when(userRepo.findAll()).thenReturn(Stream.of(user1,
+                user2).collect(Collectors.toList()));
 
         for (User u : userService.getUser()){
             count = count + 1;
-
         }
         assertEquals(2,count);
     }
 
     @Test
     public void saveUserTest(){
-        User user =  new User("b","b","b@b");
-        when(userRepo.save(user)).thenReturn(user);
-        assertEquals(user,userService.save(user));
+        when(userRepo.save(user1)).thenReturn(user1);
+        assertEquals(user1,userService.save(user1));
     }
 
     @Test
     public void deleteUserTest(){
-        User user =  new User("b","b","b@b");
-        userService.deleteUser(user);
-        verify(userRepo,times(1)).delete(user);
+        userService.deleteUser(user1);
+        verify(userRepo,times(1)).delete(user1);
     }
 
     @Test
     public void contextLoads() {
     }
+
 
 }
