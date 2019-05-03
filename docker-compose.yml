@@ -1,11 +1,11 @@
 version : '3'
 services:
   library:
-    buiild: ./LibrarySpringBoot
+    build: ./LibrarySpringBoot
     ports:
     - "8080:8000"
     depends_on:
-      - database
+      - localhost
   localhost:
     container_name: 'postgres'
     image: postgres
