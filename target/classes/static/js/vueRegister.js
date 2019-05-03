@@ -27,6 +27,9 @@ window.onload = () => {
                     if (err.response.status === 409) {
                         this.error = true;
                         this.info = 'Error: Bad email format!';
+                    }else if (err.response.status === 500) {
+                        this.error = true;
+                        this.info = 'Error: User with that username is already exist!';
                     }else{
                         this.error = true;
                         this.info = 'Error: Fill in all fields!';
