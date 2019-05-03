@@ -35,6 +35,10 @@ public class UserService {
         return userRepo.findAll();
     }
 
+    public void deleteUser(User user){
+        userRepo.delete(user);
+    }
+
 
     public boolean checkUser(UserLogin u) {
         boolean status = false;
