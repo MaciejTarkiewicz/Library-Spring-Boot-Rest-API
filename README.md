@@ -14,7 +14,7 @@
 <li>docker run --name library -e POSTGRES_PASSWORD=admin -d postgres</li>
 <li>docker exec -it library psql -U postgres</li>
 <li>CREATE USER libraryUser;</li>
-<li>CREATE USER libraryUser;</li>
+<li>CREATE DATABASE "libraryBase" OWNER libraryUser;</li>
 <li>ALTER USER libraryUser WITH PASSWORD 'admin';</li>
 <li>sudo docker exec -it [container] cat /etc/hosts --> zobaczyc na jakim porcie nasluchuje kontener i wprowadzic w application properties w aplikacji</li>
 <li>mvn clean package</li>
