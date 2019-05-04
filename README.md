@@ -23,5 +23,6 @@
 <li>mvn clean package</li>
 <li>docker build -f Dockerfile -t library:v1 .</li>
 <li>docker run -d -p 8000:8080 id_image</li>
-<li>Come In Conainer: docker exec -it [container_id] bash</li>
+<li>Come in Container: docker exec -it [container_id] bash</li>
+<li>Come out Container: ctrl +d</li>
 </ol>
