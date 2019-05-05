@@ -33,5 +33,6 @@
 <li>-d --> flaga aby działał w tle </li>
 <li>exec ---> wejście do kontenera </li>
 <li>EXPOSE port ---> port na ktorym docker ma wystawiac moja aplikacje (port dzieki ktoremu bede mógł sie 
-  skontakować z moja aplikacja która znajduję sie wewnątrz kontenera, będzie on udostępniany na zewnątrz </li>
+  skontakować z moja aplikacja która znajduję sie wewnątrz kontenera, będzie on udostępniany na zewnątrz.
+  Aplikacja wewnątrz kontenera działa na porcie 8080 ale wystwia sie na zewnątrz na porcie jaki ustawie w EXPOSE.</li>
 </ol>
