@@ -28,7 +28,8 @@
 <li> docker exec -it id_kontenera ps aux</li>
 </ol>
 
-
+<ol>
 -ti  --> przekierowanie terminala i potoku 
 -d --> flaga aby działał w tle 
 exec ---> wejście do kontenera 
+</ol>
