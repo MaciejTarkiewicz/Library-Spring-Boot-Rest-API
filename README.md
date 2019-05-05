@@ -16,3 +16,7 @@
 <li>ALTER USER libraryUser WITH PASSWORD 'admin';</li>
 <li>mvn clean spring-boot:run</li>
 </ol>
+
+<ol>
+# Na branchu: docker_deploy_branch intrukcja jak zrobić deploy aplikacji na serwerze linuxowym za pomocą docera
+</ol>
