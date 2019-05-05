@@ -29,7 +29,7 @@
 </ol>
 
 <ol>
--ti  --> przekierowanie terminala i potoku 
--d --> flaga aby działał w tle 
-exec ---> wejście do kontenera 
+<li>-ti  --> przekierowanie terminala i potoku </li>
+<li>-d --> flaga aby działał w tle </li>
+<li>exec ---> wejście do kontenera </li>
 </ol>
