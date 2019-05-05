@@ -18,5 +18,5 @@
 </ol>
 
 
-### Na branchu: docker_deploy_branch intrukcja jak zrobić deploy aplikacji na serwerze linuxowym za pomocą docera
+### Na branchu: docker_deploy_branch instrukcja jak zrobić deploy aplikacji na serwerze linuxowym za pomocą dockera
 
