@@ -32,4 +32,6 @@
 <li>-ti  --> przekierowanie terminala i potoku </li>
 <li>-d --> flaga aby działał w tle </li>
 <li>exec ---> wejście do kontenera </li>
+<li>EXPOSE port ---> port na ktorym docker ma wystawiac moja aplikacje (port dzieki ktoremu bede mógł sie 
+  skontakować z moja aplikacja która znajduję sie wewnątrz kontenera, będzie on udostępniany na zewnątrz </li>
 </ol>
