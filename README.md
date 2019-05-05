@@ -32,5 +32,6 @@
 <li>-ti  --> przekierowanie terminala i potoku </li>
 <li>-d --> flaga aby działał w tle </li>
 <li>exec ---> wejście do kontenera </li>
-<li>EXPOSE port ---> port po którym bede rozmawiał ze swoim kontenerem</li>
+<li>EXPOSE port ---> port po którym bede rozmawiał ze swoim kontenerem.
+                    Port jaki kontener wystawia na zewnątrz</li>
 </ol>
