@@ -19,4 +19,5 @@
 
 <ol>
  <li> sudo usermod -a -G docker jenkins ----> Dodanie Jenkinsa do grupy dockera</li>
+<li> sudo systemctl restart jenkins ---> restart</li>
 </ol>
