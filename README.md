@@ -36,4 +36,5 @@
                     Port jaki kontener wystawia na zewnątrz</li>
   <li>docker run --name Spring-Boot-Library -d -p 8000:8080 id_image --> na porcie 8000 ma być widoczne to co jest na porcie 8080
   (aplikacja spring-boot wewnątrz kontenera działa na porcie 8080 i ma sie wystawiać na porcie zewnętrznym 8000)</li>
+ <li> sudo usermod -a -G docker jenkins ----> Dodanie Jenkinsa do grupy dockera</li>
 </ol>
