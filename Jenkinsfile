@@ -15,6 +15,6 @@ node {
      sh 'docker push maciek1995/library-app'
    }
    stage('Run Container'){
-     sh 'docker run -p 8000:8080 -d --name library-app library:v1'
+     sh 'docker run -p 8000:8080 -d --name libraryApp library:v1'
 }
 }
