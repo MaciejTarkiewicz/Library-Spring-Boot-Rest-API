@@ -1,6 +1,6 @@
 node{
     stage('Mvn Package'){
-     sh 'cd ./Library-Spring-Boot'
+     //sh 'cd ./Library-Spring-Boot'
      sh "mvn clean package"
    }
    
