@@ -16,3 +16,7 @@
 <li>ALTER USER libraryUser WITH PASSWORD 'admin';</li>
 <li>mvn clean spring-boot:run</li>
 </ol>
+
+<ol>
+ <li> sudo usermod -a -G docker jenkins ----> Dodanie Jenkinsa do grupy dockera</li>
+</ol>
