@@ -1,8 +1,6 @@
 node {
     checkout scm
     stage('Mvn Package'){
-     //sh 'cd ./Library-Spring-Boot'
-     sh 'pwd'
      sh "mvn clean package"
    }
    
