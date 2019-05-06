@@ -1,4 +1,5 @@
-node{
+node {
+    checkout scm
     stage('Mvn Package'){
      //sh 'cd ./Library-Spring-Boot'
      sh 'pwd'
