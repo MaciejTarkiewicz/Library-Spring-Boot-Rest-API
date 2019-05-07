@@ -7,7 +7,7 @@ public class Book {
     private String year;
     private String type;
 
-    public Book(String title, String author, String year, String type) {
+    public Book(String title, String author, String year, String type, Object o) {
         this.title = title.trim();
         this.author = author.trim();
         this.year = year.trim();

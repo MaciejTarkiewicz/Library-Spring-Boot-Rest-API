@@ -13,6 +13,7 @@ import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,12 +45,13 @@ public class LibraryController {
     }
 
     @GetMapping(value = "/api/library")
-    public Iterable<Library> getAllBookByUser(HttpSession session) {
+    public List<Library> getAllBookByUser(HttpSession session) {
         return this.libraryService.getLibraryByUserId((Long) session.getAttribute("User_id"));
     }
 
     @GetMapping(value = "/api/library/all")
-    public Iterable<Library> getAllBook() {
+    public List<Library> getAllBook()
+    {
         return this.libraryService.getLibrary();
     }
 
@@ -100,8 +102,6 @@ public class LibraryController {
         this.libraryService.save(new Library(id, library.getTitle(), library.getAuthor(), library.getProductionYear(), library.getType(), user.get()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
-
-
 
 }
 

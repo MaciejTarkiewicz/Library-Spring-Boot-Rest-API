@@ -12,15 +12,20 @@ import java.util.List;
 @Service
 public class LibraryService {
 
-    @Autowired
     private LibraryRepo libraryRepo;
+
+    @Autowired
+    public LibraryService(LibraryRepo libraryRepo){
+        this.libraryRepo = libraryRepo;
+
+    }
 
 
     public Library save(Library library){
         return this.libraryRepo.save(library);
     }
 
-    public Iterable<Library> getLibrary(){
+    public List<Library> getLibrary(){
         List<Library> list = new ArrayList<>();
         this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
         return list;

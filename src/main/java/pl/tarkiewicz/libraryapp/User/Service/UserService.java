@@ -20,8 +20,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private boolean status;
-
 
     @Autowired
     public UserService(UserRepo accountRepo) {
