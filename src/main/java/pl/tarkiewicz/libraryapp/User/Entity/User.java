@@ -2,7 +2,7 @@ package pl.tarkiewicz.libraryapp.User.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -21,7 +21,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
-    private Set<Library> libraries;
+    private Set<Book> books;
 
     public User() {
     }
@@ -65,12 +65,12 @@ public class User {
     }
 
 
-    public Set<Library> getLibraries() {
-        return libraries;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setLibraries(Set<Library> libraries) {
-        this.libraries = libraries;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
 

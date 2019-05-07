@@ -7,10 +7,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Library {
+@Table(name = "BOOKS")
+public class Book {
 
     @ManyToOne
-    @JsonIgnoreProperties("libraries")
+    @JsonIgnoreProperties("books")
     private User user;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Library {
     private String type;
 
 
-    public Library(String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(String title, String author, LocalDate productionYear, String type, User user) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
@@ -30,7 +31,7 @@ public class Library {
         this.user = user;
     }
 
-    public Library(Long id ,String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -39,7 +40,7 @@ public class Library {
         this.user = user;
     }
 
-    public Library(){
+    public Book(){
 
     }
 

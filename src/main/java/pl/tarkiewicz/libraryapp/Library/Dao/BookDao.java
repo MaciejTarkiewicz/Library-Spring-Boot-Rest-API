@@ -1,13 +1,13 @@
-package pl.tarkiewicz.libraryapp.Library;
+package pl.tarkiewicz.libraryapp.Library.Dao;
 
-public class Book {
+public class BookDao {
 
     private String title;
     private String author;
     private String year;
     private String type;
 
-    public Book(String title, String author, String year, String type, Object o) {
+    public BookDao(String title, String author, String year, String type, Object o) {
         this.title = title.trim();
         this.author = author.trim();
         this.year = year.trim();

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.tarkiewicz.libraryapp.Config.Config;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Service.UserService;
-import pl.tarkiewicz.libraryapp.User.UserLogin;
-import pl.tarkiewicz.libraryapp.User.UserRegistration;
+import pl.tarkiewicz.libraryapp.User.Dao.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Dao.UserRegistration;
 
 import javax.servlet.http.HttpSession;
 

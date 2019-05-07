@@ -3,7 +3,7 @@ package pl.tarkiewicz.libraryapp.Library.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 
 import java.util.ArrayList;
@@ -20,31 +20,30 @@ public class LibraryService {
 
     }
 
-
-    public Library save(Library library){
-        return this.libraryRepo.save(library);
+    public Book save(Book book){
+        return this.libraryRepo.save(book);
     }
 
-    public List<Library> getLibrary(){
-        List<Library> list = new ArrayList<>();
+    public List<Book> getAllBooks(){
+        List<Book> list = new ArrayList<>();
         this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
         return list;
 
     }
 
-    public void delete (Library library){
-        this.libraryRepo.delete(library);
+    public void delete (Book book){
+        this.libraryRepo.delete(book);
     }
 
     public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
 
-    public List<Library> getLibraryByUserId(Long id){
-        List<Library> list = new ArrayList<>();
-        this.libraryRepo.findLibraryByUserId(id).iterator().forEachRemaining(list::add);
+    public List<Book> getBookByUserId(Long id){
+        List<Book> list = new ArrayList<>();
+        this.libraryRepo.findBookByUserId(id).iterator().forEachRemaining(list::add);
         return list;
     }
 
-    public Library getLibrabyById(Long id){
+    public Book getBookById(Long id){
         return libraryRepo.findById(id).get();
     }
 

@@ -3,10 +3,9 @@ package pl.tarkiewicz.libraryapp.User.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
-import pl.tarkiewicz.libraryapp.User.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Dao.UserLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class UserService {
         return this.userRepo.findById(id);
     }
 
-    public List<User> getUser() {
+    public List<User> getUsers() {
         List<User> list = new ArrayList<>();
         this.userRepo.findAll().iterator().forEachRemaining(list::add);
         return list;
@@ -45,14 +44,14 @@ public class UserService {
     }
 
     public boolean checkUser(UserLogin u) {
-        return getUser().stream()
+        return getUsers().stream()
                 .filter(item->item.getLogin().equals(u.getUsername()))
                 .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
     }
 
     public User findByLogin(String username) {
-        if (getUser().stream().anyMatch(item -> item.getLogin().equals(username))){
-            return getUser().stream().filter(item -> item.getLogin().equals(username)).findFirst().get();
+        if (getUsers().stream().anyMatch(item -> item.getLogin().equals(username))){
+            return getUsers().stream().filter(item -> item.getLogin().equals(username)).findFirst().get();
 
         }else{
             return null;

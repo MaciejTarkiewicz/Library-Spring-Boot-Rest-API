@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User;
+package pl.tarkiewicz.libraryapp.User.Dao;
 
 import java.util.regex.Pattern;
 

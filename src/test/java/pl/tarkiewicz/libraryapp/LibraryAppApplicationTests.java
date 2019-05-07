@@ -6,13 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.tarkiewicz.libraryapp.Library.Book;
-import pl.tarkiewicz.libraryapp.Library.Controller.LibraryController;
-import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
@@ -22,11 +18,11 @@ import pl.tarkiewicz.libraryapp.User.Service.UserService;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @RunWith(SpringRunner.class)
@@ -38,7 +34,7 @@ public class LibraryAppApplicationTests {
     private User user2;
 
     @Before
-    public void BeforeClas(){
+    public void before(){
         user1 = new User("a","a","a@a");
         user2 = new User("b","b","b@b");
         User user3 = new User("c", "c", "c@c");
@@ -48,20 +44,38 @@ public class LibraryAppApplicationTests {
 
     }
 
+    private List<Book> prepareMockData(){
+        List<Book> list = new ArrayList<>();
+        list.add(new Book("a","a", LocalDate.parse("1995-09-09"),"a",null));
+        list.add(new Book("a","a", LocalDate.parse("1995-10-10"),"a",null));
+        list.add(new Book("a","a", LocalDate.parse("1995-11-11"),"a",null));
+        return list;
+
+    }
+
+    private Set<Book> prepareMockDataUserId(){
+        Set<Book> set = new HashSet<>();
+        set.add(new Book("a","a", LocalDate.parse("1995-11-11"),"a",user1));
+        set.add(new Book("a","a", LocalDate.parse("1995-12-12"),"a",user2));
+        return set;
+
+    }
+
+
     @Test
-    public void GetUsersTest_BDD(){
+    public void getUsersTest_BDD(){
         //given
         UserRepo userRepo = mock(UserRepo.class);
         given(userRepo.findAll()).willReturn(users);
         UserService userService = new UserService(userRepo);
         //when
-        List<User> u = userService.getUser();
+        List<User> u = userService.getUsers();
         //then
         Assert.assertThat(u, Matchers.hasSize(4));
     }
 
     @Test
-    public void GetUserTestById_BDD(){
+    public void getUserByIdTest_BDD(){
         //given
         UserRepo userRepo = mock(UserRepo.class);
         given(userRepo.findById(1L)).willReturn(Optional.ofNullable(user1));
@@ -99,14 +113,8 @@ public class LibraryAppApplicationTests {
     }
 
 
-    private List<Library> prepareMockData(){
-        List<Library> list = new ArrayList<>();
-        list.add(new Library("a","a", LocalDate.parse("1995-09-09"),"a",null));
-        list.add(new Library("a","a", LocalDate.parse("1995-10-10"),"a",null));
-        list.add(new Library("a","a", LocalDate.parse("1995-11-11"),"a",null));
-        return list;
 
-    }
+
 
     @Test
     public void getAllBooksTest_BDD() {
@@ -115,29 +123,22 @@ public class LibraryAppApplicationTests {
         given(libraryRepo.findAll()).willReturn(prepareMockData());
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
-        List<Library> books = libraryService.getLibrary();
+        List<Book> books = libraryService.getAllBooks();
         //then
         Assert.assertThat(books, Matchers.hasSize(3));
 
 
     }
 
-    private Set<Library> prepareMockDataUserId(){
-        Set<Library> set = new HashSet<>();
-        set.add(new Library ("a","a", LocalDate.parse("1995-11-11"),"a",user1));
-        set.add(new Library ("a","a", LocalDate.parse("1995-12-12"),"a",user2));
-        return set;
-
-    }
 
     @Test
     public void getAllBooksByUserIdTest_BDD() {
         //given
         LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.findLibraryByUserId(1L)).willReturn(prepareMockDataUserId());
+        given(libraryRepo.findBookByUserId(1L)).willReturn(prepareMockDataUserId());
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
-        List<Library> books = libraryService.getLibraryByUserId(1L);
+        List<Book> books = libraryService.getBookByUserId(1L);
         //then
         Assert.assertThat(books, Matchers.hasSize(2));
 
@@ -145,22 +146,22 @@ public class LibraryAppApplicationTests {
     }
 
     @Test
-    public void AddBookTest_BDD() {
+    public void addBookTest_BDD() {
         //given
         LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.save(Mockito.any(Library.class))).willReturn(new Library("d","d", LocalDate.parse("1995-12-12"),"d",null));
+        given(libraryRepo.save(Mockito.any(Book.class))).willReturn(new Book("d","d", LocalDate.parse("1995-12-12"),"d",null));
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
-        Library library = libraryService.save(new Library());
+        Book library = libraryService.save(new Book());
         //then
         Assert.assertEquals(library.getAuthor(),"d" );
 
     }
 
     @Test
-    public void DeleteBookTesT_BDD() {
+    public void deleteBookTesT_BDD() {
         //given
-        Library book = new Library ("a","a", LocalDate.parse("1995-12-12"),"a",user2);
+        Book book = new Book("a","a", LocalDate.parse("1995-12-12"),"a",user2);
         LibraryRepo libraryRepo = mock(LibraryRepo.class);
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
