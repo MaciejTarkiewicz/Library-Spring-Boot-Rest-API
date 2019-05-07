@@ -49,7 +49,7 @@ public class LibraryAppApplicationTests {
     }
 
     @Test
-    public void GetUserTest_BDD(){
+    public void GetUsersTest_BDD(){
         //given
         UserRepo userRepo = mock(UserRepo.class);
         given(userRepo.findAll()).willReturn(users);
@@ -59,6 +59,19 @@ public class LibraryAppApplicationTests {
         //then
         Assert.assertThat(u, Matchers.hasSize(4));
     }
+
+    @Test
+    public void GetUserTestById_BDD(){
+        //given
+        UserRepo userRepo = mock(UserRepo.class);
+        given(userRepo.findById(1L)).willReturn(Optional.ofNullable(user1));
+        UserService userService = new UserService(userRepo);
+        //when
+        Optional<User> u = userService.findById(1L);
+        //then
+        assertEquals(u.get(),user1);
+    }
+
 
 
     @Test
@@ -131,7 +144,6 @@ public class LibraryAppApplicationTests {
 
     }
 
-
     @Test
     public void AddBookTest_BDD() {
         //given
@@ -142,6 +154,19 @@ public class LibraryAppApplicationTests {
         Library library = libraryService.save(new Library());
         //then
         Assert.assertEquals(library.getAuthor(),"d" );
+
+    }
+
+    @Test
+    public void DeleteBookTesT_BDD() {
+        //given
+        Library book = new Library ("a","a", LocalDate.parse("1995-12-12"),"a",user2);
+        LibraryRepo libraryRepo = mock(LibraryRepo.class);
+        LibraryService libraryService = new LibraryService(libraryRepo);
+        //when
+        libraryService.delete(book);
+        //then
+        verify(libraryRepo,times(1)).delete(book);
 
     }
 
