@@ -3,6 +3,7 @@
 <title>Library </title>
 
 <body >
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
@@ -11,6 +12,26 @@
 
 <div id="library_vue">
     <h1>Library {{ username.data }}</h1>
+=======
+<link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/css/library.css" media="screen"/>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="/js/vueLibrary.js"></script>
+
+<div id="library_vue">
+
+    <div >
+        <button class="button button2" type="submit" value="Submit" @click= "myLibrary(username.data)"
+            >My Books </button>
+        <button class="button" type="submit" value="Submit" @click="logout" id = "logout" style = "float: right">
+            Logout
+        </button>
+        <h3 align="right">{{ username.data }}</h3>
+
+    </div>
+    <h1 align="center">Library</h1>
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
     <table id="library_view">
         <tr>
             <th>Title</th>
@@ -18,24 +39,51 @@
             <th>Production Year</th>
             <th>Type</th>
             <th>Action</th>
+<<<<<<< HEAD
+=======
+            <th>Borrowed</th>
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
         </tr >
         <tbody v-for="item in l">
             <td>{{ item.title }}</td>
             <td>{{ item.author }}</td>
             <td>{{ item.productionYear }}</td>
             <td>{{ item.type }}</td>
+<<<<<<< HEAD
             <td> <button class="button button2" @click="editBook(item.id)" id = "edit">Edit </button>
                 <button class="button" @click="deleteBook(item.id)" id = "delete">Delete </button>
             </td>
+=======
+            <td>
+                <section v-if="!justTesting(item.user)">
+                    <label>
+                    <button class="button button2" @click="editBook(item.id)" id = "edit">Edit </button>
+                    <button class="button" @click="deleteBook(item.id)" id = "delete">Delete </button>
+                    <button class="button button2" @click="BorrowBook(item.id)" id = "borrow">Borrow </button>
+                    </label>
+                </section>
+            </td>
+        <td>
+
+            <input
+                    type="checkbox"
+                    :checked="justTesting(item.user)"
+                    disabled="disabled"
+            >
+        </td>
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
         </tbody>
     </table>
     <hr />
     <button class="button button2" type="submit" value="Submit" @click="addBook" id ="add_book">
         Add Book
     </button>
+<<<<<<< HEAD
     <button class="button" type="submit" value="Submit" @click="logout" id = "logout">
         Logout
     </button>
+=======
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
 
     <section v-if="edit">
         <div>
@@ -53,12 +101,25 @@
         </p>
         </div>
     </section>
+<<<<<<< HEAD
 
 
+=======
+    <section v-if="borrow">
+        <div>
+            <p style="color:green;">
+                <b>
+                    You successfully borrowed the book!"
+                </b>
+            </p>
+        </div>
+    </section>
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
 </div>
 
 </body>
 
+<<<<<<< HEAD
     <style>
 
     #library_view {
@@ -87,3 +148,45 @@
 </style>
 
 </html>
+=======
+    <!--<style>-->
+
+        <!--a:link, a:visited {-->
+            <!--background-color: #4CAF50;-->
+            <!--color: white;-->
+            <!--padding: 5px 8px;-->
+            <!--text-align: center;-->
+            <!--text-decoration: none;-->
+            <!--display: inline-block;-->
+        <!--}-->
+        <!--a:hover, a:active {-->
+            <!--background-color: green;-->
+        <!--}-->
+
+    <!--#library_view {-->
+        <!--font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;-->
+        <!--border-collapse: collapse;-->
+        <!--width: 100%;-->
+    <!--}-->
+
+    <!--#library_view td, #library_view th {-->
+        <!--border: 1px solid #ddd;-->
+        <!--padding: 8px;-->
+    <!--}-->
+
+
+    <!--#library_view tr:nth-child(even){background-color: #f2f2f2;}-->
+
+    <!--#library_view th {-->
+        <!--padding-top: 12px;-->
+        <!--padding-bottom: 12px;-->
+        <!--text-align: left;-->
+        <!--background-color: #20262E;-->
+        <!--color: white;-->
+    <!--}-->
+
+
+<!--</style>-->
+
+</html>
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f

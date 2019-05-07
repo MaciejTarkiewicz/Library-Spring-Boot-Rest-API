@@ -30,7 +30,17 @@
         <comment>dodanie wpisów do tabeli Library</comment>
 
         <sql><![CDATA[
+<<<<<<< HEAD
               INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter','2015-09-01','fantasy',1);
+=======
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Kamień Filozoficzny','1997-06-23','fantasy',1);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Komnata Tajemnic','1999-09-01','fantasy',null);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Więzień Azkabanu','2001-09-02','fantasy',null);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Czara Ognia','2003-09-03','fantasy',null);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Zakon Feniksa','2005-09-04','fantasy',null);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Ksiąze Półkrwi','2007-09-05','fantasy',null);
+              INSERT INTO LIBRARY (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Insygnia Smierci','2009-09-06','fantasy',null);
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
         ]]></sql>
 
     </changeSet>

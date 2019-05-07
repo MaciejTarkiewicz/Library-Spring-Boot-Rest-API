@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pl/tarkiewicz/libraryapp/Library/Repo/LibraryRepo.class
 pl/tarkiewicz/libraryapp/User/Entity/User.class
 pl/tarkiewicz/libraryapp/User/Service/UserService.class
@@ -12,3 +13,20 @@ pl/tarkiewicz/libraryapp/User/Repo/UserRepo.class
 pl/tarkiewicz/libraryapp/LibraryAppApplication.class
 pl/tarkiewicz/libraryapp/Library/Entity/Library.class
 pl/tarkiewicz/libraryapp/Library/Service/LibraryService.class
+=======
+pl\tarkiewicz\libraryapp\User\Repo\UserRepo.class
+pl\tarkiewicz\libraryapp\Library\Service\LibraryService.class
+pl\tarkiewicz\libraryapp\Library\Controller\LibraryController.class
+pl\tarkiewicz\libraryapp\LibraryAppApplication.class
+pl\tarkiewicz\libraryapp\Library\Book.class
+pl\tarkiewicz\libraryapp\Library\Repo\LibraryRepo.class
+pl\tarkiewicz\libraryapp\User\Controller\UserController.class
+pl\tarkiewicz\libraryapp\Config\Config.class
+pl\tarkiewicz\libraryapp\Config\SwaggerConfig.class
+pl\tarkiewicz\libraryapp\User\UserLogin.class
+pl\tarkiewicz\libraryapp\User\UserRegistration.class
+pl\tarkiewicz\libraryapp\Home\HomeController.class
+pl\tarkiewicz\libraryapp\Library\Entity\Library.class
+pl\tarkiewicz\libraryapp\User\Service\UserService.class
+pl\tarkiewicz\libraryapp\User\Entity\User.class
+>>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f

@@ -28,7 +28,7 @@
             <comment>dodanie wpisów do tabeli ACCOUNT</comment>
 
             <sql><![CDATA[
-                  INSERT INTO ACCOUNT (username, password, email) VALUES('maciek','$2a$10$QI8LMeqVHpdPXZHoPi19XuCWzYlyEK2PSCMwUySutkptj3tBl3Gq2','maciek@gmail.pl');
+                  INSERT INTO ACCOUNT (username, password, email) VALUES('Maciek','$2a$10$QI8LMeqVHpdPXZHoPi19XuCWzYlyEK2PSCMwUySutkptj3tBl3Gq2','maciek@gmail.pl');
 
                    ]]></sql>
 
