@@ -29,7 +29,7 @@
 </ol>
 
 <ol>
-<li>-ti  --> przekierowanie terminala i potoku </li>
+<li>-it  --> przekierowanie terminala i potoku </li>
 <li>-d --> flaga aby działał w tle </li>
 <li>exec ---> wejście do kontenera </li>
 <li>EXPOSE port ---> port po którym bede rozmawiał ze swoim kontenerem.
