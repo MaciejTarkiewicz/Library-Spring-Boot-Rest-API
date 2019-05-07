@@ -6,6 +6,7 @@
 <li>CRUD</li>
 <li>Postgres DataBase - liquibase</li>
 <li>Vue JS</li>
+<li>JUnit and Mockito</li>
 </ul>
 
 ## Run:
