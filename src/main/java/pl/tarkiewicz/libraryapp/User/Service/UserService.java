@@ -3,10 +3,13 @@ package pl.tarkiewicz.libraryapp.User.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
 import pl.tarkiewicz.libraryapp.User.UserLogin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,8 +34,10 @@ public class UserService {
         return this.userRepo.findById(id);
     }
 
-    public Iterable<User> getUser() {
-        return userRepo.findAll();
+    public List<User> getUser() {
+        List<User> list = new ArrayList<>();
+        this.userRepo.findAll().iterator().forEachRemaining(list::add);
+        return list;
     }
 
     public void deleteUser(User user){
