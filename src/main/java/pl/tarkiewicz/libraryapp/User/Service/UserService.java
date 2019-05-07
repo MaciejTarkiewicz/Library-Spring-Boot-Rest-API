@@ -20,6 +20,8 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private boolean status;
+
 
     @Autowired
     public UserService(UserRepo accountRepo) {
@@ -44,18 +46,12 @@ public class UserService {
         userRepo.delete(user);
     }
 
-
     public boolean checkUser(UserLogin u) {
-        boolean status = false;
-        for (User user : getUser()) {
-            if (passwordEncoder.matches(u.getPassword(),user.getPassword()) & user.getLogin().equals(u.getUsername())) {
-                status = true;
-                break;
-            }
-        }
-        return status;
-
+        return getUser().stream()
+                .filter(item->item.getLogin().equals(u.getUsername()))
+                .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
     }
+
 
     public User findByLogin(String username) {
         for (User u : getUser()) {
