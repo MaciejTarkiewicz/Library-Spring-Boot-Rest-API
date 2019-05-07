@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.Library.Entity.Library;
 import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class LibraryService {
 
@@ -18,7 +21,10 @@ public class LibraryService {
     }
 
     public Iterable<Library> getLibrary(){
-        return this.libraryRepo.findAll();
+        List<Library> list = new ArrayList<>();
+        this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
+        return list;
+
     }
 
     public void delete (Library library){
@@ -27,13 +33,16 @@ public class LibraryService {
 
     public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
 
-    public Iterable<Library> getLibraryByUserId(Long id){
-        return this.libraryRepo.findLibraryByUserId(id);
+    public List<Library> getLibraryByUserId(Long id){
+        List<Library> list = new ArrayList<>();
+        this.libraryRepo.findLibraryByUserId(id).iterator().forEachRemaining(list::add);
+        return list;
     }
 
     public Library getLibrabyById(Long id){
         return libraryRepo.findById(id).get();
     }
+
 
 
 }
