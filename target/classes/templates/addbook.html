@@ -3,16 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<<<<<<< HEAD
-<!--    <link rel="stylesheet" type="text/css" href="add.css"/>-->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-=======
     <link rel="stylesheet" type="text/css" href="/css/addbook.css"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script src="/js/vueBook.js"></script>
->>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
 </head>
 
 
@@ -65,96 +59,4 @@
 
 </div>
 </body>
-<<<<<<< HEAD
-<script>
-    window.onload = () => {
-        new Vue({
-            el: "#addBook_vue",
-            data: {
-                title: '',
-                author: '',
-                year: '',
-                type: '',
-                error:false,
-                info: ''
-
-            },
-            methods: {
-                addBook(){
-                    axios({
-                        method: 'post',
-                        url: '/api/library/add',
-                        data: {title: this.title, author: this.author, year: this.year, type: this.type}
-                    }).then(function (response) {
-                       document.location.replace("/library");
-                    }).catch(err => {
-                        if (err.response.status === 409) {
-                             this.error = true;
-                             this.info = 'Error: Bad data format!';
-                             //alert("Bad data format")
-                        }else{
-                            this.error = true;
-                            this.info = 'Error: Fill in all fields!';
-                             //alert("Fill in all fields")
-                         }
-
-                    })
-                },
-                cancel() {
-                    document.location.replace("/library");
-
-                },
-
-
-            },
-        })
-
-    };
-
-</script>
-
-<style>
-    body {
-        background: #20262E;
-        padding: 20px;
-        font-family: Helvetica;
-    }
-
-    #addBook_vue {
-        background: #fff;
-        border-radius: 4px;
-        padding: 20px;
-        transition: all 0.2s;
-    }
-
-    li {
-        margin: 8px 0;
-    }
-
-    h2 {
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    del {
-        color: rgba(0, 0, 0, 0.3);
-    }
-
-    .button {
-        background-color: #f44336; /* Red */
-        border: none;
-        color: white;
-        padding: 5px 8px;
-        text-align: match-parent;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-
-    .button2 {background-color: #4CAF50;} /* Green */
-</style>
-=======
->>>>>>> 207fc538f6689c6b61a5c1996b73aad0f51df87f
 </html>

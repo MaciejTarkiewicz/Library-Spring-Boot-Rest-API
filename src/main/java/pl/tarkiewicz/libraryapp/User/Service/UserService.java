@@ -52,14 +52,14 @@ public class UserService {
                 .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
     }
 
-
     public User findByLogin(String username) {
-        for (User u : getUser()) {
-            if (u.getLogin().equals(username)) {
-                return u;
-            }
+        if (getUser().stream().anyMatch(item -> item.getLogin().equals(username))){
+            return getUser().stream().filter(item -> item.getLogin().equals(username)).findFirst().get();
+
+        }else{
+            return null;
         }
-        return null;
+
     }
 
 
