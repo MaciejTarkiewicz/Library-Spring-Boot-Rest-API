@@ -14,6 +14,7 @@ window.onload = () => {
             edit: false,
             borrow: false,
             status: false,
+            rating: null
         },
         methods: {
             addBook() {
@@ -94,7 +95,8 @@ window.onload = () => {
             const {data} = await axios.get('/api/library/all');
             this.username = await axios.get('/api/library/user');
             this.l = data;
-            console.log(this.status);
+            this.rating = "";
+
 
         }
 

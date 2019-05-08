@@ -13,6 +13,8 @@ window.onload = () => {
             info: null,
             edit: false,
             borrow:false,
+            rating:false,
+            rating_add:''
         },
         methods: {
             GiveBook(id,username) {
@@ -38,6 +40,24 @@ window.onload = () => {
                 axios.get('/api/logout');
                 document.location.replace("/");
             },
+
+            rating12() {
+                this.rating = true;
+            },
+
+            // Rating(id,username) {
+            //     axios({
+            //         method: 'post',
+            //         url: '/api/library/user/rating/' + id,
+            //         data: {rating: this.rating}
+            //     }).then(function (response) {
+            //         document.location.replace("/library/user?username" + username);
+            //     }).catch(err => {
+            //         if (err.response.status === 400) {
+            //             this.error = true;
+            //             this.info = 'Invalid rating!';
+            //         }
+            //     });
 
         },
         async created() {
