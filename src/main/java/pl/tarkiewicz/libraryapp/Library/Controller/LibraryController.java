@@ -31,13 +31,14 @@ public class LibraryController {
 
     @PostMapping(value = "/api/library/add")
     public ResponseEntity<String> addBook(@RequestBody BookDao bookDao) {
-        System.out.println(bookDao.getAuthor());
-        if (!bookDao.checkWebEdit()) {
-            return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
-        }
+//        System.out.println(bookDao.getAuthor());
+//        if (!bookDao.checkWebEdit()) {
+//            return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
+//        }
         try {
-            LocalDate date = LocalDate.parse(bookDao.getYear());
-            this.libraryService.save(new Book(bookDao.getTitle(), bookDao.getAuthor(), date, bookDao.getType(), null));
+            //LocalDate date = LocalDate.parse(bookDao.getYear());
+            this.libraryService.addBook(bookDao);
+            //this.libraryService.save(new Book(bookDao.getTitle(), bookDao.getAuthor(), date, bookDao.getType(), null));
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
@@ -81,17 +82,20 @@ public class LibraryController {
 
     @PutMapping(value = "/api/library/edit/user")
     public ResponseEntity<String> putBookUser(@RequestBody BookDao bookDao, HttpSession session, @RequestParam Long id) {
-        LocalDate date = LocalDate.parse(bookDao.getYear());
+        //LocalDate date = LocalDate.parse(bookDao.getYear());
         Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
-        this.libraryService.save(new Book(id, bookDao.getTitle(), bookDao.getAuthor(), date, bookDao.getType(), user.get()));
+        //bookDao.setUser(user.get());
+        this.libraryService.EditBook(bookDao,user.get());
+        //this.libraryService.save(new Book(id, bookDao.getTitle(), bookDao.getAuthor(), date, bookDao.getType(), user.get()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
 
     }
 
     @PutMapping(value = "/api/library/user/{id}")
     public ResponseEntity<String> giveBackBook(@PathVariable Long id) {
-        Book library = this.libraryService.getBookById(id);
-        this.libraryService.save(new Book(id, library.getTitle(), library.getAuthor(), library.getProductionYear(), library.getType(), null));
+        Book book = this.libraryService.getBookById(id);
+        this.libraryService.GiveBack(book);
+        //this.libraryService.save(new Book(id, library.getTitle(), library.getAuthor(), library.getProductionYear(), library.getType(), null));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 

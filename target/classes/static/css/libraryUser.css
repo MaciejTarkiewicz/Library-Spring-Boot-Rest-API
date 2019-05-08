@@ -1,0 +1,21 @@
+#library_view {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#library_view td, #library_view th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+#library_view tr:nth-child(even){background-color: #f2f2f2;}
+
+#library_view th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #20262E;
+    color: white;
+}

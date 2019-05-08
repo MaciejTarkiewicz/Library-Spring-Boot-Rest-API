@@ -3,11 +3,15 @@ package pl.tarkiewicz.libraryapp.Library.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.tarkiewicz.libraryapp.Library.Dao.BookDao;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
+import pl.tarkiewicz.libraryapp.User.Entity.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LibraryService {
@@ -21,6 +25,35 @@ public class LibraryService {
     }
 
     public Book save(Book book){
+        return this.libraryRepo.save(book);
+    }
+
+    public Book GiveBack(Book book){
+        book.setUser(null);
+        return this.libraryRepo.save(book);
+    }
+
+
+    public Book EditBook(BookDao bookDao,User user){
+        Book book = new Book.Builder()
+                .title(bookDao.getTitle())
+                .author(bookDao.getAuthor())
+                .productionYear(LocalDate.parse(bookDao.getYear()))
+                .type(bookDao.getType())
+                .user(user)
+                .build();
+        return this.libraryRepo.save(book);
+    }
+
+
+    public Book addBook(BookDao bookDao){
+        Book book = new Book.Builder()
+                .title(bookDao.getTitle())
+                .author(bookDao.getAuthor())
+                .productionYear(LocalDate.parse(bookDao.getYear()))
+                .type(bookDao.getType())
+                .user(null)
+                .build();
         return this.libraryRepo.save(book);
     }
 

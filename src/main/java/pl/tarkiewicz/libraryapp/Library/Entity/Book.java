@@ -83,7 +83,6 @@ public class Book {
         this.type = type;
     }
 
-
     public User getUser() {
         return user;
     }
@@ -91,4 +90,53 @@ public class Book {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+
+    public static final class Builder {
+        private String title;
+        private String author;
+        private LocalDate productionYear;
+        private String type;
+        private User user;
+
+        public Builder title(String title){
+            this.title = title;
+            return this;
+        }
+        public Builder author(String author){
+            this.author = author;
+            return this;
+        }
+        public Builder productionYear(LocalDate productionYear){
+            this.productionYear = productionYear;
+            return this;
+        }
+
+        public Builder type(String type){
+            this.type = type;
+            return this;
+        }
+
+        public Builder user(User user){
+            this.user = user;
+            return this;
+        }
+
+        public Book build(){
+
+            Book book = new Book();
+            book.title = this.title;
+            book.author = this.author;
+            book.productionYear = this.productionYear;
+            book.type = this.type;
+            book.user = this.user;
+            return book;
+
+
+        }
+
+
+    }
+
 }
