@@ -23,22 +23,41 @@ public class LibraryService {
         this.libraryRepo = libraryRepo;
 
     }
-
     public Book save(Book book){
         return this.libraryRepo.save(book);
     }
 
-    public Book GiveBack(Book book){
+
+
+    public Book borrowBook(Book book, User user){
+        book.setUser(user);
+        return this.libraryRepo.save(book);
+    }
+
+    public Book giveBack(Book book){
         book.setUser(null);
         return this.libraryRepo.save(book);
     }
 
 
-    public Book EditBook(BookDao bookDao,User user){
+    public Book editBook(BookDao bookDao,Long id){
+        Book book = new Book.Builder()
+                .id(id)
+                .title(bookDao.getTitle())
+                .author(bookDao.getAuthor())
+                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
+                .type(bookDao.getType())
+                .user(null)
+                .build();
+
+        return this.libraryRepo.save(book);
+    }
+
+    public Book editBookByUser(BookDao bookDao,User user){
         Book book = new Book.Builder()
                 .title(bookDao.getTitle())
                 .author(bookDao.getAuthor())
-                .productionYear(LocalDate.parse(bookDao.getYear()))
+                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
                 .type(bookDao.getType())
                 .user(user)
                 .build();
@@ -50,7 +69,7 @@ public class LibraryService {
         Book book = new Book.Builder()
                 .title(bookDao.getTitle())
                 .author(bookDao.getAuthor())
-                .productionYear(LocalDate.parse(bookDao.getYear()))
+                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
                 .type(bookDao.getType())
                 .user(null)
                 .build();
@@ -70,7 +89,7 @@ public class LibraryService {
 
     public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
 
-    public List<Book> getBookByUserId(Long id){
+    public List<Book> getBooksByUserId(Long id){
         List<Book> list = new ArrayList<>();
         this.libraryRepo.findBookByUserId(id).iterator().forEachRemaining(list::add);
         return list;

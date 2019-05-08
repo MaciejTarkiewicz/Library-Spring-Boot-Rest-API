@@ -4,13 +4,13 @@ public class BookDao {
 
     private String title;
     private String author;
-    private String year;
+    private String productionYear;
     private String type;
 
-    public BookDao(String title, String author, String year, String type, Object o) {
+    public BookDao(String title, String author, String productionYear, String type, Object o) {
         this.title = title.trim();
         this.author = author.trim();
-        this.year = year.trim();
+        this.productionYear = productionYear.trim();
         this.type = type.trim();
     }
 
@@ -30,12 +30,12 @@ public class BookDao {
         this.author = author;
     }
 
-    public String getYear() {
-        return year;
+    public String getProductionYear() {
+        return productionYear;
     }
 
-    public void setProductionYear(String year) {
-        this.year = year;
+    public void setProductionYear(String productionYear) {
+        this.productionYear = productionYear;
     }
 
     public String getType() {
@@ -46,7 +46,4 @@ public class BookDao {
         this.type = type;
     }
 
-    public boolean checkWebEdit(){
-        return !getTitle().isEmpty() && !getAuthor().isEmpty() && !getYear().isEmpty() && !getType().isEmpty();
-    }
 }

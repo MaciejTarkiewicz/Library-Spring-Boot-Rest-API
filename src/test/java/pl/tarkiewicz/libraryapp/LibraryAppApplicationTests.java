@@ -138,7 +138,7 @@ public class LibraryAppApplicationTests {
         given(libraryRepo.findBookByUserId(1L)).willReturn(prepareMockDataUserId());
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
-        List<Book> books = libraryService.getBookByUserId(1L);
+        List<Book> books = libraryService.getBooksByUserId(1L);
         //then
         Assert.assertThat(books, Matchers.hasSize(2));
 

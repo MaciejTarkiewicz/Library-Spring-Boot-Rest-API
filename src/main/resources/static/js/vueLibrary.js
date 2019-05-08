@@ -5,7 +5,7 @@ window.onload = () => {
             id: '',
             title: '',
             author: '',
-            year: '',
+            productionYear: '',
             type: '',
             username: '',
             login: '',
@@ -50,7 +50,7 @@ window.onload = () => {
                     data: {
                         title: this.info.title,
                         author: this.info.author,
-                        year: this.info.productionYear,
+                        productionYear: this.info.productionYear,
                         type: this.info.type
                     }
                 }).then(function (response) {

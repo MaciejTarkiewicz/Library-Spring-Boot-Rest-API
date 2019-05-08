@@ -92,13 +92,18 @@ public class Book {
     }
 
 
-
     public static final class Builder {
+        private Long id;
         private String title;
         private String author;
         private LocalDate productionYear;
         private String type;
         private User user;
+
+        public Builder id (Long id){
+            this.id = id;
+            return this;
+        }
 
         public Builder title(String title){
             this.title = title;
@@ -126,13 +131,13 @@ public class Book {
         public Book build(){
 
             Book book = new Book();
+            book.id = this.id;
             book.title = this.title;
             book.author = this.author;
             book.productionYear = this.productionYear;
             book.type = this.type;
             book.user = this.user;
             return book;
-
 
         }
 
