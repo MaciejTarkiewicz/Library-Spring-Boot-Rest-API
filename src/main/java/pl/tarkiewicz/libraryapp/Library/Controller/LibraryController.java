@@ -61,7 +61,6 @@ public class LibraryController {
     @DeleteMapping(value = "/api/library/{id}")
     public void deleteById(@PathVariable Long id) {
         this.libraryService.deleteById(id);
-
     }
 
     @GetMapping(value = "/api/library/edit")

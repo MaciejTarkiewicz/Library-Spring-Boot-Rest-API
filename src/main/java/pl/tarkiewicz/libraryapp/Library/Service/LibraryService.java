@@ -27,8 +27,6 @@ public class LibraryService {
         return this.libraryRepo.save(book);
     }
 
-
-
     public Book borrowBook(Book book, User user){
         book.setUser(user);
         return this.libraryRepo.save(book);
