@@ -22,3 +22,5 @@
 ### Na branchu: docker_deploy_branch instrukcja jak zrobić deploy aplikacji na serwerze linuxowym za pomocą dockera
 ### Na branchu: jenkins-automatic-deploy-docker plik Jenkinsfile za pomoca którego można przeprowadzić automatyczny deploy aplikacji na serwer linuxowy
 
+//libraryService.addBook(bookDao)
+
