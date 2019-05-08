@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.Library.Dao;
+package pl.tarkiewicz.libraryapp.Library.Dto;
 
 public class BookDao {
 
@@ -7,7 +7,7 @@ public class BookDao {
     private String productionYear;
     private String type;
 
-    public BookDao(String title, String author, String productionYear, String type, Object o) {
+    public BookDao(String title, String author, String productionYear, String type) {
         this.title = title.trim();
         this.author = author.trim();
         this.productionYear = productionYear.trim();

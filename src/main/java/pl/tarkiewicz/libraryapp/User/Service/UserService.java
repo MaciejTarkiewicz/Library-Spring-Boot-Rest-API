@@ -3,9 +3,10 @@ package pl.tarkiewicz.libraryapp.User.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
-import pl.tarkiewicz.libraryapp.User.Dao.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +20,18 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @Autowired
     public UserService(UserRepo accountRepo) {
         this.userRepo = accountRepo;
     }
 
-    public User save(User user) {
+    public User RegisterUser(UserRegistration userRegistration) {
+        User user = new User.Builder()
+                .username(userRegistration.getUsername())
+                .password((userRegistration.getPassword()))
+                .email(userRegistration.getEmail())
+                .build();
+
         return this.userRepo.save(user);
     }
 
@@ -45,13 +51,13 @@ public class UserService {
 
     public boolean checkUser(UserLogin u) {
         return getUsers().stream()
-                .filter(item->item.getLogin().equals(u.getUsername()))
+                .filter(item->item.getUsername().equals(u.getUsername()))
                 .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
     }
 
     public User findByLogin(String username) {
-        if (getUsers().stream().anyMatch(item -> item.getLogin().equals(username))){
-            return getUsers().stream().filter(item -> item.getLogin().equals(username)).findFirst().get();
+        if (getUsers().stream().anyMatch(item -> item.getUsername().equals(username))){
+            return getUsers().stream().filter(item -> item.getUsername().equals(username)).findFirst().get();
 
         }else{
             return null;

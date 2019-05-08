@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User.Dao;
+package pl.tarkiewicz.libraryapp.User.Dto;
 
 import java.util.Objects;
 

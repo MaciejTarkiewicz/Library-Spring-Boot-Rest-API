@@ -3,7 +3,7 @@ package pl.tarkiewicz.libraryapp.Library.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.Library.Dao.BookDao;
+import pl.tarkiewicz.libraryapp.Library.Dto.BookDao;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
@@ -11,7 +11,6 @@ import pl.tarkiewicz.libraryapp.User.Entity.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LibraryService {
@@ -23,10 +22,6 @@ public class LibraryService {
         this.libraryRepo = libraryRepo;
 
     }
-    public Book save(Book book){
-        return this.libraryRepo.save(book);
-    }
-
     public Book borrowBook(Book book, User user){
         book.setUser(user);
         return this.libraryRepo.save(book);
