@@ -3,10 +3,13 @@ package pl.tarkiewicz.libraryapp.User.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
-import pl.tarkiewicz.libraryapp.User.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,13 +20,18 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @Autowired
     public UserService(UserRepo accountRepo) {
         this.userRepo = accountRepo;
     }
 
-    public User save(User user) {
+    public User RegisterUser(UserRegistration userRegistration) {
+        User user = new User.Builder()
+                .username(userRegistration.getUsername())
+                .password((userRegistration.getPassword()))
+                .email(userRegistration.getEmail())
+                .build();
+
         return this.userRepo.save(user);
     }
 
@@ -31,34 +39,30 @@ public class UserService {
         return this.userRepo.findById(id);
     }
 
-    public Iterable<User> getUser() {
-        return userRepo.findAll();
+    public List<User> getUsers() {
+        List<User> list = new ArrayList<>();
+        this.userRepo.findAll().iterator().forEachRemaining(list::add);
+        return list;
     }
 
     public void deleteUser(User user){
         userRepo.delete(user);
     }
 
-
     public boolean checkUser(UserLogin u) {
-        boolean status = false;
-        for (User user : getUser()) {
-            if (passwordEncoder.matches(u.getPassword(),user.getPassword()) & user.getLogin().equals(u.getUsername())) {
-                status = true;
-                break;
-            }
-        }
-        return status;
-
+        return getUsers().stream()
+                .filter(item->item.getUsername().equals(u.getUsername()))
+                .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
     }
 
     public User findByLogin(String username) {
-        for (User u : getUser()) {
-            if (u.getLogin().equals(username)) {
-                return u;
-            }
+        if (getUsers().stream().anyMatch(item -> item.getUsername().equals(username))){
+            return getUsers().stream().filter(item -> item.getUsername().equals(username)).findFirst().get();
+
+        }else{
+            return null;
         }
-        return null;
+
     }
 
 
