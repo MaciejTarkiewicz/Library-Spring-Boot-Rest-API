@@ -12,6 +12,11 @@ window.onload = () => {
         },
         methods: {
             register() {
+                if(this.username.trim() === '' || this.password.trim()  === '' || this.confirmPassword.trim()  === '' || this.email.trim()  === ''){
+                    this.error = true;
+                    this.info = 'Error: Fill in all fields!';
+                    return;
+                }
                if(this.password !== this.confirmPassword){
                     this.error = true;
                     this.info = 'Passwords do not match';

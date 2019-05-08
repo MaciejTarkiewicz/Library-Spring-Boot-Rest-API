@@ -2,9 +2,10 @@ package pl.tarkiewicz.libraryapp.User.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.Library.Entity.Library;
+import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -21,7 +22,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
-    private Set<Library> libraries;
+    private Set<Book> books;
 
     public User() {
     }
@@ -40,12 +41,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
+    public String getUsername() {
         return username;
     }
 
-    public void setLogin(String login) {
-        this.username = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -65,16 +66,63 @@ public class User {
     }
 
 
-    public Set<Library> getLibraries() {
-        return libraries;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setLibraries(Set<Library> libraries) {
-        this.libraries = libraries;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public static final class Builder {
+        private String username;
+        private String password;
+        private String email;
+
+
+        public Builder username(String username){
+            this.username = username;
+            return this;
+        }
+
+        public Builder password(String password){
+            this.password = password;
+            return this;
+        }
+
+        public Builder email(String email){
+            this.email = email;
+            return this;
+        }
+
+        public User build(){
+
+            User user = new User();
+            user.username = this.username;
+            user.password = this.password;
+            user.email = this.email;
+            return user;
+
+        }
+
+
+
+
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
+                Objects.equals(getEmail(), user.getEmail());
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername(), getPassword(), getEmail());
+    }
 }

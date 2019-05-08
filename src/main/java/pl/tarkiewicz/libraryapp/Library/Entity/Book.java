@@ -7,10 +7,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Library {
+@Table(name = "BOOKS")
+public class Book {
 
     @ManyToOne
-    @JsonIgnoreProperties("libraries")
+    @JsonIgnoreProperties("books")
     private User user;
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Library {
     private String type;
 
 
-    public Library(String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(String title, String author, LocalDate productionYear, String type, User user) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
@@ -30,7 +31,7 @@ public class Library {
         this.user = user;
     }
 
-    public Library(Long id ,String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -39,13 +40,14 @@ public class Library {
         this.user = user;
     }
 
-    public Library(){
+    public Book(){
 
     }
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -82,7 +84,6 @@ public class Library {
         this.type = type;
     }
 
-
     public User getUser() {
         return user;
     }
@@ -90,4 +91,58 @@ public class Library {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+    public static final class Builder {
+        private Long id;
+        private String title;
+        private String author;
+        private LocalDate productionYear;
+        private String type;
+        private User user;
+
+        public Builder id (Long id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder title(String title){
+            this.title = title;
+            return this;
+        }
+        public Builder author(String author){
+            this.author = author;
+            return this;
+        }
+        public Builder productionYear(LocalDate productionYear){
+            this.productionYear = productionYear;
+            return this;
+        }
+
+        public Builder type(String type){
+            this.type = type;
+            return this;
+        }
+
+        public Builder user(User user){
+            this.user = user;
+            return this;
+        }
+
+        public Book build(){
+
+            Book book = new Book();
+            book.id = this.id;
+            book.title = this.title;
+            book.author = this.author;
+            book.productionYear = this.productionYear;
+            book.type = this.type;
+            book.user = this.user;
+            return book;
+
+        }
+
+
+    }
+
 }

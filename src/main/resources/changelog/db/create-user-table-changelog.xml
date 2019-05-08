@@ -9,7 +9,7 @@
 
     <changeSet author="mtarkiewicz" id="stworzenie-tabeli-user">
 
-        <comment>stworzenie tabeli user</comment>
+        <comment>stworzenie tabeli account</comment>
 
         <sql><![CDATA[
         CREATE TABLE ACCOUNT (
