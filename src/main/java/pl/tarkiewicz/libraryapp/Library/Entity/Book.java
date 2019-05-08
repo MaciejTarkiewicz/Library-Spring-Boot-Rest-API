@@ -47,6 +47,7 @@ public class Book {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -83,7 +84,6 @@ public class Book {
         this.type = type;
     }
 
-
     public User getUser() {
         return user;
     }
@@ -91,4 +91,58 @@ public class Book {
     public void setUser(User user) {
         this.user = user;
     }
+
+
+    public static final class Builder {
+        private Long id;
+        private String title;
+        private String author;
+        private LocalDate productionYear;
+        private String type;
+        private User user;
+
+        public Builder id (Long id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder title(String title){
+            this.title = title;
+            return this;
+        }
+        public Builder author(String author){
+            this.author = author;
+            return this;
+        }
+        public Builder productionYear(LocalDate productionYear){
+            this.productionYear = productionYear;
+            return this;
+        }
+
+        public Builder type(String type){
+            this.type = type;
+            return this;
+        }
+
+        public Builder user(User user){
+            this.user = user;
+            return this;
+        }
+
+        public Book build(){
+
+            Book book = new Book();
+            book.id = this.id;
+            book.title = this.title;
+            book.author = this.author;
+            book.productionYear = this.productionYear;
+            book.type = this.type;
+            book.user = this.user;
+            return book;
+
+        }
+
+
+    }
+
 }
