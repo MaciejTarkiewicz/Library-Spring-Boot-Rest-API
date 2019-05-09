@@ -17,7 +17,7 @@
               author VARCHAR(255) NOT NULL,
               title VARCHAR(255) NOT NULL,
               production_year VARCHAR(255) NOT NULL,
-              type VARCHAR(255) NOT Ngit add ULL,
+              type VARCHAR(255) NOT NULL,
               user_id INTEGER REFERENCES ACCOUNT (id) DEFAULT NULL
             );
        ]]></sql>
