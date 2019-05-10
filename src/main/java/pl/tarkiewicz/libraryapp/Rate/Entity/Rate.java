@@ -1,6 +1,7 @@
 package pl.tarkiewicz.libraryapp.Rate.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
@@ -12,13 +13,15 @@ import javax.persistence.*;
 public class Rate {
 
     @ManyToOne
-    @JsonIgnoreProperties("Rate")
-    @JoinColumn(name = "id_user")
+    //@JsonIgnoreProperties("RATES")
+    //@JoinColumn(name = "id_user")
+    @JsonIgnore
     private User user;
 
     @ManyToOne
-    @JsonIgnoreProperties("Rate")
-    @JoinColumn(name = "id_book")
+    //@JsonIgnoreProperties("RATES")
+    @JsonIgnore
+    //@JoinColumn(name = "id_book")
     private Book book;
 
 
@@ -26,9 +29,14 @@ public class Rate {
     @Id
     private Long id;
 
-    private Double rate;
+    private String rate;
 
-    public Rate(Book book,User user, Double rate) {
+
+    public Rate(){
+
+    }
+
+    public Rate(Book book,User user, String rate) {
         this.user = user;
         this.book = book;
         this.rate = rate;
@@ -58,11 +66,13 @@ public class Rate {
         this.id = id;
     }
 
-    public Double getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(Double rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
+
+
 }

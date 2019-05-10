@@ -1,6 +1,7 @@
 package pl.tarkiewicz.libraryapp.User.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
@@ -22,11 +23,13 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    //@JsonIgnoreProperties("user")
+    @JsonIgnore
     private Set<Book> books;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties("user")
+    //@JsonIgnoreProperties("user")
+    @JsonIgnore
     private Set<Rate> rates;
 
     public Set<Rate> getRates() {

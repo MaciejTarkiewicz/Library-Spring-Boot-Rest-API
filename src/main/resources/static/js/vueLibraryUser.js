@@ -17,7 +17,7 @@ window.onload = () => {
             rating_add:''
         },
         methods: {
-            GiveBook(id,username) {
+            GiveBook(id, username) {
                 try {
                     axios.put("/api/library/user/" + id).then(function (response) {
                         //document.location.replace("/library/all");
@@ -26,14 +26,14 @@ window.onload = () => {
                     }).catch(err => {
                         alert("You can't delete this book!")
                     });
-                }catch(error){
+                } catch (error) {
 
-                }finally {
+                } finally {
                     this.borrow = true;
                 }
 
             },
-            Library(){
+            Library() {
                 document.location.replace("/library/all");
             },
             logout() {
@@ -45,20 +45,21 @@ window.onload = () => {
                 this.rating = true;
             },
 
-            // Rating(id,username) {
-            //     axios({
-            //         method: 'post',
-            //         url: '/api/library/user/rating/' + id,
-            //         data: {rating: this.rating}
-            //     }).then(function (response) {
-            //         document.location.replace("/library/user?username" + username);
-            //     }).catch(err => {
-            //         if (err.response.status === 400) {
-            //             this.error = true;
-            //             this.info = 'Invalid rating!';
-            //         }
-            //     });
+            Rating55(id, username) {
+                axios({
+                    method: 'post',
+                    url: '/api/library/rebook/' + id,
+                    data: {rating: this.rating}
+                }).then(function (response) {
+                    document.location.replace("/library/user?username" + username);
+                }).catch(err => {
+                    if (err.response.status === 400) {
+                        this.error = true;
+                        this.info = 'Invalid rating!';
+                    }
+                });
 
+            },
         },
         async created() {
             //const { data } = await axios.get('/api/library');

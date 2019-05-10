@@ -43,8 +43,6 @@ public class UserController {
         }
 
         else {
-//            userRegistrtion.setPassword(passwordEncoder.encode(userRegistrtion.getPassword()));
-//            userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(), userRegistrtion.getEmail()));
             userService.RegisterUser(userRegistrtion);
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
         }

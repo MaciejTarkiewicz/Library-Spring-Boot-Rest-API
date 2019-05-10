@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.Library.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
@@ -17,7 +18,8 @@ public class Book {
     private User user;
 
     @OneToMany(mappedBy = "book")
-    @JsonIgnoreProperties("books")
+    //@JsonIgnoreProperties("BOOK")
+    @JsonIgnore
     private Set<Rate> rates;
 
     public Set<Rate> getRates() {

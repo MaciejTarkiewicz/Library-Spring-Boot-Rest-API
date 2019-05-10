@@ -25,9 +25,9 @@
         <sql><![CDATA[
         CREATE TABLE RATES (
               id BIGSERIAL NOT NULL PRIMARY KEY NOT NULL,
-              id_book INTEGER REFERENCES BOOKS (id),
-              id_user INTEGER REFERENCES ACCOUNT (id),
-              rate DECIMAL
+              book_id bigint REFERENCES BOOKS (id),
+              user_id bigint REFERENCES ACCOUNT (id),
+              rate VARCHAR(255) NOT NULL
             );
        ]]></sql>
 

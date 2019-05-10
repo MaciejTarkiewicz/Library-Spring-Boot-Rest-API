@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.Library.Dto.BookDao;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
 import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
+import pl.tarkiewicz.libraryapp.Rate.Dto.RateDto;
+import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
+import pl.tarkiewicz.libraryapp.Rate.Service.RateService;
 import pl.tarkiewicz.libraryapp.User.Service.UserService;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
@@ -21,11 +24,13 @@ public class LibraryController {
 
     private LibraryService libraryService;
     private UserService userService;
+    private RateService rateService;
 
     @Autowired
-    public LibraryController(LibraryService libraryService, UserService userService) {
+    public LibraryController(LibraryService libraryService, UserService userService,RateService rateService ) {
         this.libraryService = libraryService;
         this.userService = userService;
+        this.rateService = rateService;
     }
 
     @PostMapping(value = "/api/library/add")
@@ -96,6 +101,20 @@ public class LibraryController {
         Book book = this.libraryService.getBookById(id);
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         this.libraryService.borrowBook(book ,user.get());
+        return new ResponseEntity<>("Correct!", HttpStatus.OK);
+    }
+
+
+
+
+    @PostMapping(value = "/api/library/rebook/{id}")
+    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, @PathVariable Long id, HttpSession session) {
+        Book book = this.libraryService.getBookById(id);
+        Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
+        //double value = Double.parseDouble(rateDto.getRate());
+        System.out.println(rateDto.getRate());
+//        this.rateService.addRate(new Rate(book,user.get(),rateDto.getRate()));
+        this.rateService.addRate(new Rate(book,user.get(),"5"));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
