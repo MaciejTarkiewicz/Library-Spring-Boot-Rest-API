@@ -5,6 +5,7 @@ window.onload = () => {
             id: '',
             title: '',
             author: '',
+            rat:'',
             year: '',
             type: '',
             username: '',
@@ -14,7 +15,7 @@ window.onload = () => {
             edit: false,
             borrow:false,
             rating:false,
-            rating_add:''
+
         },
         methods: {
             GiveBook(id, username) {
@@ -49,14 +50,16 @@ window.onload = () => {
                 axios({
                     method: 'post',
                     url: '/api/library/rebook/' + id,
-                    data: {rating: this.rating}
+                    data: {rat: this.rat}
                 }).then(function (response) {
-                    document.location.replace("/library/user?username" + username);
+                    console.log("tu" + this.rat);
+                    document.location.replace("/library/user?username=" + username);
+                    console.log("tu" + this.rat);
                 }).catch(err => {
-                    if (err.response.status === 400) {
-                        this.error = true;
-                        this.info = 'Invalid rating!';
-                    }
+                    // if (err.response.status === 400) {
+                    //     this.error = true;
+                    //     this.info = 'Invalid rating!';
+                    // }
                 });
 
             },

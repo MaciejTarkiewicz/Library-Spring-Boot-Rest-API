@@ -1,10 +1,11 @@
 package pl.tarkiewicz.libraryapp.Rate.Dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class RateDto {
 
-    public RateDto() {
-    }
+
 
 //    public RateDto(int rate) {
 //        this.rate = rate;
@@ -36,17 +37,19 @@ public class RateDto {
 //        this.rate = rate;
 //    }
 
-    private String rate;
 
-    public RateDto(String rate) {
-        this.rate = rate;
+    @JsonIgnore
+    private String rat;
+
+    public RateDto(String rat) {
+        this.rat = rat;
     }
 
     public String getRate() {
-        return rate;
+        return rat;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
+    public void setRate(String rat) {
+        this.rat = rat;
     }
 }

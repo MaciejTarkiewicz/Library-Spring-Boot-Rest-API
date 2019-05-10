@@ -113,7 +113,6 @@ public class LibraryController {
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         //double value = Double.parseDouble(rateDto.getRate());
         System.out.println(rateDto.getRate());
-//        this.rateService.addRate(new Rate(book,user.get(),rateDto.getRate()));
         this.rateService.addRate(new Rate(book,user.get(),"5"));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
