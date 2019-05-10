@@ -1,10 +1,12 @@
 package pl.tarkiewicz.libraryapp.Library.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "BOOKS")
@@ -13,6 +15,18 @@ public class Book {
     @ManyToOne
     @JsonIgnoreProperties("books")
     private User user;
+
+    @OneToMany(mappedBy = "book")
+    @JsonIgnoreProperties("books")
+    private Set<Rate> rates;
+
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="mtarkiewicz" id="stworzenie-tabeli-rate">
+
+        <comment>stworzenie tabeli Book</comment>
+
+<!--        <sql><![CDATA[-->
+<!--        CREATE TABLE RATE (-->
+<!--              id BIGSERIAL NOT NULL PRIMARY KEY NOT NULL,-->
+<!--              id_book BIGINT NOT NULL,-->
+<!--              id_user BIGINT NOT NULL,-->
+<!--              FOREIGN KEY (id_book) REFERENCES BOOKS (id),-->
+<!--              FOREIGN KEY (id_user) REFERENCES ACCOUNT (id),-->
+<!--              rate DECIMAL NOT NULL-->
+<!--            );-->
+<!--       ]]></sql>-->
+
+        <sql><![CDATA[
+        CREATE TABLE RATES (
+              id BIGSERIAL NOT NULL PRIMARY KEY NOT NULL,
+              id_book INTEGER REFERENCES BOOKS (id),
+              id_user INTEGER REFERENCES ACCOUNT (id),
+              rate DECIMAL
+            );
+       ]]></sql>
+
+    </changeSet>
+
+
+<!--    <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">-->
+
+<!--        <comment>dodanie wpisów do tabeli Library</comment>-->
+
+<!--        <sql><![CDATA[-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Kamień Filozoficzny','1997-06-23','fantasy',1);-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Komnata Tajemnic','1999-09-01','fantasy');-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Więzień Azkabanu','2001-09-02','fantasy');-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Czara Ognia','2003-09-03','fantasy');-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Zakon Feniksa','2005-09-04','fantasy');-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Ksiąze Półkrwi','2007-09-05','fantasy');-->
+<!--              INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Insygnia Smierci','2009-09-06','fantasy');-->
+<!--        ]]></sql>-->
+
+<!--    </changeSet>-->
+
+
+</databaseChangeLog>

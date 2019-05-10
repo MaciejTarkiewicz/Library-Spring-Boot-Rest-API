@@ -3,6 +3,7 @@ package pl.tarkiewicz.libraryapp.User.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.tarkiewicz.libraryapp.Library.Entity.Book;
+import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -23,6 +24,18 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties("user")
     private Set<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties("user")
+    private Set<Rate> rates;
+
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
 
     public User() {
     }
@@ -73,6 +86,8 @@ public class User {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
+
+
 
     public static final class Builder {
         private String username;
