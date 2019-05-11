@@ -35,7 +35,7 @@
         <td> <button class="button" @click="GiveBook(item.id,username.data)" id = "edit_user_book">Give Back </button>
 <!--            <button class="button button2" @click="rating12" id = "rating_user_book">Rating </button>-->
 <!--            <section v-if="rating">-->
-                    Rating
+                    Rate
                     <input name="rat" type="text" v-model="rat" id = "rat" >
                     <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>
 
@@ -46,6 +46,7 @@
         </tbody>
     </table>
     <hr />
+
     <section v-if="borrow">
         <div>
             <p style="color:green;">

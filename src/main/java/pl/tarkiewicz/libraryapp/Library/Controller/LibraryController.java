@@ -11,8 +11,8 @@ import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
 import pl.tarkiewicz.libraryapp.Rate.Dto.RateDto;
 import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
 import pl.tarkiewicz.libraryapp.Rate.Service.RateService;
-import pl.tarkiewicz.libraryapp.User.Service.UserService;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
+import pl.tarkiewicz.libraryapp.User.Service.UserService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -108,12 +108,12 @@ public class LibraryController {
 
 
     @PostMapping(value = "/api/library/rebook/{id}")
-    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, @PathVariable Long id, HttpSession session) {
+    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto,@PathVariable Long id, HttpSession session) {
         Book book = this.libraryService.getBookById(id);
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         //double value = Double.parseDouble(rateDto.getRate());
-        System.out.println(rateDto.getRate());
-        this.rateService.addRate(new Rate(book,user.get(),"5"));
+        System.out.println(rateDto.getRat());
+        this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 

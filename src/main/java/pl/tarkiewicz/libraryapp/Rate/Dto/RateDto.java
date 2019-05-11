@@ -3,7 +3,23 @@ package pl.tarkiewicz.libraryapp.Rate.Dto;
 
 public class RateDto {
 
+    private String rat;
+    public  RateDto(){
 
+    }
+
+
+    public RateDto(String rat) {
+        this.rat = rat;
+    }
+
+    public String getRat() {
+        return rat;
+    }
+
+    public void setRat(String rat) {
+        this.rat = rat;
+    }
 
 //    public RateDto(int rate) {
 //        this.rate = rate;
@@ -37,17 +53,5 @@ public class RateDto {
 
 
     //@JsonIgnore
-    private String rat;
 
-    public RateDto(String rat) {
-        this.rat = rat;
-    }
-
-    public String getRate() {
-        return rat;
-    }
-
-    public void setRate(String rat) {
-        this.rat = rat;
-    }
 }
