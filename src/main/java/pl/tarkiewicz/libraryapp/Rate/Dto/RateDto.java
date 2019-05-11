@@ -1,8 +1,6 @@
 package pl.tarkiewicz.libraryapp.Rate.Dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class RateDto {
 
 
@@ -38,7 +36,7 @@ public class RateDto {
 //    }
 
 
-    @JsonIgnore
+    //@JsonIgnore
     private String rat;
 
     public RateDto(String rat) {

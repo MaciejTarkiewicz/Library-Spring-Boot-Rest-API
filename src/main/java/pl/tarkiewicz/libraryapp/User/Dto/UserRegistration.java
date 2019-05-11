@@ -10,8 +10,8 @@ public class UserRegistration {
     private String email;
 
 
-    public UserRegistration() {
-    }
+//    public UserRegistration() {
+//    }
 
     public UserRegistration(String username, String password, String confirmPassword, String email) {
         this.username = username;
