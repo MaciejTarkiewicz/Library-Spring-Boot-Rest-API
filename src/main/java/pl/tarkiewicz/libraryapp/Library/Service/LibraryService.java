@@ -64,7 +64,6 @@ public class LibraryService {
                 .author(bookDao.getAuthor())
                 .productionYear(LocalDate.parse(bookDao.getProductionYear()))
                 .type(bookDao.getType())
-                .user(null)
                 .build();
         return this.libraryRepo.save(book);
     }
