@@ -2,7 +2,7 @@ package pl.tarkiewicz.libraryapp.User.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
+import pl.tarkiewicz.libraryapp.Library.Book;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -12,8 +12,8 @@ import java.util.Set;
 @Table(name = "ACCOUNT")
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;

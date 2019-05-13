@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.tarkiewicz.libraryapp.Library.Dto.BookDao;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
-import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
-import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
+import pl.tarkiewicz.libraryapp.Library.BookDto;
+import pl.tarkiewicz.libraryapp.Library.Book;
+import pl.tarkiewicz.libraryapp.Library.BookRepository;
+import pl.tarkiewicz.libraryapp.Library.BookService;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
 import pl.tarkiewicz.libraryapp.User.Service.UserService;
@@ -83,11 +83,11 @@ public class LibraryAppApplicationTests extends PrepareMockData{
     @Test
     public void getAllBooksTest_BDD() {
         //given
-        LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.findAll()).willReturn(prepareMockData());
-        LibraryService libraryService = new LibraryService(libraryRepo);
+        BookRepository bookRepository = mock(BookRepository.class);
+        given(bookRepository.findAll()).willReturn(prepareMockData());
+        BookService bookService = new BookService(bookRepository);
         //when
-        List<Book> books = libraryService.getAllBooks();
+        List<Book> books = bookService.getAllBooks();
         //then
         Assert.assertThat(books, Matchers.hasSize(3));
 
@@ -95,42 +95,16 @@ public class LibraryAppApplicationTests extends PrepareMockData{
     }
 
 
-    @Test
-    public void getAllBooksByUserIdTest_BDD() {
-        //given
-        LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.findBookByUserId(1L)).willReturn(prepareMockDataUserId());
-        LibraryService libraryService = new LibraryService(libraryRepo);
-        //when
-        List<Book> books = libraryService.getBooksByUserId(1L);
-        //then
-        Assert.assertThat(books, Matchers.hasSize(2));
-
-
-    }
-
-    @Test
-    public void addBookTest_BDD() {
-        //given
-        LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.save(Mockito.any(Book.class))).willReturn(book4);
-        LibraryService libraryService = new LibraryService(libraryRepo);
-        //when
-        Book book = libraryService.addBook(new BookDao("d","d","1995-09-08","d"));
-        //then
-        Assert.assertEquals(book,book4);
-
-    }
 
     @Test
     public void deleteBookTesT_BDD() {
         //given
-        LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        LibraryService libraryService = new LibraryService(libraryRepo);
+        BookRepository bookRepository = mock(BookRepository.class);
+        BookService bookService = new BookService(bookRepository);
         //when
-        libraryService.delete(book1);
+        bookService.delete(book1);
         //then
-        verify(libraryRepo,times(1)).delete(book1);
+        verify(bookRepository,times(1)).delete(book1);
 
     }
 

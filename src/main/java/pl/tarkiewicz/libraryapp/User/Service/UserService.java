@@ -28,7 +28,7 @@ public class UserService {
     public User RegisterUser(UserRegistration userRegistration) {
         User user = new User.Builder()
                 .username(userRegistration.getUsername())
-                .password(passwordEncoder.encode(userRegistration.getPassword()))
+                .password((userRegistration.getPassword()))
                 .email(userRegistration.getEmail())
                 .build();
 
