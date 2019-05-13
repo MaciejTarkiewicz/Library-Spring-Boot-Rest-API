@@ -6,12 +6,14 @@ window.onload = () => {
             password: '',
             error: false,
             info :'',
+            l:'',
+            rat:''
         },
         methods: {
-            rate() {
+            rate(id) {
                 axios({
                     method: 'post',
-                    url: '/library/book/rate',
+                    url: '/library/book/rate?id=' + id,
                     data: {rat: this.rat}
                 }).then(function (response) {
                     document.location.replace("/library/user?username=" + username);
@@ -25,6 +27,12 @@ window.onload = () => {
             },
 
         },
+        async created() {
+            const { data } = await axios.get('api/library/book/rate"');
+            this.l = data;
+            console.log(this.l)
+
+        }
 
     })
 

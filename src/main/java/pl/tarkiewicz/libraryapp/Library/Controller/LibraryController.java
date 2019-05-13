@@ -116,6 +116,15 @@ public class LibraryController {
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
+
+    @GetMapping(value = "api/library/book/rate")
+    public void getRateBook(@RequestParam String id, HttpSession session) {
+        //Book book = this.libraryService.getBookById(id);
+        //Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
+        //return book;
+        System.out.println(id);
+    }
+
 }
 
 
