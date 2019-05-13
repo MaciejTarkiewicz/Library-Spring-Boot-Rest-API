@@ -16,12 +16,11 @@
               id BIGSERIAL PRIMARY KEY NOT NULL,
               book_id bigint REFERENCES BOOKS (id),
               user_id bigint REFERENCES ACCOUNT (id),
-              rate VARCHAR(255) NOT NULL,
-              UNIQUE (book_id, user_id)
+              rate VARCHAR(255) NOT NULL
             );
        ]]></sql>
 
     </changeSet>
-
+    <!--UNIQUE (book_id, user_id)-->
 
 </databaseChangeLog>

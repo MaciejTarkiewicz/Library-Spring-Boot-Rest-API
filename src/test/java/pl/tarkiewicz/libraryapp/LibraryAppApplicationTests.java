@@ -58,10 +58,11 @@ public class LibraryAppApplicationTests extends PrepareMockData{
     @Test
     public void registerUserTest_BDD(){
         //given
-        UserRepo userRepo = mock(UserRepo.class);;
+        UserRepo userRepo = mock(UserRepo.class);
         given(userRepo.save(Mockito.any(User.class))).willReturn(user2);
         UserService userService = new UserService(userRepo);
         //when
+        System.out.println(userRegistration.getUsername());
         User u = userService.RegisterUser(userRegistration);
         //then
         assertEquals(u, user2);

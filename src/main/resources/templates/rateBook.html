@@ -12,8 +12,9 @@
 
 <body>
 <div id="rate_vue">
-    <h2>Rate:</h2>
-    <ol>
+    <h2>
+        Enter a number from 1 to 10:</h2>
+    <p>
         <li>
             <label>
                 <input type="text" name="username" placeholder="edit me" id="username"
@@ -25,27 +26,25 @@
             </label>
         </li>
 
-    </ol>
+    </p>
 
-    <ol>
-<!--        <button class="button button2" @click="rating12(item.id)" id = "rating_user_book">Rating </button>-->
-        <button class = "button button2" type="submit" value="Submit" @click="rate(l.id)" id = "home">
-            Rate
-        </button>
-    </ol>
-<!--    <section v-if="error">-->
-<!--        <div>-->
-<!--            <p style="color:red;">-->
-<!--                <b>-->
-<!--                    {{info}}-->
-<!--                </b>-->
-<!--            </p>-->
-<!--        </div>-->
-<!--    </section>-->
+    <p>
+        <button class = "button button2" type="submit" value="Submit" @click="rate" id = "home">Rate</button>
+    </p>
+    <section v-if="error">
+        <div>
+            <p style="color:red;">
+                <b>
+                    {{info}}
+                </b>
+            </p>
+        </div>
+    </section>
 
 </div>
-
-
 </body>
+
+
+
 
 </html>

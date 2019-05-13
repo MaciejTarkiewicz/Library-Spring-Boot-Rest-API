@@ -90,7 +90,8 @@ public class LibraryController {
 //    }
 
     @PutMapping(value = "/api/library/user/{id}")
-    public ResponseEntity<String> giveBackBook(@PathVariable Long id) {
+    public ResponseEntity<String> giveBackBook(@PathVariable Long id, HttpSession session) {
+        session.setAttribute("book_id",id);
         Book book = this.libraryService.getBookById(id);
         this.libraryService.giveBack(book);
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
@@ -105,25 +106,20 @@ public class LibraryController {
     }
 
 
-
-
     @PostMapping(value = "/library/book/rate")
-    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, @RequestParam Long id, HttpSession session) {
-        Book book = this.libraryService.getBookById(id);
+    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, HttpSession session) {
+        Book book = this.libraryService.getBookById((Long)session.getAttribute("book_id"));
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        System.out.println(rateDto.getRat());
-        this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
-        return new ResponseEntity<>("Correct!", HttpStatus.OK);
-    }
+        try{
+            Integer num = Integer.parseInt(rateDto.getRat());
+            this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
+            return new ResponseEntity<>("Correct!", HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>("Invalid!", HttpStatus.BAD_GATEWAY);
+        }
 
-
-    @GetMapping(value = "api/library/book/rate")
-    public void getRateBook(@RequestParam String id, HttpSession session) {
-        //Book book = this.libraryService.getBookById(id);
-        //Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        //return book;
-        System.out.println(id);
     }
+    
 
 }
 

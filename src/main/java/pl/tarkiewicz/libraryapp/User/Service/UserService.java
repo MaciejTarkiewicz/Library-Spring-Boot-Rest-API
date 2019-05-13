@@ -1,12 +1,14 @@
 package pl.tarkiewicz.libraryapp.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
-import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,11 @@ public class UserService {
 
     private UserRepo userRepo;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
     @Autowired
     public UserService(UserRepo accountRepo) {
@@ -26,9 +31,10 @@ public class UserService {
     }
 
     public User RegisterUser(UserRegistration userRegistration) {
+        System.out.println(userRegistration.getPassword());
         User user = new User.Builder()
                 .username(userRegistration.getUsername())
-                .password((passwordEncoder.encode(userRegistration.getPassword())))
+                .password((passwordEncoder().encode(userRegistration.getPassword())))
                 .email(userRegistration.getEmail())
                 .build();
 
@@ -52,7 +58,7 @@ public class UserService {
     public boolean checkUser(UserLogin u) {
         return getUsers().stream()
                 .filter(item->item.getUsername().equals(u.getUsername()))
-                .anyMatch(item ->passwordEncoder.matches(u.getPassword(),item.getPassword()));
+                .anyMatch(item ->passwordEncoder().matches(u.getPassword(),item.getPassword()));
     }
 
     public User findByLogin(String username) {
