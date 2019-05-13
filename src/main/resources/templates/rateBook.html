@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rate</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="/js/vueRateBook.js"></script>
+</head>
+
+
+<body>
+<div id="rate_vue">
+    <h2>Rate:</h2>
+    <ol>
+        <li>
+            <label>
+                <input type="text" name="username" placeholder="edit me" id="username"
+                       v-model="rat">
+                <span>
+          Rate
+        </span>
+
+            </label>
+        </li>
+
+    </ol>
+
+    <ol>
+<!--        <button class="button button2" @click="rating12(item.id)" id = "rating_user_book">Rating </button>-->
+        <button class = "button button2" type="submit" value="Submit" @click="rate" id = "home">
+            Rate
+        </button>
+    </ol>
+<!--    <section v-if="error">-->
+<!--        <div>-->
+<!--            <p style="color:red;">-->
+<!--                <b>-->
+<!--                    {{info}}-->
+<!--                </b>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </section>-->
+
+</div>
+
+
+</body>
+
+</html>

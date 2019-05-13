@@ -21,8 +21,7 @@ window.onload = () => {
             GiveBook(id, username) {
                 try {
                     axios.put("/api/library/user/" + id).then(function (response) {
-                        //document.location.replace("/library/all");
-                        document.location.replace("/library/user?username" + username);
+                        document.location.replace("/library/book/rate?id=" + id);
                         this.borrow = true;
                     }).catch(err => {
                         alert("You can't delete this book!")
@@ -42,25 +41,37 @@ window.onload = () => {
                 document.location.replace("/");
             },
 
-            rating12() {
-                this.rating = true;
-            },
+            // rating12(id) {
+            //
+            //     this.rating = true;
+            // },
+            // rating12(id) {
+            //     axios
+            //         .get('/api/library/edit?id=' + id)
+            //         .then(response => {
+            //             this.info = response.data;
+            //             console.log(this.info.author);
+            //         })
+            //         .catch(error => {
+            //         })
+            //         .finally(() => this.edit = true)
+            // },
 
-            Rating55(id, username) {
-                axios({
-                    method: 'post',
-                    url: '/api/library/rebook/' + id,
-                    data: {rat: this.rat}
-                }).then(function (response) {
-                    document.location.replace("/library/user?username=" + username);
-                }).catch(err => {
-                    // if (err.response.status === 400) {
-                    //     this.error = true;
-                    //     this.info = 'Invalid rating!';
-                    // }
-                });
-
-            },
+            // Rating55(id, username) {
+            //     axios({
+            //         method: 'post',
+            //         url: '/api/library/rebook/' + id,
+            //         data: {rat: this.rat}
+            //     }).then(function (response) {
+            //         document.location.replace("/library/user?username=" + username);
+            //     }).catch(err => {
+            //         // if (err.response.status === 400) {
+            //         //     this.error = true;
+            //         //     this.info = 'Invalid rating!';
+            //         // }
+            //     });
+            //
+            // },
         },
         async created() {
             const { data } = await axios.get('/api/library');

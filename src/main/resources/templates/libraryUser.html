@@ -33,11 +33,11 @@
         <td>{{ item.productionYear }}</td>
         <td>{{ item.type }}</td>
         <td> <button class="button" @click="GiveBook(item.id,username.data)" id = "edit_user_book">Give Back </button>
-<!--            <button class="button button2" @click="rating12" id = "rating_user_book">Rating </button>-->
+<!--            <button class="button button2" @click="rating12(item.id)" id = "rating_user_book">Rating </button>-->
 <!--            <section v-if="rating">-->
-                    Rate
-                    <input name="rat" type="text" v-model="rat" id = "rat" >
-                    <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>
+<!--                    Rate-->
+<!--                    <input name="rat" type="text" v-model="rat" id = "rat" >-->
+<!--                    <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>-->
 
 
 <!--            </section>-->
@@ -57,16 +57,14 @@
         </div>
     </section>
 
-<!--    <section v-if="rating">-->
-<!--        <p>-->
-<!--            Rating-->
-<!--            <input type="text" v-model="rating_add" id = "rating" >-->
-<!--            <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>-->
+    <section v-if="rating">
+        <p>
+            <input name="rat" type="text" v-model="rat" id = "rat" >
+            <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rate </button>
 
+        </p>
 
-<!--        </p>-->
-
-<!--    </section>-->
+    </section>
 
 </div>
 

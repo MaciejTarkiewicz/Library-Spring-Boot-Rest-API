@@ -107,8 +107,8 @@ public class LibraryController {
 
 
 
-    @PostMapping(value = "/api/library/rebook/{id}")
-    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto,@PathVariable Long id, HttpSession session) {
+    @PostMapping(value = "/library/book/rate")
+    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, @RequestParam Long id, HttpSession session) {
         Book book = this.libraryService.getBookById(id);
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         System.out.println(rateDto.getRat());
