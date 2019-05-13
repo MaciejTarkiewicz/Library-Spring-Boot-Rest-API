@@ -1,7 +1,7 @@
 package pl.tarkiewicz.libraryapp;
 
 import org.junit.Before;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
+import pl.tarkiewicz.libraryapp.Library.Book;
 import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 import pl.tarkiewicz.libraryapp.User.Entity.User;
 
@@ -58,6 +58,7 @@ public class PrepareMockData {
                 .title("a")
                 .productionYear(LocalDate.parse("1995-01-01"))
                 .type("a")
+                .user(null)
                 .build();
         User[] tab = {user1, user2, user3, user4};
         users = Arrays.stream(tab).collect(Collectors.toList());
@@ -87,6 +88,7 @@ public class PrepareMockData {
                 .title("b")
                 .productionYear(LocalDate.parse("1995-02-02"))
                 .type("b")
+                .user(null)
                 .build();
 
         Book book3 = new Book.Builder()
@@ -94,6 +96,7 @@ public class PrepareMockData {
                 .title("c")
                 .productionYear(LocalDate.parse("1995-03-03"))
                 .type("c")
+                .user(null)
                 .build();
 
         List<Book> list = new ArrayList<>();
