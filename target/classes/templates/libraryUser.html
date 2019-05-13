@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html >
+<title>Books </title>
+
+<body >
+<link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="/css/libraryUser.css" media="screen"/>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="/js/vueLibraryUser.js"></script>
+
+
+<div id="library_vue">
+    <div >
+        <a><button class="button button2" type="submit" value="Submit" @click= "Library"
+        >Library </button></a>
+        <button class="button" type="submit" value="Submit" @click="logout" id = "logout" style = "float: right">
+            Logout
+        </button>
+    </div>
+    <h2> {{ username.data }}, these are your books: </h2>
+    <table id="library_view">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Production Year</th>
+            <th>Type</th>
+            <th>Action</th>
+        </tr >
+        <tbody v-for="item in l">
+        <td>{{ item.title }}</td>
+        <td>{{ item.author }}</td>
+        <td>{{ item.productionYear }}</td>
+        <td>{{ item.type }}</td>
+        <td> <button class="button" @click="GiveBook(item.id,username.data)" id = "edit_user_book">Give Back </button>
+<!--            <button class="button button2" @click="rating12" id = "rating_user_book">Rating </button>-->
+<!--            <section v-if="rating">-->
+                    Rate
+                    <input name="rat" type="text" v-model="rat" id = "rat" >
+                    <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>
+
+
+<!--            </section>-->
+
+        </td>
+        </tbody>
+    </table>
+    <hr />
+
+    <section v-if="borrow">
+        <div>
+            <p style="color:green;">
+                <b>
+                    You successfully give back the book!"
+                </b>
+            </p>
+        </div>
+    </section>
+
+<!--    <section v-if="rating">-->
+<!--        <p>-->
+<!--            Rating-->
+<!--            <input type="text" v-model="rating_add" id = "rating" >-->
+<!--            <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>-->
+
+
+<!--        </p>-->
+
+<!--    </section>-->
+
+</div>
+
+</body>
+
+
+</html>

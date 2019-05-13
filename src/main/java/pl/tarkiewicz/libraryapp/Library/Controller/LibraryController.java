@@ -111,7 +111,6 @@ public class LibraryController {
     public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto,@PathVariable Long id, HttpSession session) {
         Book book = this.libraryService.getBookById(id);
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        //double value = Double.parseDouble(rateDto.getRate());
         System.out.println(rateDto.getRat());
         this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
         return new ResponseEntity<>("Correct!", HttpStatus.OK);

@@ -9,19 +9,15 @@ import pl.tarkiewicz.libraryapp.User.Entity.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name="RATES")
+@Table(name = "RATES")
 public class Rate {
 
     @ManyToOne
-    //@JsonIgnoreProperties("RATES")
-    //@JoinColumn(name = "id_user")
     @JsonIgnore
     private User user;
 
     @ManyToOne
-    //@JsonIgnoreProperties("RATES")
     @JsonIgnore
-    //@JoinColumn(name = "id_book")
     private Book book;
 
 
@@ -32,11 +28,11 @@ public class Rate {
     private String rate;
 
 
-    public Rate(){
+    public Rate() {
 
     }
 
-    public Rate(Book book,User user, String rate) {
+    public Rate(Book book, User user, String rate) {
         this.user = user;
         this.book = book;
         this.rate = rate;
