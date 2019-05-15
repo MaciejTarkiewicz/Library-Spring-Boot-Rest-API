@@ -146,7 +146,7 @@ public class LibraryController {
         Book book = this.libraryService.getBookById((Long)session.getAttribute("book_id"));
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
         try{
-            Integer num = Integer.parseInt(rateDto.getRat());
+            //Integer num = Integer.parseInt(rateDto.getRat());
             this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
         }catch(Exception e){
