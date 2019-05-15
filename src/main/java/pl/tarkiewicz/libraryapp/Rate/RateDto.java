@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.Rate.Dto;
+package pl.tarkiewicz.libraryapp.Rate;
 
 
 public class RateDto {

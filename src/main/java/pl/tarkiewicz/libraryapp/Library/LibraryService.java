@@ -1,12 +1,9 @@
-package pl.tarkiewicz.libraryapp.Library.Service;
+package pl.tarkiewicz.libraryapp.Library;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.Library.Dto.BookDao;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
-import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
+import pl.tarkiewicz.libraryapp.User.User;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,37 +30,40 @@ public class LibraryService {
     }
 
 
-    public Book editBook(BookDao bookDao,Long id){
+    public Book editBook(BookDto bookDto, Long id){
         Book book = new Book.Builder()
                 .id(id)
-                .title(bookDao.getTitle())
-                .author(bookDao.getAuthor())
-                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
-                .type(bookDao.getType())
+                .title(bookDto.getTitle())
+                .author(bookDto.getAuthor())
+                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+                .type(bookDto.getType())
                 .user(null)
                 .build();
 
         return this.libraryRepo.save(book);
     }
 
-    public Book editBookByUser(BookDao bookDao,User user){
+    public Book editBookByUser(BookDto bookDto, User user){
         Book book = new Book.Builder()
-                .title(bookDao.getTitle())
-                .author(bookDao.getAuthor())
-                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
-                .type(bookDao.getType())
+                .title(bookDto.getTitle())
+                .author(bookDto.getAuthor())
+                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+                .type(bookDto.getType())
                 .user(user)
                 .build();
         return this.libraryRepo.save(book);
     }
 
+    void save(Book book) {
+        libraryRepo.save(book);
+    }
 
-    public Book addBook(BookDao bookDao){
+    public Book addBook(BookDto bookDto){
         Book book = new Book.Builder()
-                .title(bookDao.getTitle())
-                .author(bookDao.getAuthor())
-                .productionYear(LocalDate.parse(bookDao.getProductionYear()))
-                .type(bookDao.getType())
+                .title(bookDto.getTitle())
+                .author(bookDto.getAuthor())
+                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+                .type(bookDto.getType())
                 .build();
         return this.libraryRepo.save(book);
     }

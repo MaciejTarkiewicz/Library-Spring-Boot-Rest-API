@@ -1,9 +1,11 @@
-package pl.tarkiewicz.libraryapp.Library.Entity;
+package pl.tarkiewicz.libraryapp.Library;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import pl.tarkiewicz.libraryapp.Rate.Rate;
+import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,12 +16,9 @@ import java.util.Set;
 public class Book {
 
     @ManyToOne
-    @JsonIgnoreProperties("books")
     private User user;
 
     @OneToMany(mappedBy = "book")
-    //@JsonIgnoreProperties("BOOK")
-    @JsonIgnore
     private Set<Rate> rates;
 
     public Set<Rate> getRates() {
@@ -48,12 +47,9 @@ public class Book {
     }
 
     public Book(Long id , String title, String author, LocalDate productionYear, String type, User user) {
+        this(title, author, productionYear, type, user);
         this.id = id;
-        this.title = title;
-        this.author = author;
-        this.productionYear = productionYear;
-        this.type = type;
-        this.user = user;
+
     }
 
     public Book(){

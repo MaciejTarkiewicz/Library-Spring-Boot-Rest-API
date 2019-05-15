@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User.Service;
+package pl.tarkiewicz.libraryapp.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -7,8 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
-import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
 
 import java.util.ArrayList;
 import java.util.List;

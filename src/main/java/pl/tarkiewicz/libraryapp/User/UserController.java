@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User.Controller;
+package pl.tarkiewicz.libraryapp.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.tarkiewicz.libraryapp.Config.Config;
 import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
 import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
-import pl.tarkiewicz.libraryapp.User.Service.UserService;
 
 import javax.servlet.http.HttpSession;
 

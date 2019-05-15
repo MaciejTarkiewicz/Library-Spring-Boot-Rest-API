@@ -1,12 +1,8 @@
-package pl.tarkiewicz.libraryapp.Rate.Service;
+package pl.tarkiewicz.libraryapp.Rate;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
-import pl.tarkiewicz.libraryapp.Rate.Entity.Rate;
-import pl.tarkiewicz.libraryapp.Rate.Repo.RateRepo;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
 
 @Service
 public class RateService {
@@ -22,5 +18,10 @@ public class RateService {
         return this.rateRepo.save(rate);
 
     }
+
+//    public void deleteRateByBookId(Long id){
+//        this.rateRepo.deleteByBookId(id);
+//
+//    }
 
 }

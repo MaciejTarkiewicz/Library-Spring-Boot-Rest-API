@@ -1,9 +1,9 @@
 package pl.tarkiewicz.libraryapp;
 
 import org.junit.Before;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
+import pl.tarkiewicz.libraryapp.Library.Book;
 import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
+import pl.tarkiewicz.libraryapp.User.User;
 
 import java.time.LocalDate;
 import java.util.*;

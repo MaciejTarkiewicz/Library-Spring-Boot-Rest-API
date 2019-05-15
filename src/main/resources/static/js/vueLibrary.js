@@ -66,7 +66,9 @@ window.onload = () => {
 
             },
             justTesting(user_id) {
+                console.log(user_id);
                 return user_id !== null;
+                //return false;
 
             },
 

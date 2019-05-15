@@ -14,8 +14,8 @@
         <sql><![CDATA[
         CREATE TABLE RATES (
               id BIGSERIAL PRIMARY KEY NOT NULL,
-              book_id bigint REFERENCES BOOKS (id),
-              user_id bigint REFERENCES ACCOUNT (id),
+              book_id bigint REFERENCES BOOKS (id) ON DELETE CASCADE,
+              user_id bigint REFERENCES ACCOUNT (id) ON DELETE CASCADE,
               rate VARCHAR(255) NOT NULL
             );
        ]]></sql>

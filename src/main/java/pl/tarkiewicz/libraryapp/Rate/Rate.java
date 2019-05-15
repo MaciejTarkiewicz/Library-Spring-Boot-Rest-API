@@ -1,10 +1,9 @@
-package pl.tarkiewicz.libraryapp.Rate.Entity;
+package pl.tarkiewicz.libraryapp.Rate;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
+import pl.tarkiewicz.libraryapp.Library.Book;
+import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.persistence.*;
 
