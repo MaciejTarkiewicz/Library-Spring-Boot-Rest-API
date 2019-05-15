@@ -36,14 +36,25 @@ public class LibraryController {
 
     @PostMapping(value = "/api/library/add")
     public ResponseEntity<String> addBook(@RequestBody BookDto bookDto) {
-        try {
-            this.libraryService.addBook(bookDto);
+        Book book = modelMapper.map(bookDto, Book.class);
+        if (book != null) {
+            libraryService.save(book);
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
-
-        } catch (java.time.format.DateTimeParseException e) {
-            return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
-        }
+        } else
+            return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);// Do zmiany
     }
+
+
+//    @PostMapping(value = "/api/library/add")
+//    public ResponseEntity<String> addBook(@RequestBody BookDto bookDto) {
+//        try {
+//            this.libraryService.addBook(bookDto);
+//            return new ResponseEntity<>("Correct!", HttpStatus.OK);
+//
+//        } catch (java.time.format.DateTimeParseException e) {
+//            return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);
+//        }
+//    }
 
     @GetMapping(value = "/api/library")
     public List<BookDto> getAllBookByUser(HttpSession session) {
@@ -83,19 +94,20 @@ public class LibraryController {
     }
 
 
+//    @PutMapping(value = "/api/library/edit")
+//    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto, @RequestParam Long id) {
+//            this.libraryService.editBook(bookDto,id);
+//        return new ResponseEntity<>("Correct!", HttpStatus.OK);
+//
+//    }
+
     @PutMapping(value = "/api/library/edit")
     public ResponseEntity<String> editBook(@RequestBody BookDto bookDto, @RequestParam Long id) {
-            this.libraryService.editBook(bookDto,id);
+        bookDto.setId(id);
+        Book book = convertToEntity(bookDto);
+        libraryService.save(book);
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
-
     }
-
-//    @PutMapping(value = "/api/library/edit")
-//    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto) {
-//        Book book = convertToEntity(bookDto);
-//        libraryService.save(book);
-//        return new ResponseEntity<>("Correct!", HttpStatus.OK);
-//    }
 
 
 

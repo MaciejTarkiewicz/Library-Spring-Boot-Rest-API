@@ -89,8 +89,6 @@ public class User {
         this.books = books;
     }
 
-
-
     public static final class Builder {
         private String username;
         private String password;

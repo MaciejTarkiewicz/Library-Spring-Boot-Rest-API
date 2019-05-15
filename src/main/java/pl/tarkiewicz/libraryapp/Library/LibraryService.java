@@ -30,43 +30,44 @@ public class LibraryService {
     }
 
 
-    public Book editBook(BookDto bookDto, Long id){
-        Book book = new Book.Builder()
-                .id(id)
-                .title(bookDto.getTitle())
-                .author(bookDto.getAuthor())
-                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-                .type(bookDto.getType())
-                .user(null)
-                .build();
+//    public Book editBook(BookDto bookDto, Long id){
+//        Book book = new Book.Builder()
+//                .id(id)
+//                .title(bookDto.getTitle())
+//                .author(bookDto.getAuthor())
+////                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+//                .productionYear(bookDto.getProductionYear())
+//                .type(bookDto.getType())
+//                .build();
+//
+//        return this.libraryRepo.save(book);
+//    }
 
-        return this.libraryRepo.save(book);
-    }
-
-    public Book editBookByUser(BookDto bookDto, User user){
-        Book book = new Book.Builder()
-                .title(bookDto.getTitle())
-                .author(bookDto.getAuthor())
-                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-                .type(bookDto.getType())
-                .user(user)
-                .build();
-        return this.libraryRepo.save(book);
-    }
+//    public Book editBookByUser(BookDto bookDto, User user){
+//        Book book = new Book.Builder()
+//                .title(bookDto.getTitle())
+//                .author(bookDto.getAuthor())
+//                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+//                .type(bookDto.getType())
+//                .user(user)
+//                .build();
+//        return this.libraryRepo.save(book);
+//    }
 
     void save(Book book) {
         libraryRepo.save(book);
     }
 
-    public Book addBook(BookDto bookDto){
-        Book book = new Book.Builder()
-                .title(bookDto.getTitle())
-                .author(bookDto.getAuthor())
-                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-                .type(bookDto.getType())
-                .build();
-        return this.libraryRepo.save(book);
-    }
+//    public Book addBook(BookDto bookDto){
+//        Book book = new Book.Builder()
+//                .title(bookDto.getTitle())
+//                .author(bookDto.getAuthor())
+////                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
+//                .productionYear(bookDto.getProductionYear())
+//                .type(bookDto.getType())
+//                .build();
+//        return this.libraryRepo.save(book);
+//    }
 
     public List<Book> getAllBooks(){
         List<Book> list = new ArrayList<>();

@@ -109,19 +109,19 @@ public class LibraryAppApplicationTests extends PrepareMockData{
 //
 //
 //    }
-
-    @Test
-    public void addBookTest_BDD() {
-        //given
-        LibraryRepo libraryRepo = mock(LibraryRepo.class);
-        given(libraryRepo.save(Mockito.any(Book.class))).willReturn(book4);
-        LibraryService libraryService = new LibraryService(libraryRepo);
-        //when
-        Book book = libraryService.addBook(new BookDto("d","d","1995-09-08","d"));
-        //then
-        Assert.assertEquals(book,book4);
-
-    }
+//
+//    @Test
+//    public void addBookTest_BDD() {
+//        //given
+//        LibraryRepo libraryRepo = mock(LibraryRepo.class);
+//        given(libraryRepo.save(Mockito.any(Book.class))).willReturn(book4);
+//        LibraryService libraryService = new LibraryService(libraryRepo);
+//        //when
+//        Book book = libraryService.addBook(new BookDto("d","d","1995-09-08","d"));
+//        //then
+//        Assert.assertEquals(book,book4);
+//
+//    }
 
     @Test
     public void deleteBookTesT_BDD() {

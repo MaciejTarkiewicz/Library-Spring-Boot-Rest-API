@@ -1,8 +1,10 @@
 package pl.tarkiewicz.libraryapp.Library;
 
+import pl.tarkiewicz.libraryapp.Rate.Rate;
 import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class BookDto {
 
@@ -21,13 +23,13 @@ public class BookDto {
 
     private String title;
     private String author;
-    private String productionYear;
+    private LocalDate productionYear;
     private String type;
 
-    public BookDto(String title, String author, String productionYear, String type) {
+    public BookDto(String title, String author, LocalDate productionYear, String type) {
         this.title = title.trim();
         this.author = author.trim();
-        this.productionYear = productionYear.trim();
+        this.productionYear = productionYear;
         this.type = type.trim();
     }
 
@@ -60,11 +62,11 @@ public class BookDto {
         this.author = author;
     }
 
-    public String getProductionYear() {
+    public LocalDate getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(String productionYear) {
+    public void setProductionYear(LocalDate productionYear) {
         this.productionYear = productionYear;
     }
 
