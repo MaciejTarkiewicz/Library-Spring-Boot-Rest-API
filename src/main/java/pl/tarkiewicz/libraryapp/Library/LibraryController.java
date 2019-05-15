@@ -46,8 +46,12 @@ public class LibraryController {
     }
 
     @GetMapping(value = "/api/library")
-    public List<Book> getAllBookByUser(HttpSession session) {
-        return this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"));
+    public List<BookDto> getAllBookByUser(HttpSession session) {
+        List<BookDto> allByUserBooks = new ArrayList<>();
+        for (Book book : this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"))) {
+            allByUserBooks.add(convertToDto(book));
+        }
+        return allByUserBooks;
     }
 
     @GetMapping(value = "/api/library/all")
@@ -60,7 +64,6 @@ public class LibraryController {
         System.out.println(allBooks.get(0));
         return allBooks;
 
-//        return this.libraryService.getAllBooks();
     }
 
     @GetMapping(value = "/api/logout")
@@ -79,20 +82,22 @@ public class LibraryController {
         return this.libraryService.getBookById(id);
     }
 
-//
-//    @PutMapping(value = "/api/library/edit")
-//    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto, @RequestParam Long id) {
-//            this.libraryService.editBook(bookDto,id);
-//        return new ResponseEntity<>("Correct!", HttpStatus.OK);
-//
-//    }
 
     @PutMapping(value = "/api/library/edit")
-    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto) {
-        Book book = convertToEntity(bookDto);
-        libraryService.save(book);
+    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto, @RequestParam Long id) {
+            this.libraryService.editBook(bookDto,id);
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
+
     }
+
+//    @PutMapping(value = "/api/library/edit")
+//    public ResponseEntity<String> editBook(@RequestBody BookDto bookDto) {
+//        Book book = convertToEntity(bookDto);
+//        libraryService.save(book);
+//        return new ResponseEntity<>("Correct!", HttpStatus.OK);
+//    }
+
+
 
 //    @PutMapping(value = "/api/library/edit/user")
 //    public ResponseEntity<String> putBookUser(@RequestBody BookDto bookDao, HttpSession session, @RequestParam Long id) {
