@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User.Controller;
+package pl.tarkiewicz.libraryapp.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.tarkiewicz.libraryapp.Config.Config;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
-import pl.tarkiewicz.libraryapp.User.Service.UserService;
-import pl.tarkiewicz.libraryapp.User.UserLogin;
-import pl.tarkiewicz.libraryapp.User.UserRegistration;
+import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
+import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 
 import javax.servlet.http.HttpSession;
 
@@ -44,8 +42,7 @@ public class UserController {
         }
 
         else {
-            userRegistrtion.setPassword(passwordEncoder.encode(userRegistrtion.getPassword()));
-            userService.save(new User(userRegistrtion.getUsername(), userRegistrtion.getPassword(), userRegistrtion.getEmail()));
+            userService.RegisterUser(userRegistrtion);
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
         }
     }
@@ -63,7 +60,7 @@ public class UserController {
 
     @GetMapping(value = "/api/library/user")
     public String getUsernameByid (HttpSession session) {
-        return this.userService.findById((Long)session.getAttribute("User_id")).get().getLogin();
+        return this.userService.findById((Long)session.getAttribute("User_id")).get().getUsername();
     }
 
 

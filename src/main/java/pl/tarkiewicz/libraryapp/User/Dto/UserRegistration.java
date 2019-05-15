@@ -1,4 +1,4 @@
-package pl.tarkiewicz.libraryapp.User;
+package pl.tarkiewicz.libraryapp.User.Dto;
 
 import java.util.regex.Pattern;
 
@@ -10,8 +10,8 @@ public class UserRegistration {
     private String email;
 
 
-    public UserRegistration() {
-    }
+//    public UserRegistration() {
+//    }
 
     public UserRegistration(String username, String password, String confirmPassword, String email) {
         this.username = username;

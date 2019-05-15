@@ -5,7 +5,7 @@ window.onload = () => {
             id: '',
             title: '',
             author: '',
-            year: '',
+            productionYear: '',
             type: '',
             username: '',
             login: '',
@@ -14,6 +14,7 @@ window.onload = () => {
             edit: false,
             borrow: false,
             status: false,
+            rating: null
         },
         methods: {
             addBook() {
@@ -50,7 +51,7 @@ window.onload = () => {
                     data: {
                         title: this.info.title,
                         author: this.info.author,
-                        year: this.info.productionYear,
+                        productionYear: this.info.productionYear,
                         type: this.info.type
                     }
                 }).then(function (response) {
@@ -65,7 +66,9 @@ window.onload = () => {
 
             },
             justTesting(user_id) {
+                console.log(user_id);
                 return user_id !== null;
+                //return false;
 
             },
 
@@ -94,7 +97,8 @@ window.onload = () => {
             const {data} = await axios.get('/api/library/all');
             this.username = await axios.get('/api/library/user');
             this.l = data;
-            console.log(this.status);
+            this.rating = "";
+
 
         }
 

@@ -9,6 +9,7 @@
 
     <include file="/changelog/db/create-user-table-changelog.xml"/>
     <include file="/changelog/db/create-library-table-changelog.xml"/>
-    <include file="/changelog/db/create-hibernate-sequences.xml"/>
+    <include file="/changelog/db/create-rate-table-changelog.xml"/>
+
 
 </databaseChangeLog>

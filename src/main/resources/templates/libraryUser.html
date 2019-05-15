@@ -33,10 +33,20 @@
         <td>{{ item.productionYear }}</td>
         <td>{{ item.type }}</td>
         <td> <button class="button" @click="GiveBook(item.id,username.data)" id = "edit_user_book">Give Back </button>
+<!--            <button class="button button2" @click="rating12(item.id)" id = "rating_user_book">Rating </button>-->
+<!--            <section v-if="rating">-->
+<!--                    Rate-->
+<!--                    <input name="rat" type="text" v-model="rat" id = "rat" >-->
+<!--                    <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rating </button>-->
+
+
+<!--            </section>-->
+
         </td>
         </tbody>
     </table>
     <hr />
+
     <section v-if="borrow">
         <div>
             <p style="color:green;">
@@ -47,35 +57,18 @@
         </div>
     </section>
 
+    <section v-if="rating">
+        <p>
+            <input name="rat" type="text" v-model="rat" id = "rat" >
+            <button class="button button2" @click="Rating55(item.id,username.data)" id = "rating_add">Rate </button>
+
+        </p>
+
+    </section>
+
 </div>
 
 </body>
 
-<!--<style>-->
-
-    <!--#library_view {-->
-        <!--font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;-->
-        <!--border-collapse: collapse;-->
-        <!--width: 100%;-->
-    <!--}-->
-
-    <!--#library_view td, #library_view th {-->
-        <!--border: 1px solid #ddd;-->
-        <!--padding: 8px;-->
-    <!--}-->
-
-
-    <!--#library_view tr:nth-child(even){background-color: #f2f2f2;}-->
-
-    <!--#library_view th {-->
-        <!--padding-top: 12px;-->
-        <!--padding-bottom: 12px;-->
-        <!--text-align: left;-->
-        <!--background-color: #20262E;-->
-        <!--color: white;-->
-    <!--}-->
-
-
-<!--</style>-->
 
 </html>
