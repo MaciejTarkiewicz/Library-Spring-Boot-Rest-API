@@ -27,7 +27,7 @@ public class BookDto {
 
             return String.valueOf(sum /rates.size());
         }else{
-            return "Brak oceny";
+            return "No Rating";
         }
     }
 
