@@ -5,6 +5,7 @@ import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Set;
 
 public class BookDto {
 
@@ -12,6 +13,27 @@ public class BookDto {
     @NotNull
     private Long id;
     private User user;
+
+    private Set<Rate> rates;
+
+    public String getRates() {
+        int sum = 0;
+        if (!rates.isEmpty()) {
+
+
+            for (Rate rate : rates) {
+                sum = sum + Integer.valueOf(rate.getRate());
+            }
+
+            return String.valueOf(sum /rates.size());
+        }else{
+            return "Brak oceny";
+        }
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
 
     public User getUser() {
         return user;

@@ -14,7 +14,9 @@ window.onload = () => {
             edit: false,
             borrow: false,
             status: false,
-            rating: null
+            editRate1: true,
+            editRate2: false,
+            rate: ''
         },
         methods: {
             addBook() {
@@ -88,6 +90,25 @@ window.onload = () => {
 
                 }finally {
                     this.status = true
+                }
+
+            },
+
+            ShowRate(id) {
+                try {
+                    axios
+                        .get('/api/library/all/rates/' + id)
+                        .then(response => {
+                            this.rate = response.data;
+                            console.log(this.rate);
+                        })
+                        .catch(error => {
+                        })
+                }catch(error){
+
+                }finally {
+                    this.editRate1 = false;
+                    this.editRate2 = true;
                 }
 
             },

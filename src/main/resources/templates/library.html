@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html >
+<html>
 <title>Library </title>
 
-<body >
+<body>
 <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="/css/library.css" media="screen"/>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -11,10 +11,11 @@
 
 <div id="library_vue">
 
-    <div >
-        <button class="button button2" type="submit" value="Submit" @click= "myLibrary(username.data)"
-            >My Books </button>
-        <button class="button" type="submit" value="Submit" @click="logout" id = "logout" style = "float: right">
+    <div>
+        <button class="button button2" type="submit" value="Submit" @click="myLibrary(username.data)"
+        >My Books
+        </button>
+        <button class="button" type="submit" value="Submit" @click="logout" id="logout" style="float: right">
             Logout
         </button>
         <h3 align="right">{{ username.data }}</h3>
@@ -30,25 +31,25 @@
             <th>Action</th>
             <th>Rating</th>
             <th>Borrowed</th>
-        </tr >
+        </tr>
         <tbody v-for="item in l">
-            <td>{{ item.title }}</td>
-            <td>{{ item.author }}</td>
-            <td>{{ item.productionYear }}</td>
-            <td>{{ item.type }}</td>
-            <td>
-                <section v-if="!justTesting(item.user)">
-                    <label>
-                    <button class="button button2" @click="editBook(item.id)" id = "edit">Edit </button>
-                    <button class="button" @click="deleteBook(item.id)" id = "delete">Delete </button>
-                    <button class="button button2" @click="BorrowBook(item.id)" id = "borrow">Borrow </button>
-                    </label>
-                </section>
-            </td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.author }}</td>
+        <td>{{ item.productionYear }}</td>
+        <td>{{ item.type }}</td>
+        <td>
+            <section v-if="!justTesting(item.user)">
+                <label>
+                    <button class="button button2" @click="editBook(item.id)" id="edit">Edit</button>
+                    <button class="button" @click="deleteBook(item.id)" id="delete">Delete</button>
+                    <button class="button button2" @click="BorrowBook(item.id)" id="borrow">Borrow</button>
+                </label>
+            </section>
+        </td>
 
-            <td>
-
-            </td>
+        <td>
+            {{ item.rates }}
+        </td>
         <td>
 
 
@@ -60,25 +61,25 @@
         </td>
         </tbody>
     </table>
-    <hr />
-    <button class="button button2" type="submit" value="Submit" @click="addBook" id ="add_book">
+    <hr/>
+    <button class="button button2" type="submit" value="Submit" @click="addBook" id="add_book">
         Add Book
     </button>
 
     <section v-if="edit">
         <div>
-        <p>
-            <input type="text" v-model="info.title" id = "edit_title" >
-            <input type="text" v-model="info.author" id = "edit_author" >
-            <input type="text" v-model="info.productionYear" id = edit_productionYear>
-            <input type="text" v-model="info.type" id = "edit_type">
-            <button class="button button2" type="submit" value="Submit" @click="saveBook(info.id)" id = "edit_save">
-                Save
-            </button>
-            <button class="button" type="submit" value="Submit" @click="cancel" id = "edit_cancel">
-                Cancel
-            </button>
-        </p>
+            <p>
+                <input type="text" v-model="info.title" id="edit_title">
+                <input type="text" v-model="info.author" id="edit_author">
+                <input type="text" v-model="info.productionYear" id=edit_productionYear>
+                <input type="text" v-model="info.type" id="edit_type">
+                <button class="button button2" type="submit" value="Submit" @click="saveBook(info.id)" id="edit_save">
+                    Save
+                </button>
+                <button class="button" type="submit" value="Submit" @click="cancel" id="edit_cancel">
+                    Cancel
+                </button>
+            </p>
         </div>
     </section>
     <section v-if="borrow">
