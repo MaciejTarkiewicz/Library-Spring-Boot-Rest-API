@@ -8,12 +8,14 @@ window.onload = () => {
             productionYear: '',
             type: '',
             username: '',
-            login: '',
-            l: '',
+            books: '',
             info: null,
             edit: false,
             borrow: false,
             status: false,
+            editRate1: true,
+            editRate2: false,
+            rate: ''
         },
         methods: {
             addBook() {
@@ -64,8 +66,9 @@ window.onload = () => {
                 document.location.replace("/library/all");
 
             },
-            justTesting(user_id) {
-                return user_id !== null;
+            justTesting(loan) {
+                console.log(loan);
+                return loan !== false;
 
             },
 
@@ -81,10 +84,29 @@ window.onload = () => {
                     }).catch(err => {
 
                     }).finally(() => this.borrow = true)
-                }catch(error){
+                } catch (error) {
 
-                }finally {
+                } finally {
                     this.status = true
+                }
+
+            },
+
+            ShowRate(id) {
+                try {
+                    axios
+                        .get('/api/library/all/rates/' + id)
+                        .then(response => {
+                            this.rate = response.data;
+                            console.log(this.rate);
+                        })
+                        .catch(error => {
+                        })
+                } catch (error) {
+
+                } finally {
+                    this.editRate1 = false;
+                    this.editRate2 = true;
                 }
 
             },
@@ -93,8 +115,9 @@ window.onload = () => {
         async created() {
             const {data} = await axios.get('/api/library/all');
             this.username = await axios.get('/api/library/user');
-            this.l = data;
-            console.log(this.status);
+            this.books = data;
+            this.rating = "";
+
 
         }
 

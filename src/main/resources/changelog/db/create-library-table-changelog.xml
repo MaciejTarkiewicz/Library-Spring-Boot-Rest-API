@@ -18,7 +18,8 @@
               title VARCHAR(255) NOT NULL,
               production_year VARCHAR(255) NOT NULL,
               type VARCHAR(255) NOT NULL,
-              user_id INTEGER REFERENCES ACCOUNT (id) DEFAULT NULL
+              user_id bigint REFERENCES ACCOUNT (id) DEFAULT NULL,
+              loan boolean DEFAULT FALSE
             );
        ]]></sql>
 
@@ -28,8 +29,9 @@
     <changeSet author="mtarkiewicz" id="dodanie-wpisów-do-tabeli-library">
 
         <comment>dodanie wpisów do tabeli Library</comment>
+
         <sql><![CDATA[
-              INSERT INTO BOOKS (author, title,production_year ,type, user_id) VALUES('J.K. Rowling','Harry Potter i Kamień Filozoficzny','1997-06-23','fantasy',1);
+              INSERT INTO BOOKS (author, title,production_year ,type, user_id, loan) VALUES('J.K. Rowling','Harry Potter i Kamień Filozoficzny','1997-06-23','fantasy', 1, true);
               INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Komnata Tajemnic','1999-09-01','fantasy');
               INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Więzień Azkabanu','2001-09-02','fantasy');
               INSERT INTO BOOKS (author, title,production_year ,type) VALUES('J.K. Rowling','Harry Potter i Czara Ognia','2003-09-03','fantasy');

@@ -2,36 +2,29 @@ window.onload = () => {
     new Vue({
         el: "#library_vue",
         data: {
-            id: '',
-            title: '',
-            author: '',
-            year: '',
-            type: '',
             username: '',
-            login:'',
-            l: '',
+            books: '',
             info: null,
-            edit: false,
             borrow:false,
+
         },
         methods: {
-            GiveBook(id,username) {
+            GiveBook(id, username) {
                 try {
                     axios.put("/api/library/user/" + id).then(function (response) {
-                        //document.location.replace("/library/all");
-                        document.location.replace("/library/user?username" + username);
+                        document.location.replace("/library/book/rate?id=" + id);
                         this.borrow = true;
                     }).catch(err => {
                         alert("You can't delete this book!")
                     });
-                }catch(error){
+                } catch (error) {
 
-                }finally {
+                } finally {
                     this.borrow = true;
                 }
 
             },
-            Library(){
+            Library() {
                 document.location.replace("/library/all");
             },
             logout() {
@@ -41,10 +34,9 @@ window.onload = () => {
 
         },
         async created() {
-            //const { data } = await axios.get('/api/library');
             const { data } = await axios.get('/api/library');
             this.username = await axios.get('/api/library/user');
-            this.l = data;
+            this.books = data;
 
         }
 

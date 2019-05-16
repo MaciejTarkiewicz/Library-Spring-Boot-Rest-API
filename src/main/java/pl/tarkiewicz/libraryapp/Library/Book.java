@@ -1,47 +1,60 @@
-package pl.tarkiewicz.libraryapp.Library.Entity;
+package pl.tarkiewicz.libraryapp.Library;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import pl.tarkiewicz.libraryapp.Rate.Rate;
+import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "BOOKS")
 public class Book {
 
     @ManyToOne
-    @JsonIgnoreProperties("books")
     private User user;
 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @OneToMany(mappedBy = "book")
+    private Set<Rate> rates;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String title;
     private String author;
     private LocalDate productionYear;
     private String type;
+    private boolean loan;
 
-
-    public Book(String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(String title, String author, LocalDate productionYear, String type, User user, boolean loan) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
         this.type = type;
         this.user = user;
+        this.loan = loan;
     }
 
-    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(Long id, String title, String author, LocalDate productionYear, String type, User user, boolean loan) {
+        this(title, author, productionYear, type, user, loan);
         this.id = id;
-        this.title = title;
-        this.author = author;
-        this.productionYear = productionYear;
-        this.type = type;
-        this.user = user;
+
     }
 
-    public Book(){
+    public Book() {
 
+    }
+
+    public boolean isLoan() {
+        return loan;
+    }
+
+    public void setLoan(boolean loan) {
+        this.loan = loan;
     }
 
     public Long getId() {
@@ -92,6 +105,14 @@ public class Book {
         this.user = user;
     }
 
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
+
 
     public static final class Builder {
         private Long id;
@@ -100,36 +121,44 @@ public class Book {
         private LocalDate productionYear;
         private String type;
         private User user;
+        private boolean loan;
 
-        public Builder id (Long id){
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }
 
-        public Builder title(String title){
+        public Builder title(String title) {
             this.title = title;
             return this;
         }
-        public Builder author(String author){
+
+        public Builder author(String author) {
             this.author = author;
             return this;
         }
-        public Builder productionYear(LocalDate productionYear){
+
+        public Builder productionYear(LocalDate productionYear) {
             this.productionYear = productionYear;
             return this;
         }
 
-        public Builder type(String type){
+        public Builder type(String type) {
             this.type = type;
             return this;
         }
 
-        public Builder user(User user){
+        public Builder user(User user) {
             this.user = user;
             return this;
         }
 
-        public Book build(){
+        public Builder loan(boolean loan) {
+            this.loan = loan;
+            return this;
+        }
+
+        public Book build() {
 
             Book book = new Book();
             book.id = this.id;
@@ -138,6 +167,7 @@ public class Book {
             book.productionYear = this.productionYear;
             book.type = this.type;
             book.user = this.user;
+            book.loan = this.loan;
             return book;
 
         }

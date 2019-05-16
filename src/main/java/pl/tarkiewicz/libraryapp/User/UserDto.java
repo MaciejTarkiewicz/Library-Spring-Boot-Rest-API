@@ -1,23 +1,33 @@
-package pl.tarkiewicz.libraryapp.User.Dto;
+package pl.tarkiewicz.libraryapp.User;
 
+import javax.validation.constraints.NotNull;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class UserDto {
 
+    @NotNull
+    private Long id;
     private String username;
     private String password;
     private String confirmPassword;
     private String email;
 
 
-    public UserRegistration() {
+    public UserDto() {
     }
 
-    public UserRegistration(String username, String password, String confirmPassword, String email) {
+
+    public UserDto(String username, String password, String confirmPassword, String email) {
         this.username = username;
         this.password = password.trim();
         this.confirmPassword = confirmPassword.trim();
         this.email = email;
+    }
+
+
+    public UserDto(String username, String password, String confirmPassword, String email, Long id) {
+        this(username,password,confirmPassword, email);
+        this.id = id;
     }
 
     public String getUsername() {
@@ -52,20 +62,27 @@ public class UserRegistration {
         this.email = email;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public boolean checkPassword() {
         return getPassword().equals(getConfirmPassword());
     }
 
-    public boolean checkWebEdit(){
+    public boolean checkWebEdit() {
         return !getUsername().isEmpty() && !getPassword().isEmpty() && !getConfirmPassword().isEmpty() && !getEmail().isEmpty();
     }
 
-    public boolean checkEmail(String email){
+    public boolean checkEmail(String email) {
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         return pattern.matcher(email).matches();
     }
-
 
 
 }

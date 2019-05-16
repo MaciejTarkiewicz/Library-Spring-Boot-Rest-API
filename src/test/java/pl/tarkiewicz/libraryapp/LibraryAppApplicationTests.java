@@ -7,13 +7,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.tarkiewicz.libraryapp.Library.Dto.BookDao;
-import pl.tarkiewicz.libraryapp.Library.Entity.Book;
-import pl.tarkiewicz.libraryapp.Library.Repo.LibraryRepo;
-import pl.tarkiewicz.libraryapp.Library.Service.LibraryService;
-import pl.tarkiewicz.libraryapp.User.Entity.User;
-import pl.tarkiewicz.libraryapp.User.Repo.UserRepo;
-import pl.tarkiewicz.libraryapp.User.Service.UserService;
+import pl.tarkiewicz.libraryapp.Library.Book;
+import pl.tarkiewicz.libraryapp.Library.LibraryRepo;
+import pl.tarkiewicz.libraryapp.Library.LibraryService;
+import pl.tarkiewicz.libraryapp.User.User;
+import pl.tarkiewicz.libraryapp.User.UserRepo;
+import pl.tarkiewicz.libraryapp.User.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -58,11 +57,11 @@ public class LibraryAppApplicationTests extends PrepareMockData{
     @Test
     public void registerUserTest_BDD(){
         //given
-        UserRepo userRepo = mock(UserRepo.class);;
+        UserRepo userRepo = mock(UserRepo.class);
         given(userRepo.save(Mockito.any(User.class))).willReturn(user2);
         UserService userService = new UserService(userRepo);
         //when
-        User u = userService.RegisterUser(userRegistration);
+        User u = userService.save(user2);
         //then
         assertEquals(u, user2);
 
@@ -116,7 +115,7 @@ public class LibraryAppApplicationTests extends PrepareMockData{
         given(libraryRepo.save(Mockito.any(Book.class))).willReturn(book4);
         LibraryService libraryService = new LibraryService(libraryRepo);
         //when
-        Book book = libraryService.addBook(new BookDao("d","d","1995-09-08","d"));
+        Book book = libraryService.save(book4);
         //then
         Assert.assertEquals(book,book4);
 

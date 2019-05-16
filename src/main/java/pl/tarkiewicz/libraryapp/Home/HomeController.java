@@ -50,6 +50,13 @@ public class HomeController {
         return "libraryUser";
     }
 
+    @GetMapping (value = "/library/book/rate")
+    public String getBookRate() {
+        return "rateBook";
+    }
+
+
+
 
 }
 
