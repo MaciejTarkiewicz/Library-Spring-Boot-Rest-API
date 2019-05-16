@@ -3,7 +3,7 @@
 ## Web Application using:
 <ul>
 <li>Spring-Boot</li>
-<li>CRUD</li>
+<li>Jpa/Hibernate</li>
 <li>Postgres DataBase - liquibase</li>
 <li>Vue JS</li>
 <li>JUnit and Mockito</li>
