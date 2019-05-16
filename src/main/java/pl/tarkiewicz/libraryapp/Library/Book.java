@@ -21,15 +21,7 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<Rate> rates;
 
-    public Set<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(Set<Rate> rates) {
-        this.rates = rates;
-    }
-
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String title;
@@ -47,9 +39,13 @@ public class Book {
         this.loan = loan;
     }
 
-    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user,boolean loan) {
-        this(title, author, productionYear, type, user,loan);
+    public Book(Long id, String title, String author, LocalDate productionYear, String type, User user, boolean loan) {
+        this(title, author, productionYear, type, user, loan);
         this.id = id;
+
+    }
+
+    public Book() {
 
     }
 
@@ -59,10 +55,6 @@ public class Book {
 
     public void setLoan(boolean loan) {
         this.loan = loan;
-    }
-
-    public Book(){
-
     }
 
     public Long getId() {
@@ -113,6 +105,14 @@ public class Book {
         this.user = user;
     }
 
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
+
 
     public static final class Builder {
         private Long id;
@@ -121,36 +121,44 @@ public class Book {
         private LocalDate productionYear;
         private String type;
         private User user;
+        private boolean loan;
 
-        public Builder id (Long id){
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }
 
-        public Builder title(String title){
+        public Builder title(String title) {
             this.title = title;
             return this;
         }
-        public Builder author(String author){
+
+        public Builder author(String author) {
             this.author = author;
             return this;
         }
-        public Builder productionYear(LocalDate productionYear){
+
+        public Builder productionYear(LocalDate productionYear) {
             this.productionYear = productionYear;
             return this;
         }
 
-        public Builder type(String type){
+        public Builder type(String type) {
             this.type = type;
             return this;
         }
 
-        public Builder user(User user){
+        public Builder user(User user) {
             this.user = user;
             return this;
         }
 
-        public Book build(){
+        public Builder loan(boolean loan) {
+            this.loan = loan;
+            return this;
+        }
+
+        public Book build() {
 
             Book book = new Book();
             book.id = this.id;
@@ -159,6 +167,7 @@ public class Book {
             book.productionYear = this.productionYear;
             book.type = this.type;
             book.user = this.user;
+            book.loan = this.loan;
             return book;
 
         }

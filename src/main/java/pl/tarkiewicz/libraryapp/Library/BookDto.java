@@ -1,7 +1,7 @@
 package pl.tarkiewicz.libraryapp.Library;
 
 import pl.tarkiewicz.libraryapp.Rate.Rate;
-import pl.tarkiewicz.libraryapp.User.User;
+
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -12,41 +12,14 @@ public class BookDto {
 
     @NotNull
     private Long id;
-    private Set<Rate> rates;
-
-    public String getRates() {
-        int sum = 0;
-        if (!rates.isEmpty()) {
-
-
-            for (Rate rate : rates) {
-                sum = sum + Integer.valueOf(rate.getRate());
-            }
-
-            return String.valueOf(sum /rates.size());
-        }else{
-            return "No Rating";
-        }
-    }
-
-    private boolean loan;
-
-    public boolean isLoan() {
-        return loan;
-    }
-
-    public void setLoan(boolean loan) {
-        this.loan = loan;
-    }
-
-    public void setRates(Set<Rate> rates) {
-        this.rates = rates;
-    }
 
     private String title;
     private String author;
     private LocalDate productionYear;
     private String type;
+    private Set<Rate> rates;
+    private boolean loan;
+
 
     public BookDto(String title, String author, LocalDate productionYear, String type) {
         this.title = title.trim();
@@ -56,12 +29,8 @@ public class BookDto {
     }
 
 
-    public BookDto(){
+    public BookDto() {
 
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public Long getId() {
@@ -70,6 +39,10 @@ public class BookDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
@@ -99,5 +72,32 @@ public class BookDto {
     public void setType(String type) {
         this.type = type;
     }
+
+    public boolean isLoan() {
+        return loan;
+    }
+
+    public void setLoan(boolean loan) {
+        this.loan = loan;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
+
+    public String getRates() {
+        int sum = 0;
+        if (!rates.isEmpty()) {
+
+            for (Rate rate : rates) {
+                sum = sum + Integer.valueOf(rate.getRate());
+            }
+
+            return String.valueOf(sum / rates.size());
+        } else {
+            return "No Rating";
+        }
+    }
+
 
 }

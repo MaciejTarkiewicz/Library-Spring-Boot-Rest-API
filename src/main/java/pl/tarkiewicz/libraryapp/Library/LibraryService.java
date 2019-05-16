@@ -19,6 +19,7 @@ public class LibraryService {
         this.libraryRepo = libraryRepo;
 
     }
+
     public Book borrowBook(Book book, User user){
         book.setUser(user);
         book.setLoan(true);
@@ -37,9 +38,6 @@ public class LibraryService {
 
 
     public List<Book> getAllBooks(){
-//        List<Book> list = new ArrayList<>();
-//        this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
-//        return list;
         return this.libraryRepo.findAll();
 
     }
@@ -51,9 +49,6 @@ public class LibraryService {
     public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
 
     public List<Book> getBooksByUserId(Long id){
-//        List<Book> list = new ArrayList<>();
-//        this.libraryRepo.findBookByUserId(id).iterator().forEachRemaining(list::add);
-//        return list;
         return this.libraryRepo.findBookByUserId(id);
     }
 
