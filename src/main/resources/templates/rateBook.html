@@ -17,8 +17,8 @@
     <p>
         <li>
             <label>
-                <input type="text" name="username" placeholder="edit me" id="username"
-                       v-model="rat">
+                <input type="text" name="rate" placeholder="edit me" id="rate"
+                       v-model="rate">
                 <span>
           Rate
         </span>
@@ -29,7 +29,7 @@
     </p>
 
     <p>
-        <button class = "button button2" type="submit" value="Submit" @click="rate" id = "home">Rate</button>
+        <button class = "button button2" type="submit" value="Submit" @click="RateBook" id ="rate_book">Rate</button>
     </p>
     <section v-if="error">
         <div>

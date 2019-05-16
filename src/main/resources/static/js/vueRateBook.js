@@ -3,15 +3,15 @@ window.onload = () => {
         el: "#rate_vue",
         data: {
             error: false,
-            rat:'',
+            rate:'',
             info:''
         },
         methods: {
-            rate() {
+            RateBook() {
                 axios({
                     method: 'post',
                     url: '/library/book/rate',
-                    data: {rat: this.rat}
+                    data: {rate: this.rate}
                 }).then(function (response) {
                     document.location.replace('/library/all');
                 }).catch(err => {

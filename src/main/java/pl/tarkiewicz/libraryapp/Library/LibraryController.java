@@ -23,14 +23,12 @@ public class LibraryController {
 
     private LibraryService libraryService;
     private UserService userService;
-    private RateService rateService;
     private ModelMapper modelMapper;
 
     @Autowired
-    public LibraryController(LibraryService libraryService, UserService userService,RateService rateService ) {
+    public LibraryController(LibraryService libraryService, UserService userService) {
         this.libraryService = libraryService;
         this.userService = userService;
-        this.rateService = rateService;
         this.modelMapper = new ModelMapper();
     }
 
@@ -94,7 +92,7 @@ public class LibraryController {
 
     @GetMapping(value = "/api/library/edit")
     public BookDto getBookById(@RequestParam Long id) {
-        
+
         BookDto book = convertToDto(libraryService.getBookById(id));
 
         return book;
@@ -157,20 +155,6 @@ public class LibraryController {
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
-
-    @PostMapping(value = "/library/book/rate")
-    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, HttpSession session) {
-        Book book = this.libraryService.getBookById((Long)session.getAttribute("book_id"));
-        Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        try{
-            //Integer num = Integer.parseInt(rateDto.getRat());
-            this.rateService.addRate(new Rate(book,user.get(),rateDto.getRat()));
-            return new ResponseEntity<>("Correct!", HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>("Invalid!", HttpStatus.BAD_GATEWAY);
-        }
-
-    }
 
 
     private BookDto convertToDto(Book book) {

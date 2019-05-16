@@ -12,8 +12,6 @@ public class BookDto {
 
     @NotNull
     private Long id;
-    //private User user;
-
     private Set<Rate> rates;
 
     public String getRates() {
@@ -44,14 +42,6 @@ public class BookDto {
     public void setRates(Set<Rate> rates) {
         this.rates = rates;
     }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     private String title;
     private String author;

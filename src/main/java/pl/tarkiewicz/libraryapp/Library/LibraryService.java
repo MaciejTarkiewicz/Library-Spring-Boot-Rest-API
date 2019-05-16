@@ -31,50 +31,16 @@ public class LibraryService {
         return this.libraryRepo.save(book);
     }
 
-
-//    public Book editBook(BookDto bookDto, Long id){
-//        Book book = new Book.Builder()
-//                .id(id)
-//                .title(bookDto.getTitle())
-//                .author(bookDto.getAuthor())
-////                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-//                .productionYear(bookDto.getProductionYear())
-//                .type(bookDto.getType())
-//                .build();
-//
-//        return this.libraryRepo.save(book);
-//    }
-
-//    public Book editBookByUser(BookDto bookDto, User user){
-//        Book book = new Book.Builder()
-//                .title(bookDto.getTitle())
-//                .author(bookDto.getAuthor())
-//                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-//                .type(bookDto.getType())
-//                .user(user)
-//                .build();
-//        return this.libraryRepo.save(book);
-//    }
-
     void save(Book book) {
         libraryRepo.save(book);
     }
 
-//    public Book addBook(BookDto bookDto){
-//        Book book = new Book.Builder()
-//                .title(bookDto.getTitle())
-//                .author(bookDto.getAuthor())
-////                .productionYear(LocalDate.parse(bookDto.getProductionYear()))
-//                .productionYear(bookDto.getProductionYear())
-//                .type(bookDto.getType())
-//                .build();
-//        return this.libraryRepo.save(book);
-//    }
 
     public List<Book> getAllBooks(){
-        List<Book> list = new ArrayList<>();
-        this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
-        return list;
+//        List<Book> list = new ArrayList<>();
+//        this.libraryRepo.findAll().iterator().forEachRemaining(list::add);
+//        return list;
+        return this.libraryRepo.findAll();
 
     }
 
@@ -85,9 +51,10 @@ public class LibraryService {
     public void deleteById(Long id){ this.libraryRepo.deleteById(id);}
 
     public List<Book> getBooksByUserId(Long id){
-        List<Book> list = new ArrayList<>();
-        this.libraryRepo.findBookByUserId(id).iterator().forEachRemaining(list::add);
-        return list;
+//        List<Book> list = new ArrayList<>();
+//        this.libraryRepo.findBookByUserId(id).iterator().forEachRemaining(list::add);
+//        return list;
+        return this.libraryRepo.findBookByUserId(id);
     }
 
     public Book getBookById(Long id){
