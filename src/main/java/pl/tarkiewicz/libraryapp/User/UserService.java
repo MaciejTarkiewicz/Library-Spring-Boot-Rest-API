@@ -6,7 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,9 +34,7 @@ public class UserService {
     }
 
     public List<User> getUsers() {
-        List<User> list = new ArrayList<>();
-        this.userRepo.findAll().iterator().forEachRemaining(list::add);
-        return list;
+        return this.userRepo.findAll();
     }
 
     public void deleteUser(User user){

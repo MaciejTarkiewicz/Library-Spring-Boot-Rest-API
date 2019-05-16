@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.tarkiewicz.libraryapp.Config.Config;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,7 +26,7 @@ public class UserController {
 
 
     @Autowired
-    public UserController(UserService userService, Config config) {
+    public UserController(UserService userService) {
 
         this.userService = userService;
         this.modelMapper = new ModelMapper();
