@@ -12,7 +12,7 @@ public class BookDto {
 
     @NotNull
     private Long id;
-    private User user;
+    //private User user;
 
     private Set<Rate> rates;
 
@@ -31,17 +31,27 @@ public class BookDto {
         }
     }
 
+    private boolean loan;
+
+    public boolean isLoan() {
+        return loan;
+    }
+
+    public void setLoan(boolean loan) {
+        this.loan = loan;
+    }
+
     public void setRates(Set<Rate> rates) {
         this.rates = rates;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     private String title;
     private String author;

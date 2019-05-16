@@ -38,7 +38,7 @@
         <td>{{ item.productionYear }}</td>
         <td>{{ item.type }}</td>
         <td>
-            <section v-if="!justTesting(item.user)">
+            <section v-if="!justTesting(item.loan)">
                 <label>
                     <button class="button button2" @click="editBook(item.id)" id="edit">Edit</button>
                     <button class="button" @click="deleteBook(item.id)" id="delete">Delete</button>
@@ -55,7 +55,7 @@
 
             <input
                     type="checkbox"
-                    :checked="justTesting(item.user)"
+                    :checked="justTesting(item.loan)"
                     disabled="disabled"
             >
         </td>

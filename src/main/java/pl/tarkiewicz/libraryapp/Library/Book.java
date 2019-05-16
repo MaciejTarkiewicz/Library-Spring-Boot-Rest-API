@@ -36,22 +36,30 @@ public class Book {
     private String author;
     private LocalDate productionYear;
     private String type;
+    private boolean loan;
 
-
-    public Book(String title, String author, LocalDate productionYear, String type, User user) {
+    public Book(String title, String author, LocalDate productionYear, String type, User user, boolean loan) {
         this.title = title;
         this.author = author;
         this.productionYear = productionYear;
         this.type = type;
         this.user = user;
+        this.loan = loan;
     }
 
-    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user) {
-        this(title, author, productionYear, type, user);
+    public Book(Long id , String title, String author, LocalDate productionYear, String type, User user,boolean loan) {
+        this(title, author, productionYear, type, user,loan);
         this.id = id;
 
     }
 
+    public boolean isLoan() {
+        return loan;
+    }
+
+    public void setLoan(boolean loan) {
+        this.loan = loan;
+    }
 
     public Book(){
 

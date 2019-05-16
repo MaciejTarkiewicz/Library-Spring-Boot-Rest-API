@@ -21,11 +21,13 @@ public class LibraryService {
     }
     public Book borrowBook(Book book, User user){
         book.setUser(user);
+        book.setLoan(true);
         return this.libraryRepo.save(book);
     }
 
     public Book giveBack(Book book){
         book.setUser(null);
+        book.setLoan(false);
         return this.libraryRepo.save(book);
     }
 

@@ -90,10 +90,22 @@ public class LibraryController {
         this.libraryService.deleteById(id);
     }
 
+
+
     @GetMapping(value = "/api/library/edit")
-    public Book getBookById(@RequestParam Long id) {
-        return this.libraryService.getBookById(id);
+    public BookDto getBookById(@RequestParam Long id) {
+        
+        BookDto book = convertToDto(libraryService.getBookById(id));
+
+        return book;
     }
+
+
+
+//    @GetMapping(value = "/api/library/edit")
+//    public Book getBookById(@RequestParam Long id) {
+//        return this.libraryService.getBookById(id);
+//    }
 
 
 //    @PutMapping(value = "/api/library/edit")
@@ -134,9 +146,14 @@ public class LibraryController {
 
     @PutMapping(value = "/api/library/borrow/{id}")
     public ResponseEntity<String> borrowBook(@PathVariable Long id, HttpSession session) {
-        Book book = this.libraryService.getBookById(id);
+        //bookDto.setId(id);
+        //Book book = convertToEntity(bookDto);
+        Book book1 = this.libraryService.getBookById(id);
+        book1.setLoan(true);
+
         Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        this.libraryService.borrowBook(book ,user.get());
+        libraryService.borrowBook(book1,user.get() );
+//        this.libraryService.borrowBook(book ,user.get());
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 

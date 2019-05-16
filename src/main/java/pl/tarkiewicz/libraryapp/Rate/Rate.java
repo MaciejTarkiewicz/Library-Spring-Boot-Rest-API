@@ -12,11 +12,11 @@ import javax.persistence.*;
 public class Rate {
 
     @ManyToOne
-    @JsonIgnore
+   // @JsonIgnore
     private User user;
 
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Book book;
 
 

@@ -67,9 +67,9 @@ window.onload = () => {
                 document.location.replace("/library/all");
 
             },
-            justTesting(user_id) {
-                console.log(user_id);
-                return user_id !== null;
+            justTesting(loan) {
+                console.log(loan);
+                return loan !== false;
                 //return false;
 
             },

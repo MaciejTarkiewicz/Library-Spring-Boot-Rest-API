@@ -23,12 +23,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     //@JsonIgnoreProperties("user")
-    @JsonIgnore
+    //@JsonIgnore
     private Set<Book> books;
 
     @OneToMany(mappedBy = "user")
     //@JsonIgnoreProperties("user")
-    @JsonIgnore
+    //@JsonIgnore
     private Set<Rate> rates;
 
     public Set<Rate> getRates() {
