@@ -1,7 +1,6 @@
 package pl.tarkiewicz.libraryapp.User;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.tarkiewicz.libraryapp.Library.Book;
 import pl.tarkiewicz.libraryapp.Rate.Rate;
 
@@ -22,22 +21,10 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
-    //@JsonIgnoreProperties("user")
-    //@JsonIgnore
     private Set<Book> books;
 
     @OneToMany(mappedBy = "user")
-    //@JsonIgnoreProperties("user")
-    //@JsonIgnore
     private Set<Rate> rates;
-
-    public Set<Rate> getRates() {
-        return rates;
-    }
-
-    public void setRates(Set<Rate> rates) {
-        this.rates = rates;
-    }
 
     public User() {
     }
@@ -89,6 +76,14 @@ public class User {
         this.books = books;
     }
 
+    public Set<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(Set<Rate> rates) {
+        this.rates = rates;
+    }
+
     public static final class Builder {
         private String username;
         private String password;
@@ -119,12 +114,7 @@ public class User {
             return user;
 
         }
-
-
-
-
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.tarkiewicz.libraryapp.User.Dto.UserLogin;
-import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +20,14 @@ public class UserService {
         return new BCryptPasswordEncoder();
     }
 
-
     @Autowired
     public UserService(UserRepo accountRepo) {
         this.userRepo = accountRepo;
     }
 
-    public User RegisterUser(UserRegistration userRegistration) {
-        System.out.println(userRegistration.getPassword());
-        User user = new User.Builder()
-                .username(userRegistration.getUsername())
-                .password((passwordEncoder().encode(userRegistration.getPassword())))
-                .email(userRegistration.getEmail())
-                .build();
-
-        return this.userRepo.save(user);
+    public User save(User user){
+        this.userRepo.save(user);
+        return user;
     }
 
     public Optional<User> findById(Long id) {
@@ -53,7 +44,7 @@ public class UserService {
         userRepo.delete(user);
     }
 
-    public boolean checkUser(UserLogin u) {
+    public boolean checkUser(UserDto u) {
         return getUsers().stream()
                 .filter(item->item.getUsername().equals(u.getUsername()))
                 .anyMatch(item ->passwordEncoder().matches(u.getPassword(),item.getPassword()));

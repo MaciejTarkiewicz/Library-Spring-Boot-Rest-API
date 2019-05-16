@@ -2,7 +2,7 @@ package pl.tarkiewicz.libraryapp;
 
 import org.junit.Before;
 import pl.tarkiewicz.libraryapp.Library.Book;
-import pl.tarkiewicz.libraryapp.User.Dto.UserRegistration;
+import pl.tarkiewicz.libraryapp.User.UserDto;
 import pl.tarkiewicz.libraryapp.User.User;
 
 import java.time.LocalDate;
@@ -19,11 +19,11 @@ public class PrepareMockData {
     Book book1;
     Book book4;
 
-    UserRegistration userRegistration;
+    UserDto userDto;
 
     @Before
     public void before() {
-        userRegistration = new UserRegistration("k", "k", "k", "a@a");
+        userDto = new UserDto("k", "k", "k", "a@a");
         user1 = new User.Builder()
                 .username("d")
                 .password("d")
@@ -64,7 +64,7 @@ public class PrepareMockData {
 
     }
 
-    Set<Book> prepareMockDataUserId() {
+    List<Book> prepareMockDataUserId() {
         Book book2 = new Book.Builder()
                 .author("a")
                 .title("a")
@@ -73,7 +73,7 @@ public class PrepareMockData {
                 .user(user2)
                 .build();
 
-        Set<Book> set = new HashSet<>();
+        List<Book> set = new ArrayList<>();
         set.add(book1);
         set.add(book2);
         return set;

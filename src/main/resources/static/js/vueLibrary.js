@@ -8,8 +8,7 @@ window.onload = () => {
             productionYear: '',
             type: '',
             username: '',
-            login: '',
-            l: '',
+            books: '',
             info: null,
             edit: false,
             borrow: false,
@@ -70,7 +69,6 @@ window.onload = () => {
             justTesting(loan) {
                 console.log(loan);
                 return loan !== false;
-                //return false;
 
             },
 
@@ -86,9 +84,9 @@ window.onload = () => {
                     }).catch(err => {
 
                     }).finally(() => this.borrow = true)
-                }catch(error){
+                } catch (error) {
 
-                }finally {
+                } finally {
                     this.status = true
                 }
 
@@ -104,9 +102,9 @@ window.onload = () => {
                         })
                         .catch(error => {
                         })
-                }catch(error){
+                } catch (error) {
 
-                }finally {
+                } finally {
                     this.editRate1 = false;
                     this.editRate2 = true;
                 }
@@ -117,7 +115,7 @@ window.onload = () => {
         async created() {
             const {data} = await axios.get('/api/library/all');
             this.username = await axios.get('/api/library/user');
-            this.l = data;
+            this.books = data;
             this.rating = "";
 
 

@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.User.User;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,8 +30,8 @@ public class LibraryService {
         return this.libraryRepo.save(book);
     }
 
-    void save(Book book) {
-        libraryRepo.save(book);
+    public Book save(Book book) {
+        return libraryRepo.save(book);
     }
 
 

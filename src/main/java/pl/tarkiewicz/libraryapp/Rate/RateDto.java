@@ -6,9 +6,7 @@ public class RateDto {
     private String rate;
 
     public RateDto() {
-
     }
-
     public RateDto(String rate) {
         this.rate = rate;
     }

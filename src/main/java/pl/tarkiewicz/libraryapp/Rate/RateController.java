@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.tarkiewicz.libraryapp.Library.Book;
-import pl.tarkiewicz.libraryapp.Library.BookDto;
 import pl.tarkiewicz.libraryapp.Library.LibraryService;
 import pl.tarkiewicz.libraryapp.User.User;
 import pl.tarkiewicz.libraryapp.User.UserService;
