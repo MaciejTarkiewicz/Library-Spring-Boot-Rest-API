@@ -1,12 +1,12 @@
 package pl.tarkiewicz.libraryapp.Rate;
 
-
 public class RateDto {
 
     private String rate;
 
     public RateDto() {
     }
+
     public RateDto(String rate) {
         this.rate = rate;
     }
@@ -18,6 +18,5 @@ public class RateDto {
     public void setRate(String rate) {
         this.rate = rate;
     }
-
 
 }

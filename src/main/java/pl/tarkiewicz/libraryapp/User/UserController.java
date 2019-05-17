@@ -9,11 +9,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     private UserService userService;
@@ -24,7 +26,6 @@ public class UserController {
         return new BCryptPasswordEncoder();
     }
 
-
     @Autowired
     public UserController(UserService userService) {
 
@@ -32,8 +33,7 @@ public class UserController {
         this.modelMapper = new ModelMapper();
     }
 
-
-    @PostMapping(value = "/api/register")
+    @PostMapping(value = "/register")
     public ResponseEntity<String> register(@RequestBody UserDto userDto) {
         if (!userDto.checkWebEdit()) {
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
@@ -53,7 +53,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/api/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpSession session) {
         if (this.userService.checkUser(userDto)) {
             session.setAttribute("User_id", userService.findByLogin(userDto.getUsername()).getId());
@@ -64,7 +64,7 @@ public class UserController {
 
     }
 
-    @GetMapping(value = "/api/library/user")
+    @GetMapping(value = "/library/user")
     public String getUsernameByid (HttpSession session) {
 
         UserDto userDto = convertToDto(this.userService.findById((Long)session.getAttribute("User_id")).get());

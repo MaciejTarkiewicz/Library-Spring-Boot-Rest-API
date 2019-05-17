@@ -1,9 +1,5 @@
 package pl.tarkiewicz.libraryapp.Library;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import pl.tarkiewicz.libraryapp.Rate.Rate;
 import pl.tarkiewicz.libraryapp.User.User;
 
@@ -113,8 +109,8 @@ public class Book {
         this.rates = rates;
     }
 
-
     public static final class Builder {
+
         private Long id;
         private String title;
         private String author;
@@ -171,7 +167,6 @@ public class Book {
             return book;
 
         }
-
 
     }
 
