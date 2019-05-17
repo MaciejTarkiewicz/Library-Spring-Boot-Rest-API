@@ -16,7 +16,6 @@ public class UserDto {
     public UserDto() {
     }
 
-
     public UserDto(String username, String password, String confirmPassword, String email) {
         this.username = username;
         this.password = password.trim();

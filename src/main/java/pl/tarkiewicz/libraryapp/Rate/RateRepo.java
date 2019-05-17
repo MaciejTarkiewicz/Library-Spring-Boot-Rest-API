@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RateRepo extends JpaRepository<Rate,Long> {
+public interface RateRepo extends JpaRepository<Rate, Long> {
+
     List<Rate> findRateByBookId(Long id);
 
 }

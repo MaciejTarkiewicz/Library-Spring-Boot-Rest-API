@@ -1,14 +1,14 @@
 package pl.tarkiewicz.libraryapp.Library;
 
 import pl.tarkiewicz.libraryapp.Rate.Rate;
-
+import pl.tarkiewicz.libraryapp.Rate.RateDto;
 
 import javax.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 import java.util.Set;
 
 public class BookDto {
-
 
     @NotNull
     private Long id;
@@ -17,9 +17,8 @@ public class BookDto {
     private String author;
     private LocalDate productionYear;
     private String type;
-    private Set<Rate> rates;
+    private Set<RateDto> rates;
     private boolean loan;
-
 
     public BookDto(String title, String author, LocalDate productionYear, String type) {
         this.title = title.trim();
@@ -27,7 +26,6 @@ public class BookDto {
         this.productionYear = productionYear;
         this.type = type.trim();
     }
-
 
     public BookDto() {
 
@@ -81,7 +79,7 @@ public class BookDto {
         this.loan = loan;
     }
 
-    public void setRates(Set<Rate> rates) {
+    public void setRates(Set<RateDto> rates) {
         this.rates = rates;
     }
 
@@ -89,8 +87,8 @@ public class BookDto {
         int sum = 0;
         if (!rates.isEmpty()) {
 
-            for (Rate rate : rates) {
-                sum = sum + Integer.valueOf(rate.getRate());
+            for (RateDto rateDto : rates) {
+                sum = sum + Integer.valueOf(rateDto.getRate());
             }
 
             return String.valueOf(sum / rates.size());
@@ -98,6 +96,5 @@ public class BookDto {
             return "No Rating";
         }
     }
-
 
 }

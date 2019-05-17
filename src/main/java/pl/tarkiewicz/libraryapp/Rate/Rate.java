@@ -1,6 +1,5 @@
 package pl.tarkiewicz.libraryapp.Rate;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.tarkiewicz.libraryapp.Library.Book;
 import pl.tarkiewicz.libraryapp.User.User;
@@ -17,13 +16,11 @@ public class Rate {
     @ManyToOne
     private Book book;
 
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
     private String rate;
-
 
     public Rate() {
 
@@ -66,6 +63,5 @@ public class Rate {
     public void setRate(String rate) {
         this.rate = rate;
     }
-
 
 }

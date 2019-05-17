@@ -24,14 +24,12 @@ public class UserController {
         return new BCryptPasswordEncoder();
     }
 
-
     @Autowired
     public UserController(UserService userService) {
 
         this.userService = userService;
         this.modelMapper = new ModelMapper();
     }
-
 
     @PostMapping(value = "/api/register")
     public ResponseEntity<String> register(@RequestBody UserDto userDto) {

@@ -1,6 +1,5 @@
 package pl.tarkiewicz.libraryapp.Library;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,9 @@ import pl.tarkiewicz.libraryapp.User.User;
 import pl.tarkiewicz.libraryapp.User.UserService;
 
 import org.modelmapper.ModelMapper;
+
 import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,6 @@ public class LibraryController {
             return new ResponseEntity<>("Bad format production year!", HttpStatus.CONFLICT);// Do zmiany
     }
 
-
     @GetMapping(value = "/api/library")
     public List<BookDto> getAllBookByUser(HttpSession session) {
         List<BookDto> allByUserBooks = new ArrayList<>();
@@ -53,8 +53,7 @@ public class LibraryController {
     }
 
     @GetMapping(value = "/api/library/all")
-    public List<BookDto> getAllBook()
-    {
+    public List<BookDto> getAllBook() {
         List<BookDto> allBooks = new ArrayList<>();
         for (Book book : libraryService.getAllBooks()) {
             allBooks.add(convertToDto(book));
@@ -89,9 +88,8 @@ public class LibraryController {
 
     @PutMapping(value = "/api/library/user/{id}")
     public ResponseEntity<String> giveBackBook(@PathVariable Long id, HttpSession session) {
-        session.setAttribute("book_id",id);
+        session.setAttribute("book_id", id);
         Book book = this.libraryService.getBookById(id);
-
         this.libraryService.giveBack(book);
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
@@ -100,11 +98,10 @@ public class LibraryController {
     public ResponseEntity<String> borrowBook(@PathVariable Long id, HttpSession session) {
         Book book = this.libraryService.getBookById(id);
         book.setLoan(true);
-        Optional<User> user = this.userService.findById((Long)session.getAttribute("User_id"));
-        libraryService.borrowBook(book,user.get());
+        Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
+        libraryService.borrowBook(book, user.get());
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
-
 
     private BookDto convertToDto(Book book) {
         return modelMapper.map(book, BookDto.class);
@@ -114,10 +111,6 @@ public class LibraryController {
         Book book = modelMapper.map(bookDto, Book.class);
         return book;
     }
-
-
-
-    
 
 }
 

@@ -8,6 +8,7 @@ import pl.tarkiewicz.libraryapp.Rate.Rate;
 import pl.tarkiewicz.libraryapp.User.User;
 
 import javax.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -113,8 +114,8 @@ public class Book {
         this.rates = rates;
     }
 
-
     public static final class Builder {
+
         private Long id;
         private String title;
         private String author;
@@ -171,7 +172,6 @@ public class Book {
             return book;
 
         }
-
 
     }
 

@@ -1,10 +1,10 @@
 package pl.tarkiewicz.libraryapp.User;
 
-
 import pl.tarkiewicz.libraryapp.Library.Book;
 import pl.tarkiewicz.libraryapp.Rate.Rate;
 
 import javax.persistence.*;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -67,7 +67,6 @@ public class User {
         this.email = email;
     }
 
-
     public Set<Book> getBooks() {
         return books;
     }
@@ -85,27 +84,27 @@ public class User {
     }
 
     public static final class Builder {
+
         private String username;
         private String password;
         private String email;
 
-
-        public Builder username(String username){
+        public Builder username(String username) {
             this.username = username;
             return this;
         }
 
-        public Builder password(String password){
+        public Builder password(String password) {
             this.password = password;
             return this;
         }
 
-        public Builder email(String email){
+        public Builder email(String email) {
             this.email = email;
             return this;
         }
 
-        public User build(){
+        public User build() {
 
             User user = new User();
             user.username = this.username;
