@@ -42,7 +42,7 @@ public class RateController {
         Book book = this.libraryService.getBookById((Long) session.getAttribute("book_id"));
         Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
         try {
-            Rate rate = modelMapper.map(rateDto, Rate.class);
+            Rate rate = convertToEntity(rateDto);
             rate.setBook(book);
             rate.setUser(user.get());
             this.rateService.addRate(rate);
