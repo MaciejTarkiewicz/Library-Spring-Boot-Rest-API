@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class RateController {
 
     private RateService rateService;
@@ -31,7 +32,7 @@ public class RateController {
 
     }
 
-    @GetMapping(value = "/api/library/all/rates/{id}")
+    @GetMapping(value = "/library/all/rates/{id}")
     public Integer getAllRate(@PathVariable Long id) {
         return this.rateService.getBookRate(id);
 

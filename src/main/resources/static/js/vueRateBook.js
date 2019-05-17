@@ -10,7 +10,7 @@ window.onload = () => {
             RateBook() {
                 axios({
                     method: 'post',
-                    url: '/library/book/rate',
+                    url: '/api/library/book/rate',
                     data: {rate: this.rate}
                 }).then(function (response) {
                     document.location.replace('/library/all');
