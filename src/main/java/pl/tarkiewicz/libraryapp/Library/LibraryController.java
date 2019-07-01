@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -42,21 +43,18 @@ public class LibraryController {
 
     @GetMapping(value = "/library")
     public List<BookDto> getAllBookByUser(HttpSession session) {
-        List<BookDto> allByUserBooks = new ArrayList<>();
-        for (Book book : this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"))) {
-            allByUserBooks.add(convertToDto(book));
-        }
-        return allByUserBooks;
+        return  this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"))
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping(value = "/library/all")
     public List<BookDto> getAllBook() {
-        List<BookDto> allBooks = new ArrayList<>();
-        for (Book book : libraryService.getAllBooks()) {
-            allBooks.add(convertToDto(book));
-        }
-        return allBooks;
-
+        return libraryService.getAllBooks()
+                .stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping(value = "/logout")
