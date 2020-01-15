@@ -1,17 +1,20 @@
-version : '3'
+version : '3.4'
 services:
   library:
     build: ./
     ports:
     - "8000:8080"
-#    depends_on:
-#      - database
-#  database:
-#    container_name: 'postgres'
-#    image: postgres
-#    environment:
-#      POSTGRES_PASSWORD: admin
-#      POSTGRES_USER: libraryuser
-#      POSTGRES_DB: libraryBase
-#    ports:
-#    - "5432:5432"
+    container_name: library
+    volumes:
+      - /home/mtarkiewicz/Pobrane/volumeLoc:/home/volumes
+    depends_on:
+      - database
+  database:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: libraryuser
+      POSTGRES_DB: libraryBase
+    ports:
+    - "1000:5432"
