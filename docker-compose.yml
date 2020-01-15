@@ -2,6 +2,8 @@ version : '3.4'
 services:
   library:
     image: libobraz:v1
+    volumes:
+      - /volumenLoc:/volumenCon
     ports:
     - "8000:8080"
     container_name: library
