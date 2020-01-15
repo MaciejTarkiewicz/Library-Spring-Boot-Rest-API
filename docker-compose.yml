@@ -25,3 +25,5 @@ services:
       restart_policy:
         condition: any
         delay: 15s
+      placement:
+        constraints: [node.role == manager]
