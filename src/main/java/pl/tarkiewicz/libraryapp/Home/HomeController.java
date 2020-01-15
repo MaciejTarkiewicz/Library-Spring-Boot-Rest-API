@@ -15,10 +15,10 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/register")
-    public String getRegister() {
-        return "register";
-    }
+//     @GetMapping(value = "/register")
+//     public String getRegister() {
+//         return "register";
+//     }
     @GetMapping(value = "/login")
     public String getLogin() {
         return "login";
