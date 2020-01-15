@@ -1,12 +1,14 @@
 version : '3.4'
 services:
   library:
-    build: ./
+    image: libobraz:v1
+    volumes:
+      - /volumenLoc:/volumenCon
     ports:
     - "8000:8080"
     container_name: library
-    volumes:
-      - /home/mtarkiewicz/Pobrane/volumeLoc:/home/volumes
+    deploy:
+      mode: global
     depends_on:
       - database
   database:
@@ -18,3 +20,8 @@ services:
       POSTGRES_DB: libraryBase
     ports:
     - "1000:5432"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 15s
