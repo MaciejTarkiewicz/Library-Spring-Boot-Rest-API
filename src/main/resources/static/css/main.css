@@ -64,8 +64,7 @@ del {
 }
 
 button {
-/*     background-color: #f44336; /* Red */ */
-    background-color: #4CAF50; /* green */ */
+    background-color: #f44336; /* Red */ */
     border: none;
     color: white;
     padding: 5px 8px;
