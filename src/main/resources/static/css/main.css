@@ -1,25 +1,29 @@
 body {
-    background: #20262E;
+    background: #e3e7e6;
+/*     background: #20262E; */
     padding: 20px;
     font-family: Helvetica;
 }
 
 #register_vue {
-    background: #fff;
+    background: #e3e7e6;
+/*     background: #fff; */
     border-radius: 4px;
     padding: 20px;
     transition: all 0.2s;
 }
 
 #index_vue {
-    background: #fff;
+    background: #e3e7e6; 
+/*     background: #fff; */
     border-radius: 4px;
     padding: 20px;
     transition: all 0.2s;
 }
 
 #login_vue {
-     background: #fff;
+     background: #e3e7e6; 
+/*      background: #fff; */
      border-radius: 4px;
      padding: 20px;
      transition: all 0.2s;
@@ -64,7 +68,8 @@ del {
 }
 
 button {
-    background-color: #f44336; /* Red */ */
+/*     background-color: #f44336;  */
+    background-color: #e3e7e6; 
     border: none;
     color: white;
     padding: 5px 8px;
