@@ -20,5 +20,5 @@
 <ol>
 <li> sudo usermod -a -G docker jenkins ----> Dodanie Jenkinsa do grupy dockera</li>
 <li> sudo systemctl restart jenkins ---> restart</li>
-<li> docker service update library_library --image libobraz:v1 --force <li>
+<li> docker service update library_library --image libobraz:v1 --force </li>
 </ol>
