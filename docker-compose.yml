@@ -1,7 +1,7 @@
 version : '3.4'
 services:
   library:
-    image: libobraz:v1
+    image: maciek1995/library-app
     volumes:
       - /volumenLoc:/volumenCon
     ports:
