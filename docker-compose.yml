@@ -1,7 +1,7 @@
 version : '3.4'
 services:
   library:
-    image: maciek1995/library-app:latest
+    image: maciek1995/library-app
     volumes:
       - /volumenLoc:/volumenCon
     ports:
