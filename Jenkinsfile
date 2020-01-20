@@ -8,7 +8,7 @@ node{
    }
    
    stage('run or update stack Library'){
-       sh 'docker service update library --image [maciek1995/library-app] --force'
+       sh 'docker service update library_library --image maciek1995/library-app:latest --force'
        
    }
    
