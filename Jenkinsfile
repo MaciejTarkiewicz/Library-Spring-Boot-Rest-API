@@ -3,7 +3,7 @@ node{
        checkout scm
        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
        sh "docker login -u maciek1995 -p ${dockerHubPwd}"
-       sh 'docker pull "maciek1995/library-app'
+       sh 'docker pull maciek1995/library-app'
         }
    }
    
@@ -13,4 +13,3 @@ node{
    }
    
 }
-
