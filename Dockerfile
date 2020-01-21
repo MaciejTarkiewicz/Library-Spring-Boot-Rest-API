@@ -5,7 +5,7 @@ RUN mvn -f ./Library-Spring-Boot-Rest-API/pom.xml clean package -DskipTests
 
 FROM openjdk:8u201-jdk-alpine3.9
 COPY --from=build ./Library-Spring-Boot-Rest-API/target/library-app-0.0.1-SNAPSHOT.jar ./demo.jar
-EXPOSE 8000
+EXPOSE 9999
 ENTRYPOINT ["java","-jar","./demo.jar"]
 
 
