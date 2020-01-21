@@ -3,7 +3,7 @@ services:
   library:
     build: ./
     ports:
-      - "8000:8080"
+      - "9999:8080"
     container_name: library
     volumes:
       - /home/mtarkiewicz/Pobrane/volumeLoc:/home/volumes
