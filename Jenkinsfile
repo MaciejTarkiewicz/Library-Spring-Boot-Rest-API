@@ -7,7 +7,7 @@ node{
    }
    
    stage('run or update stack Library'){
-       sh 'docker stack deploy --compose-file /root/Library-Spring-Boot-Rest-API/docker-compose.yml library'
+       sh 'docker stack deploy --compose-file ./workspace/Library-Spring-Boot-Rest-API/docker-compose.yml library'
    }
    
 }
