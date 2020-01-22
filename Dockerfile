@@ -1,5 +1,5 @@
 FROM maven:3.6.0-jdk-11-slim AS build
-COPY src ./Library-Spring-Boot-Rest-API
+COPY src ./Library-Spring-Boot-Rest-API/src
 COPY pom.xml ./Library-Spring-Boot-Rest-API
 RUN mvn -f ./Library-Spring-Boot-Rest-API/pom.xml clean package -DskipTests
 
