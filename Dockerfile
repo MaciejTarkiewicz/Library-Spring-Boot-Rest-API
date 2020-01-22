@@ -14,3 +14,4 @@ ENTRYPOINT ["java","-jar","./demo.jar"]
 #CREATE USER libraryUser;
 #CREATE DATABASE "libraryBase" OWNER libraryUser;
 #ALTER USER libraryUser WITH PASSWORD 'admin';
+#docker run --name lib -d -p 9999:8080 libobraz
