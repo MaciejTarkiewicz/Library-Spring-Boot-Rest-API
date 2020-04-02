@@ -1,0 +1,79 @@
+body {
+    background: #20262E;
+    padding: 20px;
+    font-family: Helvetica;
+}
+
+#register_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#index_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#login_vue {
+     background: #fff;
+     border-radius: 4px;
+     padding: 20px;
+     transition: all 0.2s;
+ }
+
+
+
+#editBook_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#library_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+#rate_vue {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+
+
+li {
+    margin: 8px 0;
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+del {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+button {
+    background-color: #f44336; 
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: match-parent;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {background-color: #4CAF50;} /* Green */

@@ -11,27 +11,26 @@ import java.util.List;
 public class RateService {
 
     private RateRepo rateRepo;
-    private int sum;
 
     @Autowired
     public RateService(RateRepo rateRepo) {
         this.rateRepo = rateRepo;
     }
 
-    public Rate addRate(Rate rate) throws ValidationException {
+    public void addRate(Rate rate) throws ValidationException {
 
-        if (Integer.valueOf(rate.getRate()) > 10 || Integer.valueOf(rate.getRate()) < 0) {
+        if (Integer.parseInt(rate.getRate()) > 10 || Integer.parseInt(rate.getRate()) < 0) {
             throw new ValidationException("Invalid");
         }
-        return this.rateRepo.save(rate);
+        this.rateRepo.save(rate);
 
     }
 
     public Integer getBookRate(Long id) {
-        sum = 0;
+        int sum = 0;
         List<Rate> avg = this.rateRepo.findRateByBookId(id);
         for (Rate rate : avg) {
-            sum = sum + Integer.valueOf(rate.getRate());
+            sum = sum + Integer.parseInt(rate.getRate());
         }
         return (sum / avg.size());
     }

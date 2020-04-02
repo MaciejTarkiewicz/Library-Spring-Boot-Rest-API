@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.Library;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class LibraryController {
 
     @GetMapping(value = "/library")
     public List<BookDto> getAllBookByUser(HttpSession session) {
-        return  this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"))
+        return this.libraryService.getBooksByUserId((Long) session.getAttribute("User_id"))
                 .stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -68,9 +69,8 @@ public class LibraryController {
     }
 
     @GetMapping(value = "/library/edit")
-    public BookDto getBookById(@RequestParam Long id) {
-        BookDto book = convertToDto(libraryService.getBookById(id));
-        return book;
+    public BookDto getBookById(@RequestParam Long id) throws NotFoundException {
+        return convertToDto(libraryService.getBookById(id));
     }
 
     @PutMapping(value = "/library/edit")
@@ -82,7 +82,7 @@ public class LibraryController {
     }
 
     @PutMapping(value = "/library/user/{id}")
-    public ResponseEntity<String> giveBackBook(@PathVariable Long id, HttpSession session) {
+    public ResponseEntity<String> giveBackBook(@PathVariable Long id, HttpSession session) throws NotFoundException {
         session.setAttribute("book_id", id);
         Book book = this.libraryService.getBookById(id);
         this.libraryService.giveBack(book);
@@ -90,11 +90,12 @@ public class LibraryController {
     }
 
     @PutMapping(value = "/library/borrow/{id}")
-    public ResponseEntity<String> borrowBook(@PathVariable Long id, HttpSession session) {
+    public ResponseEntity<String> borrowBook(@PathVariable Long id, HttpSession session) throws Exception {
         Book book = this.libraryService.getBookById(id);
         book.setLoan(true);
-        Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
-        libraryService.borrowBook(book, user.get());
+        User user = this.userService.findById((Long) session.getAttribute("User_id")).orElseThrow(() -> new NotFoundException("cannot find the user"));
+
+        libraryService.borrowBook(book, user);
         return new ResponseEntity<>("Correct!", HttpStatus.OK);
     }
 
@@ -103,8 +104,7 @@ public class LibraryController {
     }
 
     private Book convertToEntity(BookDto bookDto) {
-        Book book = modelMapper.map(bookDto, Book.class);
-        return book;
+        return modelMapper.map(bookDto, Book.class);
     }
 
 }

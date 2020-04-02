@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.Library;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.tarkiewicz.libraryapp.User.User;
@@ -17,16 +18,16 @@ public class LibraryService {
 
     }
 
-    public Book borrowBook(Book book, User user) {
+    public void borrowBook(Book book, User user) {
         book.setUser(user);
         book.setLoan(true);
-        return this.libraryRepo.save(book);
+        this.libraryRepo.save(book);
     }
 
-    public Book giveBack(Book book) {
+    public void giveBack(Book book) {
         book.setUser(null);
         book.setLoan(false);
-        return this.libraryRepo.save(book);
+        this.libraryRepo.save(book);
     }
 
     public Book save(Book book) {
@@ -50,8 +51,8 @@ public class LibraryService {
         return this.libraryRepo.findBookByUserId(id);
     }
 
-    public Book getBookById(Long id) {
-        return libraryRepo.findById(id).get();
+    public Book getBookById(Long id) throws NotFoundException {
+        return libraryRepo.findById(id).orElseThrow(() -> new NotFoundException(String.format("Book with following id %s not found", id)));
     }
 
 }

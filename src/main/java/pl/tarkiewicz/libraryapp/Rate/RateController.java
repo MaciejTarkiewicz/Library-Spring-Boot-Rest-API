@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.Rate;
 
+import javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,13 +40,13 @@ public class RateController {
     }
 
     @PostMapping(value = "/library/book/rate")
-    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, HttpSession session) {
+    public ResponseEntity<String> rateBook(@RequestBody RateDto rateDto, HttpSession session) throws NotFoundException {
         Book book = this.libraryService.getBookById((Long) session.getAttribute("book_id"));
-        Optional<User> user = this.userService.findById((Long) session.getAttribute("User_id"));
+        User user = this.userService.findById((Long) session.getAttribute("User_id")).orElseThrow(() -> new NotFoundException("cannot find the user"));
         try {
             Rate rate = convertToEntity(rateDto);
             rate.setBook(book);
-            rate.setUser(user.get());
+            rate.setUser(user);
             this.rateService.addRate(rate);
             return new ResponseEntity<>("Correct!", HttpStatus.OK);
         } catch (Exception e) {
@@ -59,8 +60,7 @@ public class RateController {
     }
 
     private Rate convertToEntity(RateDto rateDto) {
-        Rate rate = modelMapper.map(rateDto, Rate.class);
-        return rate;
+        return modelMapper.map(rateDto, Rate.class);
     }
 
 }

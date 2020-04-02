@@ -1,5 +1,6 @@
 package pl.tarkiewicz.libraryapp.User;
 
+import javassist.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,15 +38,11 @@ public class UserController {
     public ResponseEntity<String> register(@RequestBody UserDto userDto) {
         if (!userDto.checkWebEdit()) {
             return new ResponseEntity<>("Fill in all fields", HttpStatus.BAD_REQUEST);
-        }
-        else if (!userDto.checkPassword()) {
+        } else if (!userDto.checkPassword()) {
             return new ResponseEntity<>("Password and Confirm Password are not the same!", HttpStatus.BAD_GATEWAY);
-        }
-        else if (!userDto.checkEmail(userDto.getEmail())) {
+        } else if (!userDto.checkEmail(userDto.getEmail())) {
             return new ResponseEntity<>("Bad Email format", HttpStatus.CONFLICT);
-        }
-
-        else {
+        } else {
             userDto.setPassword((passwordEncoder().encode(userDto.getPassword())));
             User user = convertToEntity(userDto);
             userService.save(user);
@@ -54,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpSession session) {
+    public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpSession session) throws NotFoundException {
         if (this.userService.checkUser(userDto)) {
             session.setAttribute("User_id", userService.findByLogin(userDto.getUsername()).getId());
             return new ResponseEntity<>("Correct", HttpStatus.OK);
@@ -65,10 +62,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/library/user")
-    public String getUsernameByid (HttpSession session) {
-
-        UserDto userDto = convertToDto(this.userService.findById((Long)session.getAttribute("User_id")).get());
-        return userDto.getUsername();
+    public String getUsernameByid(HttpSession session) throws NotFoundException {
+        User user = this.userService.findById((Long) session.getAttribute("User_id")).orElseThrow(() -> new NotFoundException("cannot find the user"));
+        return convertToDto(user).getUsername();
     }
 
     private UserDto convertToDto(User user) {
@@ -76,9 +72,7 @@ public class UserController {
     }
 
     private User convertToEntity(UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
-        return user;
+        return modelMapper.map(userDto, User.class);
     }
-
 
 }
